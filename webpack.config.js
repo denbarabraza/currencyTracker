@@ -30,6 +30,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'Modsen Currency Tracker',
+      favicon: path.join(__dirname, 'public', 'icon.svg'),
       template: path.join(__dirname, 'public', 'index.html'),
     }),
   ],
