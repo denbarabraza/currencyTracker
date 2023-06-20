@@ -30,7 +30,8 @@
   "include": [
     "src",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "declare.d.ts"
   ],
   "exclude": [
     "node_modules",

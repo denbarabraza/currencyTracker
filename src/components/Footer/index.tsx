@@ -1,5 +1,11 @@
 import React from 'react';
 
+import { Container, Wrapper } from './styled';
+
 export const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <Container>
+      <Wrapper>Footer</Wrapper>
+    </Container>
+  );
 };
