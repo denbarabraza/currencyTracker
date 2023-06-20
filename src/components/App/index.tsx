@@ -2,12 +2,13 @@ import React from 'react';
 
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { Pages } from '@/pages/Pages';
 
 export const App = () => {
   return (
     <>
       <Header />
-      <div>Pages</div>
+      <Pages />
       <Footer />
     </>
   );
