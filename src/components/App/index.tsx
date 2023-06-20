@@ -1,3 +1,14 @@
+import React from 'react';
+
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
+
 export const App = () => {
-  return <h1>Hello from React!</h1>;
+  return (
+    <>
+      <Header />
+      <div>Pages</div>
+      <Footer />
+    </>
+  );
 };
