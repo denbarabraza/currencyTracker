@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   width: 90vw;
 `;
 
-export const InfoFooter = styled.div`
+export const InfoFooterBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -26,6 +26,13 @@ export const InfoFooter = styled.div`
   height: 100%;
   flex-wrap: wrap;
   gap: 10px;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 export const DescriptionBlock = styled.div`
@@ -37,20 +44,54 @@ export const DescriptionBlock = styled.div`
   font-style: normal;
   font-weight: 300;
   color: ${props => props.theme.colors.fontColor};
+
+  @media (max-width: 915px) {
+    max-width: 370px;
+  }
+
+  @media (max-width: 790px) {
+    max-width: 300px;
+  }
+`;
+
+export const AboutBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  font-style: normal;
+  font-weight: 300;
+  color: ${props => props.theme.colors.fontColor};
 `;
 
 export const DescriptionTitle = styled.div`
   font-weight: 400;
   margin-bottom: 20px;
+  font-size: 16px;
+
+  @media (max-width: 590px) {
+    font-size: 14px;
+  }
+  @media (max-width: 505px) {
+    font-size: 12px;
+  }
 `;
 
 export const DescriptionItem = styled.div`
   color: ${props => props.theme.colors.fontColorOpacity};
   padding-bottom: 10px;
+  font-size: 16px;
 
   &:hover {
     color: rgb(53, 185, 26);
     font-weight: 400;
+  }
+
+  @media (max-width: 590px) {
+    font-size: 14px;
+  }
+  @media (max-width: 505px) {
+    font-size: 12px;
   }
 `;
 
@@ -59,11 +100,19 @@ export const DescriptionText = styled.div`
   font-weight: 300;
   font-size: 16px;
   line-height: 150%;
+
+  @media (max-width: 590px) {
+    font-size: 14px;
+  }
+  @media (max-width: 505px) {
+    font-size: 12px;
+  }
 `;
 
 export const LogoBlockFooter = styled.div`
   display: flex;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: flex-start;
   align-items: flex-end;
   gap: 10px;
   margin-bottom: 20px;
@@ -76,6 +125,16 @@ export const LogoIconFooter = styled.img`
 
 export const LogoTitleFooter = styled.img`
   height: 25px;
+
+  @media (max-width: 790px) {
+    width: 35vw;
+  }
+  @media (max-width: 700px) {
+    width: 50vw;
+  }
+  @media (max-width: 450px) {
+    width: 60vw;
+  }
 `;
 
 export const RightsInfoBlock = styled.div`
@@ -86,7 +145,10 @@ export const RightsInfoBlock = styled.div`
   padding: 10px;
   color: ${props => props.theme.colors.fontColorOpacity};
 
-  @media (max-width: 420px) {
+  @media (max-width: 590px) {
+    font-size: 14px;
+  }
+  @media (max-width: 505px) {
     font-size: 12px;
   }
 `;

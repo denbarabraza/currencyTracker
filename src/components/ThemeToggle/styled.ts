@@ -8,10 +8,6 @@ const flexEndCenter = `
 
 export const ToggleContainer = styled.div<{ open: boolean }>`
   ${flexEndCenter};
-
-  @media (max-width: 602px) {
-    display: ${({ open }) => (open ? flexEndCenter : 'none')};
-  }
 `;
 
 export const ToggleLabel = styled.label`
