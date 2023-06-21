@@ -8,6 +8,7 @@ import {
   NavLinkItem,
   Wrapper,
 } from '@/components/Header/styled';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { PATH } from '@/constants/path';
 
 export const Header = () => {
@@ -20,7 +21,7 @@ export const Header = () => {
           <NavLinkItem to={PATH.TIME_LINE}>Timeline</NavLinkItem>
           <NavLinkItem to={PATH.BANK_CARD}>Bank card</NavLinkItem>
           <NavLinkItem to={PATH.CONTACTS}>Contacts</NavLinkItem>
-          <div>Toggle</div>
+          <ThemeToggle />
         </HeaderNav>
       </Wrapper>
     </Container>

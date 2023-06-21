@@ -8,7 +8,8 @@ export const Container = styled.div`
   position: sticky;
   height: 7vh;
   top: 0;
-  background-color: #000000;
+  box-shadow: 0 4px 6px ${props => props.theme.colors.boxShadow};
+  background-color: ${props => props.theme.colors.headFootBackground};
 `;
 export const Wrapper = styled.div`
   width: 90vw;
@@ -21,11 +22,11 @@ export const HeaderNav = styled.nav`
   align-items: center;
   width: 100%;
   height: 7vh;
-  color: #ffffff;
+  color: ${props => props.theme.colors.fontColor};
 `;
 
 export const NavLinkItem = styled(NavLink)`
-  color: #ffffff;
+  color: ${props => props.theme.colors.fontColor};
   text-decoration: none;
 
   &:hover {

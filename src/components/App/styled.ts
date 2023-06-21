@@ -11,6 +11,6 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const Container = styled.div`
-  background-color: #000000;
-  color: #ffffff;
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.fontColor};
 `;

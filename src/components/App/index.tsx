@@ -3,16 +3,19 @@ import React from 'react';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Main } from '@/components/Main';
+import { Theme } from '@/context';
 
 import { Container, GlobalStyles } from './styled';
 
 export const App = () => {
   return (
-    <Container>
-      <GlobalStyles />
-      <Header />
-      <Main />
-      <Footer />
-    </Container>
+    <Theme>
+      <Container>
+        <GlobalStyles />
+        <Header />
+        <Main />
+        <Footer />
+      </Container>
+    </Theme>
   );
 };

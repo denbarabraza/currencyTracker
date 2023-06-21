@@ -6,6 +6,9 @@ export const Container = styled.div`
   justify-content: center;
   min-height: 18vh;
   top: 0;
+  background-color: ${props => props.theme.colors.headFootBackground};
+  padding-top: 15px;
+  box-shadow: 0 -4px 6px ${props => props.theme.colors.boxShadow};
 `;
 export const Wrapper = styled.div`
   display: flex;
@@ -33,7 +36,7 @@ export const DescriptionBlock = styled.div`
   max-width: 480px;
   font-style: normal;
   font-weight: 300;
-  color: #ffffff;
+  color: ${props => props.theme.colors.fontColor};
 `;
 
 export const DescriptionTitle = styled.div`
@@ -42,11 +45,12 @@ export const DescriptionTitle = styled.div`
 `;
 
 export const DescriptionItem = styled.div`
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.colors.fontColorOpacity};
   padding-bottom: 10px;
 
   &:hover {
     color: rgb(53, 185, 26);
+    font-weight: 400;
   }
 `;
 
@@ -80,7 +84,7 @@ export const RightsInfoBlock = styled.div`
   font-style: normal;
   font-weight: 300;
   padding: 10px;
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.colors.fontColorOpacity};
 
   @media (max-width: 420px) {
     font-size: 12px;

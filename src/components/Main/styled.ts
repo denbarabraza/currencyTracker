@@ -6,11 +6,13 @@ export const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   top: 0;
+  background-color: ${props => props.theme.colors.mainBackground};
 `;
 export const Wrapper = styled.div`
   width: 90vw;
   min-height: 75vh;
-  border: 2px solid #28f104;
+  padding: 10px 0;
+  /*border: 2px solid #28f104;*/
 `;
 
 export const MainIMG = styled.img`
