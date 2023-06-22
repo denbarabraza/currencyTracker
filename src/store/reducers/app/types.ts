@@ -1,14 +1,12 @@
-import { setErrorApp, setInitialized, setStatusApp } from '@/store/actions/appActions';
+import { setErrorApp, setStatusApp } from '@/store/actions/appActions';
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
 
-export interface IAppReducer {
+export interface IAppState {
   statusApp: RequestStatusType;
   errorApp: string | null;
-  isInitialized: boolean;
 }
 
-export type ActionsType =
+export type ActionsAppType =
   | ReturnType<typeof setStatusApp>
-  | ReturnType<typeof setErrorApp>
-  | ReturnType<typeof setInitialized>;
+  | ReturnType<typeof setErrorApp>;

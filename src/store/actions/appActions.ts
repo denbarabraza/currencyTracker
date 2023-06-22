@@ -17,11 +17,3 @@ export const setErrorApp = (errorApp: string | null) => {
     },
   } as const;
 };
-export const setInitialized = (value: boolean) => {
-  return {
-    type: 'APP/IS_INITIALIZED',
-    payload: {
-      value,
-    },
-  } as const;
-};

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { currencyQuotes, currencyStock } from '@/constants/currency';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import {
   CardInfo,
   CardTitle,
@@ -13,8 +15,17 @@ import {
   StocksBlock,
   TitleBlock,
 } from '@/pages/Home/styled';
+import { fetchCurrencyThunk } from '@/store/reducers/currency/currencyReducer';
+import { getCurrencySelector } from '@/store/selectors/currencySelectors';
 
 export const Home = () => {
+  const dispatch = useAppDispatch();
+  const currency = useAppSelector(getCurrencySelector);
+
+  useEffect(() => {
+    dispatch(fetchCurrencyThunk());
+  }, []);
+
   return (
     <CurrencyBlock>
       <StocksBlock>
@@ -42,7 +53,7 @@ export const Home = () => {
                 <CurrencyImage src={curQuotes.img} alt={curQuotes.name} />
                 <CurrencyInfo>
                   <CardTitle>{curQuotes.name}</CardTitle>
-                  <CardInfo>R$ 5,13</CardInfo>
+                  <CardInfo>{currency?.data[curQuotes.code].value}</CardInfo>
                 </CurrencyInfo>
               </CurrencyCard>
             );
