@@ -28,8 +28,8 @@ export const HeaderNav = styled.nav`
 export const NavLinkItem = styled(NavLink)`
   font-style: normal;
   font-weight: 300;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 22px;
+  line-height: 30px;
   color: ${props => props.theme.colors.fontColor};
   text-decoration: none;
 
@@ -50,11 +50,11 @@ export const NavLinkItem = styled(NavLink)`
     transition: transform 0.5s ease-in-out;
   }
 
-  @media (max-width: 590px) {
-    font-size: 16px;
+  @media (max-width: 600px) {
+    font-size: 18px;
   }
-  @media (max-width: 505px) {
-    font-size: 14px;
+  @media (max-width: 515px) {
+    font-size: 16px;
   }
   @media (max-width: 400px) {
     font-size: 12px;

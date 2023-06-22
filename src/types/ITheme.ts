@@ -4,6 +4,7 @@ export interface ITheme {
     fontColorOpacity: string;
     headFootBackground: string;
     mainBackground: string;
+    currencyCard: string;
     boxShadow: string;
     toggleBackground: string;
     toggleBackgroundChecked: string;
