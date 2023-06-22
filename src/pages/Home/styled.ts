@@ -4,6 +4,7 @@ export const CurrencyBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-bottom: 20px;
 `;
 export const StocksBlock = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ export const TitleBlock = styled.div`
     transform: scaleX(1);
     content: '';
     display: block;
-    width: 30%;
+    max-width: 300px;
     height: 2px;
     background-color: ${props => props.theme.colors.currencyCard};
     bottom: 0;

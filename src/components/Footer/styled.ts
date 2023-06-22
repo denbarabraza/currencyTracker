@@ -32,6 +32,10 @@ export const InfoFooterBlock = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+
+    @media (max-width: 505px) {
+      gap: 0;
+    }
   }
 `;
 
@@ -72,9 +76,6 @@ export const DescriptionTitle = styled.div`
   @media (max-width: 590px) {
     font-size: 14px;
   }
-  @media (max-width: 505px) {
-    font-size: 12px;
-  }
 `;
 
 export const DescriptionItem = styled.div`
@@ -90,9 +91,6 @@ export const DescriptionItem = styled.div`
   @media (max-width: 590px) {
     font-size: 14px;
   }
-  @media (max-width: 505px) {
-    font-size: 12px;
-  }
 `;
 
 export const DescriptionText = styled.div`
@@ -105,7 +103,7 @@ export const DescriptionText = styled.div`
     font-size: 14px;
   }
   @media (max-width: 505px) {
-    font-size: 12px;
+    display: none;
   }
 `;
 
@@ -147,8 +145,5 @@ export const RightsInfoBlock = styled.div`
 
   @media (max-width: 590px) {
     font-size: 14px;
-  }
-  @media (max-width: 505px) {
-    font-size: 12px;
   }
 `;
