@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { CurrencyModal } from '@/components/CurrencyModal';
 import { currencyQuotes, currencyStock } from '@/constants/currency';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -21,6 +22,16 @@ import { getCurrencySelector } from '@/store/selectors/currencySelectors';
 export const Home = () => {
   const dispatch = useAppDispatch();
   const currency = useAppSelector(getCurrencySelector);
+
+  const [selectedCurrencyName, setSelectedCurrencyName] = useState<string | null>(null);
+
+  const handleCurrencyClick = (currencyName: string) => {
+    setSelectedCurrencyName(currencyName);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCurrencyName(null);
+  };
 
   useEffect(() => {
     dispatch(fetchCurrencyThunk());
@@ -49,7 +60,10 @@ export const Home = () => {
         <ItemBlock>
           {currencyQuotes.map((curQuotes, index) => {
             return (
-              <CurrencyCard key={index}>
+              <CurrencyCard
+                key={index}
+                onClick={() => handleCurrencyClick(curQuotes.name)}
+              >
                 <CurrencyImage src={curQuotes.img} alt={curQuotes.name} />
                 <CurrencyInfo>
                   <CardTitle>{curQuotes.name}</CardTitle>
@@ -60,6 +74,13 @@ export const Home = () => {
           })}
         </ItemBlock>
       </QuotesBlock>
+      {selectedCurrencyName && (
+        <CurrencyModal
+          currency={selectedCurrencyName}
+          isOpen
+          onClose={handleCloseModal}
+        />
+      )}
     </CurrencyBlock>
   );
 };
