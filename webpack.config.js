@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -46,6 +47,7 @@ module.exports = {
       favicon: path.join(__dirname, 'public', 'icon.svg'),
       template: path.join(__dirname, 'public', 'index.html'),
     }),
+    new dotenv(),
   ],
   devServer: {
     static: {
