@@ -1,7 +1,7 @@
 import { ActionsAppType, IAppState, RequestStatusType } from '@/store/reducers/app/types';
 
 const initialState: IAppState = {
-  statusApp: 'loading' as RequestStatusType,
+  statusApp: RequestStatusType.Idle,
   errorApp: null,
 };
 

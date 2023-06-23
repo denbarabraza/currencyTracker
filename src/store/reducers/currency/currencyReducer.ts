@@ -4,12 +4,14 @@ import { Dispatch } from 'redux';
 import { currencyAPI } from '@/api/api';
 import { setErrorApp, setStatusApp } from '@/store/actions/appActions';
 import { fetchCurrencies } from '@/store/actions/currencyActions';
+import { RequestStatusType } from '@/store/reducers/app/types';
 import { ActionsCurrencyType, ICurrencyState } from '@/store/reducers/currency/types';
 
 const initialState: ICurrencyState = {
   currencies: null,
 };
 
+// error
 export const currencyReducer = (
   state = initialState,
   action: ActionsCurrencyType,
@@ -27,17 +29,17 @@ export const currencyReducer = (
 
 export const fetchCurrencyThunk = () => async (dispatch: Dispatch) => {
   try {
-    dispatch(setStatusApp('loading'));
+    dispatch(setStatusApp(RequestStatusType.Loading));
     const res = await currencyAPI.getCurrency();
 
     dispatch(fetchCurrencies(res));
-    dispatch(setStatusApp('succeeded'));
+    dispatch(setStatusApp(RequestStatusType.Succeeded));
   } catch (e) {
     if (axios.isAxiosError<AxiosError<{ message: string }>>(e)) {
       const err = e.response ? e.response?.data.message : e.message;
 
       dispatch(setErrorApp(err));
     }
-    dispatch(setStatusApp('failed'));
+    dispatch(setStatusApp(RequestStatusType.Failed));
   }
 };

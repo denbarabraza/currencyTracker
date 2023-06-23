@@ -1,6 +1,11 @@
 import { setErrorApp, setStatusApp } from '@/store/actions/appActions';
 
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed';
+export enum RequestStatusType {
+  Idle = 'idle',
+  Loading = 'loading',
+  Succeeded = 'succeeded',
+  Failed = 'failed',
+}
 
 export interface IAppState {
   statusApp: RequestStatusType;

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { CurrencyModal } from '@/components/CurrencyModal';
 import { currencyQuotes, currencyStock } from '@/constants/currency';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import {
   CardInfo,
   CardTitle,
