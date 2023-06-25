@@ -20,6 +20,7 @@ export const Header = () => {
           <NavLinkItem to={PATH.HOME}>Home</NavLinkItem>
           <NavLinkItem to={PATH.TIME_LINE}>Timeline</NavLinkItem>
           <NavLinkItem to={PATH.BANK_CARD}>Bank card</NavLinkItem>
+          <NavLinkItem to={PATH.CONTACTS}>Contacts</NavLinkItem>
           <ThemeToggle />
         </HeaderNav>
       </Wrapper>

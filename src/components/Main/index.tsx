@@ -24,10 +24,12 @@ export const Main = () => {
     <Container>
       <Wrapper>
         <MainIMG alt='mainImage' src={mainImage} />
-        <DateBlock>
-          <Circle />
-          <UpdateInformation>Last updated at {updateDate}</UpdateInformation>
-        </DateBlock>
+        {date && (
+          <DateBlock>
+            <Circle />
+            <UpdateInformation>Last updated at {updateDate}</UpdateInformation>
+          </DateBlock>
+        )}
         <Pages />
       </Wrapper>
     </Container>

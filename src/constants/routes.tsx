@@ -12,10 +12,14 @@ const TimeLine = React.lazy(() =>
 const BankCard = React.lazy(() =>
   import('@/pages/BankCard').then(({ BankCard }) => ({ default: BankCard })),
 );
+const Contacts = React.lazy(() =>
+  import('@/pages/Contacts').then(({ Contacts }) => ({ default: Contacts })),
+);
 
 export const routes: RouteObject[] = [
   { path: '/', element: <Navigate to={PATH.HOME} /> },
   { path: PATH.HOME, element: <Home /> },
   { path: PATH.TIME_LINE, element: <TimeLine /> },
   { path: PATH.BANK_CARD, element: <BankCard /> },
+  { path: PATH.CONTACTS, element: <Contacts /> },
 ];
