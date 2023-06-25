@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { CurrencyModal } from 'src/components/Modal';
 
+import { ErrorInfo } from '@/components/ErrorInfo';
 import { currencyQuotes, currencyStock } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import {
@@ -16,16 +17,18 @@ import {
   TitleBlock,
 } from '@/pages/Home/styled';
 import { setCurrencyFrom, setCurrencyTo } from '@/store/actions/currencyActions';
-import { fetchCurrencyThunk } from '@/store/reducers/currency/currencyReducer';
 import {
   getCurrencyFromSelector,
   getCurrencySelector,
+  getErrorCurrencySelector,
 } from '@/store/selectors/currencySelectors';
+import { fetchCurrencyThunk } from '@/store/thunks/currencyThunks';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
   const currency = useAppSelector(getCurrencySelector);
   const selectedCurrency = useAppSelector(getCurrencyFromSelector);
+  const errorCurrency = useAppSelector(getErrorCurrencySelector);
 
   const handleCurrencyClick = (currencyName: string) => {
     dispatch(setCurrencyFrom(currencyName));
@@ -39,6 +42,10 @@ export const Home = () => {
   useEffect(() => {
     dispatch(fetchCurrencyThunk());
   }, []);
+
+  if (errorCurrency) {
+    return <ErrorInfo />;
+  }
 
   return (
     <CurrencyBlock>

@@ -7,7 +7,7 @@ export const fetchCurrencies = (currencies: ICurrencies) => {
   } as const;
 };
 
-export const setErrorCurrency = (errorCurrency: string) => {
+export const setErrorCurrency = (errorCurrency: string | null) => {
   return {
     type: 'CURRENCY/SET_ERROR_CURRENCY',
     payload: { errorCurrency },

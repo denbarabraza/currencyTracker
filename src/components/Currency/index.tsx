@@ -4,12 +4,12 @@ import { ICurrency } from '@/components/Currency/interface';
 import { CustomSelect } from '@/components/CustomSelect';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import { setCurrencyTo } from '@/store/actions/currencyActions';
-import { fetchConversionThunk } from '@/store/reducers/currency/currencyReducer';
 import {
   getConverterValueSelector,
   getCurrencyFromSelector,
   getCurrencyToSelector,
 } from '@/store/selectors/currencySelectors';
+import { fetchConversionThunk } from '@/store/thunks/currencyThunks';
 import { filteredCurrency } from '@/utils/filteredCurrency';
 import { getCodeCurrency } from '@/utils/getCodeCurrency';
 
