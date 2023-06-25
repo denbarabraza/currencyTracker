@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { CurrencyModal } from 'src/components/Modal';
 
-import { CurrencyModal } from '@/components/CurrencyModal';
 import { currencyQuotes, currencyStock } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import {
@@ -15,21 +15,25 @@ import {
   StocksBlock,
   TitleBlock,
 } from '@/pages/Home/styled';
+import { setCurrencyFrom, setCurrencyTo } from '@/store/actions/currencyActions';
 import { fetchCurrencyThunk } from '@/store/reducers/currency/currencyReducer';
-import { getCurrencySelector } from '@/store/selectors/currencySelectors';
+import {
+  getCurrencyFromSelector,
+  getCurrencySelector,
+} from '@/store/selectors/currencySelectors';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
   const currency = useAppSelector(getCurrencySelector);
-
-  const [selectedCurrencyName, setSelectedCurrencyName] = useState<string | null>(null);
+  const selectedCurrency = useAppSelector(getCurrencyFromSelector);
 
   const handleCurrencyClick = (currencyName: string) => {
-    setSelectedCurrencyName(currencyName);
+    dispatch(setCurrencyFrom(currencyName));
   };
 
   const handleCloseModal = () => {
-    setSelectedCurrencyName(null);
+    dispatch(setCurrencyFrom(null));
+    dispatch(setCurrencyTo(null));
   };
 
   useEffect(() => {
@@ -73,12 +77,8 @@ export const Home = () => {
           })}
         </ItemBlock>
       </QuotesBlock>
-      {selectedCurrencyName && (
-        <CurrencyModal
-          currency={selectedCurrencyName}
-          isOpen
-          onClose={handleCloseModal}
-        />
+      {selectedCurrency && (
+        <CurrencyModal currency={selectedCurrency} isOpen onClose={handleCloseModal} />
       )}
     </CurrencyBlock>
   );
