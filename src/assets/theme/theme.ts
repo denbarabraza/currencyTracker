@@ -22,12 +22,12 @@ const baseTheme: ITheme = {
 
 export const lightTheme: DefaultTheme = {
   ...baseTheme,
-  type: ThemeEnum.light,
+  type: ThemeEnum.Light,
 };
 
 export const darkTheme: DefaultTheme = {
   ...baseTheme,
-  type: ThemeEnum.dark,
+  type: ThemeEnum.Dark,
 
   colors: {
     ...baseTheme.colors,

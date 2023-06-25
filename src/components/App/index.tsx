@@ -4,7 +4,7 @@ import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Loader } from '@/components/Loader';
 import { Main } from '@/components/Main';
-import { Theme } from '@/context';
+import { Theme } from '@/components/Theme';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { RequestStatusType } from '@/store/reducers/app/types';
 import { getStatusSelector } from '@/store/selectors/appSelectors';
