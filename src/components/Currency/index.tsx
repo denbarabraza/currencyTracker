@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
+import { CurrencySelect } from 'src/components/CurrencySelect';
 
 import { ICurrency } from '@/components/Currency/interface';
-import { CustomSelect } from '@/components/CustomSelect';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import { setCurrencyTo } from '@/store/actions/currencyActions';
 import {
@@ -57,7 +57,7 @@ export const Currency: FC<ICurrency> = ({ currentCurrency }) => {
         You can find out the selected currency exchange rate relative to the{' '}
         {currentCurrency.name}
       </HintItem>
-      <CustomSelect
+      <CurrencySelect
         options={currencyForOption}
         value={currencyTo}
         onChange={handleSelectChange}

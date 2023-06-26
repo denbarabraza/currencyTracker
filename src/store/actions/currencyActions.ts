@@ -1,4 +1,5 @@
 import { ICurrencies } from '@/store/reducers/currency/types';
+import { PeriodEnum } from '@/types/period';
 
 export const fetchCurrencies = (currencies: ICurrencies) => {
   return {
@@ -32,5 +33,19 @@ export const setConvertValue = (convertValue: number) => {
   return {
     type: 'CURRENCY/SET_CONVERT_VALUE',
     payload: { convertValue },
+  } as const;
+};
+
+export const setCurrencyForTimeLine = (currency: string) => {
+  return {
+    type: 'CURRENCY/SET_CURRENCY_FOR_TIMELINE',
+    payload: { currency },
+  } as const;
+};
+
+export const setPeriodTimeLine = (period: PeriodEnum) => {
+  return {
+    type: 'CURRENCY/SET_PERIOD_TIMELINE',
+    payload: { period },
   } as const;
 };

@@ -1,10 +1,13 @@
 import {
   fetchCurrencies,
   setConvertValue,
+  setCurrencyForTimeLine,
   setCurrencyFrom,
   setCurrencyTo,
   setErrorCurrency,
+  setPeriodTimeLine,
 } from '@/store/actions/currencyActions';
+import { PeriodEnum } from '@/types/period';
 
 export interface ICurrencyState {
   currencies: ICurrencies | null;
@@ -12,6 +15,8 @@ export interface ICurrencyState {
   convertFrom: string | null;
   convertTo: string | null;
   convertValue: number | null;
+  currencyTimeLine: string | null;
+  period: PeriodEnum;
 }
 
 export interface ICurrencies {
@@ -29,4 +34,6 @@ export type ActionsCurrencyType =
   | ReturnType<typeof setErrorCurrency>
   | ReturnType<typeof setCurrencyFrom>
   | ReturnType<typeof setCurrencyTo>
-  | ReturnType<typeof setConvertValue>;
+  | ReturnType<typeof setConvertValue>
+  | ReturnType<typeof setCurrencyForTimeLine>
+  | ReturnType<typeof setPeriodTimeLine>;

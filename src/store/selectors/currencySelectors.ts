@@ -10,3 +10,8 @@ export const getErrorCurrencySelector = (state: RootStoreType) =>
   state.currency.errorCurrency;
 export const getConverterValueSelector = (state: RootStoreType) =>
   state.currency.convertValue;
+
+export const getCurrencyForTimeLineSelector = (state: RootStoreType) =>
+  state.currency.currencyTimeLine;
+
+export const getPeriodTimeLineSelector = (state: RootStoreType) => state.currency.period;

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { CurrencyModal } from 'src/components/Modal';
 
+import { CurrencyCard } from '@/components/CurrencyCard';
 import { ErrorInfo } from '@/components/ErrorInfo';
 import { currencyQuotes, currencyStock } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
@@ -8,9 +9,9 @@ import {
   CardInfo,
   CardTitle,
   CurrencyBlock,
-  CurrencyCard,
   CurrencyImage,
   CurrencyInfo,
+  CurrencyItem,
   ItemBlock,
   QuotesBlock,
   StocksBlock,
@@ -54,35 +55,24 @@ export const Home = () => {
         <ItemBlock>
           {currencyStock.map((curStock, index) => {
             return (
-              <CurrencyCard key={index}>
+              <CurrencyItem key={index}>
                 <CurrencyImage src={curStock.img} alt={curStock.name} />
                 <CurrencyInfo>
                   <CardTitle>{curStock.name}</CardTitle>
                   <CardInfo>{curStock.value}</CardInfo>
                 </CurrencyInfo>
-              </CurrencyCard>
+              </CurrencyItem>
             );
           })}
         </ItemBlock>
       </StocksBlock>
       <QuotesBlock>
         <TitleBlock>Quotes</TitleBlock>
-        <ItemBlock>
-          {currencyQuotes.map((curQuotes, index) => {
-            return (
-              <CurrencyCard
-                key={index}
-                onClick={() => handleCurrencyClick(curQuotes.name)}
-              >
-                <CurrencyImage src={curQuotes.img} alt={curQuotes.name} />
-                <CurrencyInfo>
-                  <CardTitle>{curQuotes.name}</CardTitle>
-                  <CardInfo>{currency?.data[curQuotes.code].value}</CardInfo>
-                </CurrencyInfo>
-              </CurrencyCard>
-            );
-          })}
-        </ItemBlock>
+        <CurrencyCard
+          currencies={currencyQuotes}
+          currencyForValue={currency}
+          handleCurrencyClick={currencyName => handleCurrencyClick(currencyName)}
+        />
       </QuotesBlock>
       {selectedCurrency && (
         <CurrencyModal currency={selectedCurrency} isOpen onClose={handleCloseModal} />

@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 
-import { ICustomSelect } from '@/components/CustomSelect/interface';
+import { ICustomSelect } from '@/components/CurrencySelect/interface';
 import { ICurrencyQuotes } from '@/types/ICurrency';
 
 import { ArrowIcon, Container, Option, OptionsContainer, SelectedOption } from './styled';
 
-export const CustomSelect: FC<ICustomSelect> = ({ options, value, onChange }) => {
+export const CurrencySelect: FC<ICustomSelect> = ({ options, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption = options.find(option => option.name === value);
 

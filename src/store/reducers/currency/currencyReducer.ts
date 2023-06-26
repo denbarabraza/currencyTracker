@@ -1,11 +1,14 @@
 import { ActionsCurrencyType, ICurrencyState } from '@/store/reducers/currency/types';
+import { PeriodEnum } from '@/types/period';
 
 const initialState: ICurrencyState = {
   currencies: null,
   errorCurrency: null,
   convertFrom: null,
   convertTo: null,
-  convertValue: 55,
+  convertValue: null,
+  currencyTimeLine: null,
+  period: PeriodEnum.Day,
 };
 
 export const currencyReducer = (
@@ -37,6 +40,16 @@ export const currencyReducer = (
       return {
         ...state,
         convertValue: action.payload.convertValue,
+      };
+    case 'CURRENCY/SET_CURRENCY_FOR_TIMELINE':
+      return {
+        ...state,
+        currencyTimeLine: action.payload.currency,
+      };
+    case 'CURRENCY/SET_PERIOD_TIMELINE':
+      return {
+        ...state,
+        period: action.payload.period,
       };
     default:
       return state;
