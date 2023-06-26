@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 
-const flexEndCenter = `
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`;
-
 export const ToggleContainer = styled.div<{ open: boolean }>`
-  ${flexEndCenter};
+  margin: 20px 0;
 `;
 
 export const ToggleLabel = styled.label`

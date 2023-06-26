@@ -49,7 +49,7 @@ const slideInFromBottom = keyframes`
   }
 `;
 
-export const CurrencyCard = styled.div`
+export const CurrencyItem = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
