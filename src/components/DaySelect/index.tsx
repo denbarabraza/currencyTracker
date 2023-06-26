@@ -1,36 +1,37 @@
 import React, { useEffect, useState } from 'react';
 
 import { ArrowIcon, SelectedOption } from '@/components/CurrencySelect/styled';
+import { useAppDispatch } from '@/hooks/useStoreControl';
+import { setDayTimeLine } from '@/store/actions/currencyActions';
+import { dateControl } from '@/utils/dateControl';
 import { getMonthName } from '@/utils/getMonthName';
 
 import { Container, Option, OptionsContainer } from './styled';
 
 export const DaySelect = () => {
+  const dispatch = useAppDispatch();
   const [pastDays, setPastDays] = useState<string[] | null>(null);
-  const [month, setMonth] = useState<number>(1);
+  const [year, setYear] = useState<number>(1);
+  const [month, setMonth] = useState<string>('');
   const [selectedDay, setSelectedDay] = useState<string>('');
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const currentDate = new Date();
-    const month = currentDate.getMonth() + 1;
-    const daysInMonth = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth() + 1,
-      0,
-    ).getDate();
-    const daysArr = Array.from({ length: daysInMonth }, (_, i) => (i + 1).toString());
-    const pastDaysArr = daysArr.filter(day => parseInt(day, 10) < currentDate.getDate());
+    const date = dateControl();
 
-    setMonth(month);
-    setPastDays(pastDaysArr);
-    setSelectedDay(currentDate.getDate().toString());
+    setMonth(date.month);
+    setYear(date.year);
+    setPastDays(date.pastDaysArr);
+    setSelectedDay(date.day);
   }, []);
 
-  const monthName = getMonthName(month);
+  const monthName = getMonthName(+month);
 
-  const handleChange = (value: string) => {
-    setSelectedDay(value);
+  const handleChange = (dayValue: string) => {
+    setSelectedDay(dayValue);
+    const day = `0${dayValue}`.slice(-2);
+
+    dispatch(setDayTimeLine(`${year}-${month}-${day}`));
     setIsOpen(false);
   };
 

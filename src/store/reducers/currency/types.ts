@@ -4,9 +4,12 @@ import {
   setCurrencyForTimeLine,
   setCurrencyFrom,
   setCurrencyTo,
+  setDataForChart,
+  setDayTimeLine,
   setErrorCurrency,
   setPeriodTimeLine,
 } from '@/store/actions/currencyActions';
+import { ICurrencyDayResponse } from '@/types/api';
 import { PeriodEnum } from '@/types/period';
 
 export interface ICurrencyState {
@@ -17,6 +20,8 @@ export interface ICurrencyState {
   convertValue: number | null;
   currencyTimeLine: string | null;
   period: PeriodEnum;
+  selectedDay: string | null;
+  dataForChart: ICurrencyDayResponse[] | null;
 }
 
 export interface ICurrencies {
@@ -36,4 +41,6 @@ export type ActionsCurrencyType =
   | ReturnType<typeof setCurrencyTo>
   | ReturnType<typeof setConvertValue>
   | ReturnType<typeof setCurrencyForTimeLine>
-  | ReturnType<typeof setPeriodTimeLine>;
+  | ReturnType<typeof setPeriodTimeLine>
+  | ReturnType<typeof setDayTimeLine>
+  | ReturnType<typeof setDataForChart>;

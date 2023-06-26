@@ -39,7 +39,9 @@ export const Currency: FC<ICurrency> = ({ currentCurrency }) => {
     if (codeCurrencyFrom && codeCurrencyTo) {
       dispatch(fetchConversionThunk(codeCurrencyFrom, codeCurrencyTo));
     }
-  }, [currencyTo]);
+  }, [currencyTo, convertValue]);
+
+  console.log(convertValue);
 
   return (
     <Container>

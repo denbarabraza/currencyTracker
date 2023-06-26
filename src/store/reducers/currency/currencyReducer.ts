@@ -9,6 +9,8 @@ const initialState: ICurrencyState = {
   convertValue: null,
   currencyTimeLine: null,
   period: PeriodEnum.Day,
+  selectedDay: null,
+  dataForChart: null,
 };
 
 export const currencyReducer = (
@@ -50,6 +52,16 @@ export const currencyReducer = (
       return {
         ...state,
         period: action.payload.period,
+      };
+    case 'CURRENCY/SET_DAY_TIMELINE':
+      return {
+        ...state,
+        selectedDay: action.payload.day,
+      };
+    case 'CURRENCY/SET_DATA_CHART_TIMELINE':
+      return {
+        ...state,
+        dataForChart: action.payload.data,
       };
     default:
       return state;

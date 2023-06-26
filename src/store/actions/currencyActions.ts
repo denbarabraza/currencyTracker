@@ -1,4 +1,5 @@
 import { ICurrencies } from '@/store/reducers/currency/types';
+import { ICurrencyDayResponse } from '@/types/api';
 import { PeriodEnum } from '@/types/period';
 
 export const fetchCurrencies = (currencies: ICurrencies) => {
@@ -47,5 +48,19 @@ export const setPeriodTimeLine = (period: PeriodEnum) => {
   return {
     type: 'CURRENCY/SET_PERIOD_TIMELINE',
     payload: { period },
+  } as const;
+};
+
+export const setDayTimeLine = (day: string | null) => {
+  return {
+    type: 'CURRENCY/SET_DAY_TIMELINE',
+    payload: { day },
+  } as const;
+};
+
+export const setDataForChart = (data: ICurrencyDayResponse[]) => {
+  return {
+    type: 'CURRENCY/SET_DATA_CHART_TIMELINE',
+    payload: { data },
   } as const;
 };

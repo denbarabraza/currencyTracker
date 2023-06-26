@@ -12,7 +12,6 @@ export const CurrencySelectBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
   justify-content: flex-start;
 `;
 
@@ -26,5 +25,6 @@ export const CurrencyFilterBlock = styled.div`
 
 export const HintsTimeLine = styled.div`
   font-size: 14px;
+  padding-bottom: 10px;
   color: ${props => props.theme.colors.toggleBorder};
 `;

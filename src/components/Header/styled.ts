@@ -7,6 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   position: sticky;
   height: 7vh;
+  z-index: 6;
   top: 0;
   box-shadow: 0 4px 6px ${props => props.theme.colors.boxShadow};
   background-color: ${props => props.theme.colors.headFootBackground};

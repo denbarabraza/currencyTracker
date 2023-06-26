@@ -15,3 +15,7 @@ export const getCurrencyForTimeLineSelector = (state: RootStoreType) =>
   state.currency.currencyTimeLine;
 
 export const getPeriodTimeLineSelector = (state: RootStoreType) => state.currency.period;
+export const getDayTimeLineSelector = (state: RootStoreType) =>
+  state.currency.selectedDay;
+
+export const getDataChartSelector = (state: RootStoreType) => state.currency.dataForChart;
