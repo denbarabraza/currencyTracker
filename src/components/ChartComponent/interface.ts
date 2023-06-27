@@ -6,7 +6,6 @@ export interface ILineTest {
 }
 
 export interface IData {
-  labels: (string | null)[];
   datasets: [
     {
       label: string;
@@ -20,7 +19,7 @@ export interface IData {
 }
 
 export interface IDataElem {
-  x: number;
+  x: string | null;
   o: number;
   h: number;
   l: number;

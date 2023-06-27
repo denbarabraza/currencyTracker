@@ -20,10 +20,6 @@ import { Container } from './styled';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const BarChart: FC<ILineTest> = ({ dataChart, code }) => {
-  const labels = dataChart?.map(currencyValue => {
-    return formatDate(currencyValue.time_close);
-  });
-
   const candlestick = {
     id: 'candlestick',
     beforeDatasetDraw(
@@ -75,45 +71,26 @@ export const BarChart: FC<ILineTest> = ({ dataChart, code }) => {
     scales: {
       x: {},
       y: {
-        beginAtZero: true,
-        grace: 1,
+        beginAtZero: false,
+        grace: '20%',
       },
     },
   };
 
-  // Line
   const data: IData = {
-    labels,
     datasets: [
       {
         label: `${code} / USD`,
-        /* data: dataChart?.map(currencyValue => currencyValue.price_close), */
-        data: [
-          {
-            x: new Date('2023-06-22').setHours(0, 0, 0, 0),
-            o: 1.55,
-            h: 1.75,
-            l: 2,
-            c: 2.2,
-            s: [1.55, 2.2],
-          },
-          {
-            x: new Date('2023-06-23').setHours(0, 0, 0, 0),
-            o: 2.55,
-            h: 1.75,
-            l: 2,
-            c: 3.2,
-            s: [2.55, 3.2],
-          },
-          {
-            x: new Date('2023-06-24').setHours(0, 0, 0, 0),
-            o: 4.15,
-            h: 1.75,
-            l: 2,
-            c: 5.8,
-            s: [4.15, 5.8],
-          },
-        ],
+        data: dataChart?.map(currencyValue => {
+          return {
+            x: formatDate(currencyValue.time_close),
+            o: currencyValue.price_open,
+            h: currencyValue.price_high,
+            l: currencyValue.price_low,
+            c: currencyValue.price_close,
+            s: [currencyValue.price_open, currencyValue.price_close],
+          };
+        }),
         backgroundColor: (ctx: any) => {
           const {
             raw: { o, c },
@@ -136,9 +113,11 @@ export const BarChart: FC<ILineTest> = ({ dataChart, code }) => {
     ],
   };
 
+  const plugins = [candlestick];
+
   return (
-    <Container>
-      <Bar data={data} options={options} />
+    <Container id='myChart'>
+      <Bar data={data} options={options} plugins={plugins} />
     </Container>
   );
 };
