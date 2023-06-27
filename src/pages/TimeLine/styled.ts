@@ -6,6 +6,7 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   margin: 20px 0;
+  min-height: 30vh;
 `;
 
 export const CurrencySelectBlock = styled.div`

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { CurrencySelect } from 'src/components/CurrencySelect';
 
-import { LineTest } from '@/components/ChartComponent';
+import { BarChart } from '@/components/ChartComponent';
 import { CurrencyCard } from '@/components/CurrencyCard';
 import { DaySelect } from '@/components/DaySelect';
 import { PeriodToggle } from '@/components/PeriodToggle';
@@ -79,7 +79,7 @@ export const TimeLine = () => {
             )}
             <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
           </CurrencyFilterBlock>
-          {dataChart && code && <LineTest dataChart={dataChart} code={code} />}
+          {dataChart && code && <BarChart dataChart={dataChart} code={code} />}
         </>
       )}
     </Container>
