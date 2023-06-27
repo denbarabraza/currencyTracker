@@ -1,4 +1,4 @@
-export interface ICurrencyDayResponse {
+export interface ICurrencyChartResponse {
   price_close: 1.09434;
   price_high: 1.0951;
   price_low: 1.08036;

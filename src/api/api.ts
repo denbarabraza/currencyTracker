@@ -1,9 +1,17 @@
 import axios from 'axios';
 
 import { ICurrencies } from '@/store/reducers/currency/types';
-import { ICurrencyDayResponse } from '@/types/api';
+import { ICurrencyChartResponse } from '@/types/api';
 
 const CURRENCY_KEY = process.env.CURRENCY_API_KEY;
+const COINAPI_KEY = process.env.COIN_API_KEY;
+
+const instance = axios.create({
+  headers: {
+    'X-CoinAPI-Key': COINAPI_KEY,
+  },
+  baseURL: 'https://rest.coinapi.io/v1/ohlcv/',
+});
 
 export const currencyAPI = {
   getCurrency() {
@@ -14,21 +22,23 @@ export const currencyAPI = {
       .then(res => res.data);
   },
   getConversion(currencyFrom: string, currencyTo: string) {
-    return axios
+    return instance
       .get<ICurrencies>(
         `https://api.currencyapi.com/v3/latest?apikey=${CURRENCY_KEY}&currencies=${currencyTo}&base_currency=${currencyFrom}`,
       )
       .then(res => res.data);
   },
   getCurrencyDayData(currencyCode: string, day: string) {
-    return axios
-      .get<ICurrencyDayResponse[]>(
-        `https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${day}T00:00:00`,
-        {
-          headers: {
-            'X-CoinAPI-Key': '5441514E-9326-458D-BC01-80B01773CC05',
-          },
-        },
+    return instance
+      .get<ICurrencyChartResponse[]>(
+        `BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${day}T00:00:00`,
+      )
+      .then(res => res.data);
+  },
+  getCurrencyMonthData(currencyCode: string, yearMonth: string) {
+    return instance
+      .get<ICurrencyChartResponse[]>(
+        `BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${yearMonth}-01T00:00:00`,
       )
       .then(res => res.data);
   },

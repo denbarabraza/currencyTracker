@@ -14,7 +14,7 @@ import {
 import { ILineTest } from '@/components/ChartComponent/interface';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { getDataChartSelector } from '@/store/selectors/currencySelectors';
-import { ICurrencyDayResponse } from '@/types/api';
+import { ICurrencyChartResponse } from '@/types/api';
 import { formatDate } from '@/utils/formatDate';
 
 import { Container } from './styled';
@@ -29,7 +29,7 @@ ChartJS.register(
   Legend,
 );
 
-export const LineTest: FC<ILineTest> = ({ dataChart }) => {
+export const LineTest: FC<ILineTest> = ({ dataChart, code }) => {
   const labels = dataChart?.map(currencyValue => {
     return formatDate(currencyValue.time_close);
   });
@@ -38,7 +38,7 @@ export const LineTest: FC<ILineTest> = ({ dataChart }) => {
     labels,
     datasets: [
       {
-        label: 'Currency in USD',
+        label: `${code} / USD`,
         data: dataChart?.map(currencyValue => currencyValue.price_close),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',

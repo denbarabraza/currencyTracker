@@ -1,5 +1,5 @@
 import { ICurrencies } from '@/store/reducers/currency/types';
-import { ICurrencyDayResponse } from '@/types/api';
+import { ICurrencyChartResponse } from '@/types/api';
 import { PeriodEnum } from '@/types/period';
 
 export const fetchCurrencies = (currencies: ICurrencies) => {
@@ -58,7 +58,7 @@ export const setDayTimeLine = (day: string | null) => {
   } as const;
 };
 
-export const setDataForChart = (data: ICurrencyDayResponse[]) => {
+export const setDataForChart = (data: ICurrencyChartResponse[] | null) => {
   return {
     type: 'CURRENCY/SET_DATA_CHART_TIMELINE',
     payload: { data },

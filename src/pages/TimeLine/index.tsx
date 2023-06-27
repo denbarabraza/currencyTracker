@@ -7,15 +7,19 @@ import { DaySelect } from '@/components/DaySelect';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
-import { setCurrencyForTimeLine } from '@/store/actions/currencyActions';
+import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/currencyActions';
 import {
   getCurrencyForTimeLineSelector,
   getDataChartSelector,
   getDayTimeLineSelector,
   getPeriodTimeLineSelector,
 } from '@/store/selectors/currencySelectors';
-import { fetchCurrencyDayOhlcvThunk } from '@/store/thunks/currencyThunks';
+import {
+  fetchCurrencyDayOhlcvThunk,
+  fetchCurrencyMonthOhlcvThunk,
+} from '@/store/thunks/currencyThunks';
 import { PeriodEnum } from '@/types/period';
+import { dateControl } from '@/utils/dateControl';
 import { getCodeCurrency } from '@/utils/getCodeCurrency';
 
 import {
@@ -36,15 +40,22 @@ export const TimeLine = () => {
     currency => currency.name === currencyTimeLineName,
   );
   const code = getCodeCurrency(currencyTimeLineName);
-  const handleSelectChange = (value: string) => {
-    dispatch(setCurrencyForTimeLine(value));
+  const handleSelectChange = (currency: string) => {
+    dispatch(setCurrencyForTimeLine(currency));
+    dispatch(setDataForChart(null));
   };
 
   useEffect(() => {
     if (code && selectedDay) {
       dispatch(fetchCurrencyDayOhlcvThunk(code, selectedDay));
     }
-  }, [selectedDay, currencyTimeLineName]);
+    if (code && period === PeriodEnum.Month) {
+      const date = dateControl();
+      const yearMonth = `${date.year}-${date.month}`;
+
+      dispatch(fetchCurrencyMonthOhlcvThunk(code, yearMonth));
+    }
+  }, [selectedDay, code, period]);
 
   return (
     <Container>
@@ -68,7 +79,7 @@ export const TimeLine = () => {
             )}
             <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
           </CurrencyFilterBlock>
-          {dataChart && <LineTest dataChart={dataChart} />}
+          {dataChart && code && <LineTest dataChart={dataChart} code={code} />}
         </>
       )}
     </Container>

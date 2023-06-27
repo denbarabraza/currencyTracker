@@ -9,7 +9,7 @@ import {
   setErrorCurrency,
   setPeriodTimeLine,
 } from '@/store/actions/currencyActions';
-import { ICurrencyDayResponse } from '@/types/api';
+import { ICurrencyChartResponse } from '@/types/api';
 import { PeriodEnum } from '@/types/period';
 
 export interface ICurrencyState {
@@ -21,7 +21,7 @@ export interface ICurrencyState {
   currencyTimeLine: string | null;
   period: PeriodEnum;
   selectedDay: string | null;
-  dataForChart: ICurrencyDayResponse[] | null;
+  dataForChart: ICurrencyChartResponse[] | null;
 }
 
 export interface ICurrencies {

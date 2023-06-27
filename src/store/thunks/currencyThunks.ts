@@ -68,3 +68,23 @@ export const fetchCurrencyDayOhlcvThunk =
       dispatch(setStatusApp(RequestStatusType.Failed));
     }
   };
+
+export const fetchCurrencyMonthOhlcvThunk =
+  (currencyCode: string, yearMonth: string) => async (dispatch: Dispatch) => {
+    try {
+      dispatch(setStatusApp(RequestStatusType.Loading));
+
+      const res = await currencyAPI.getCurrencyMonthData(currencyCode, yearMonth);
+
+      dispatch(setDataForChart(res));
+      dispatch(setErrorCurrency(null));
+      dispatch(setStatusApp(RequestStatusType.Succeeded));
+    } catch (e) {
+      if (axios.isAxiosError<AxiosError<{ message: string }>>(e)) {
+        const err = e.response ? e.response?.data.message : e.message;
+
+        dispatch(setErrorCurrency(err));
+      }
+      dispatch(setStatusApp(RequestStatusType.Failed));
+    }
+  };

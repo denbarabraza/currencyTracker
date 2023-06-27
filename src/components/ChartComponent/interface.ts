@@ -1,5 +1,6 @@
-import { ICurrencyDayResponse } from '@/types/api';
+import { ICurrencyChartResponse } from '@/types/api';
 
 export interface ILineTest {
-  dataChart: ICurrencyDayResponse[];
+  dataChart: ICurrencyChartResponse[];
+  code: string;
 }
