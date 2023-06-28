@@ -10,6 +10,7 @@ import {
   setErrorCurrency,
 } from '@/store/actions/currencyActions';
 import { RequestStatusType } from '@/store/reducers/app/types';
+import { AppThunk } from '@/store/store';
 
 export const fetchCurrencyThunk = () => async (dispatch: Dispatch) => {
   try {
@@ -50,7 +51,8 @@ export const fetchConversionThunk =
   };
 
 export const fetchCurrencyDayOhlcvThunk =
-  (currencyCode: string, day: string) => async (dispatch: Dispatch) => {
+  (currencyCode: string, day: string): AppThunk =>
+  async (dispatch: Dispatch) => {
     try {
       dispatch(setStatusApp(RequestStatusType.Loading));
 
@@ -70,7 +72,8 @@ export const fetchCurrencyDayOhlcvThunk =
   };
 
 export const fetchCurrencyMonthOhlcvThunk =
-  (currencyCode: string, yearMonth: string) => async (dispatch: Dispatch) => {
+  (currencyCode: string, yearMonth: string): AppThunk =>
+  async (dispatch: Dispatch) => {
     try {
       dispatch(setStatusApp(RequestStatusType.Loading));
 

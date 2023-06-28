@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   BarElement,
@@ -13,13 +13,65 @@ import {
 } from 'chart.js';
 
 import { IData, ILineTest } from '@/components/ChartComponent/interface';
-import { formatDate } from '@/utils/formatDate';
 
 import { Container } from './styled';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export const BarChart: FC<ILineTest> = ({ dataChart, code }) => {
+export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
+  const data: IData = {
+    datasets: [
+      {
+        label: `${code} / USD`,
+        data:
+          dataChart &&
+          dataChart?.map(currencyValue => {
+            return {
+              x: currencyValue.time_close.slice(0, 10),
+              o: currencyValue.price_open,
+              h: currencyValue.price_high,
+              l: currencyValue.price_low,
+              c: currencyValue.price_close,
+              s: [currencyValue.price_open, currencyValue.price_close],
+            };
+          }),
+        backgroundColor: (ctx: any) => {
+          const {
+            raw: { o, c },
+          } = ctx;
+
+          let color;
+
+          if (c >= o) {
+            color = 'rgb(75, 192, 192)';
+          } else {
+            color = 'rgb(255, 26, 104)';
+          }
+
+          return color;
+        },
+        borderColor: 'rgba(0,0,0,1)',
+        borderWidth: 2,
+        borderSkipped: false,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    parsing: {
+      xAxisKey: 'x',
+      yAxisKey: 's',
+    },
+    scales: {
+      x: {},
+      y: {
+        beginAtZero: false,
+        grace: '20%',
+      },
+    },
+  };
+
   const candlestick = {
     id: 'candlestick',
     beforeDatasetDraw(
@@ -62,56 +114,6 @@ export const BarChart: FC<ILineTest> = ({ dataChart, code }) => {
       });
     },
   };
-  const options = {
-    responsive: true,
-    parsing: {
-      xAxisKey: 'x',
-      yAxisKey: 's',
-    },
-    scales: {
-      x: {},
-      y: {
-        beginAtZero: false,
-        grace: '20%',
-      },
-    },
-  };
-
-  const data: IData = {
-    datasets: [
-      {
-        label: `${code} / USD`,
-        data: dataChart?.map(currencyValue => {
-          return {
-            x: formatDate(currencyValue.time_close),
-            o: currencyValue.price_open,
-            h: currencyValue.price_high,
-            l: currencyValue.price_low,
-            c: currencyValue.price_close,
-            s: [currencyValue.price_open, currencyValue.price_close],
-          };
-        }),
-        backgroundColor: (ctx: any) => {
-          const {
-            raw: { o, c },
-          } = ctx;
-
-          let color;
-
-          if (c >= o) {
-            color = 'rgb(75, 192, 192)';
-          } else {
-            color = 'rgb(255, 26, 104)';
-          }
-
-          return color;
-        },
-        borderColor: 'rgba(0,0,0,1)',
-        borderWidth: 2,
-        borderSkipped: false,
-      },
-    ],
-  };
 
   const plugins = [candlestick];
 
@@ -120,4 +122,4 @@ export const BarChart: FC<ILineTest> = ({ dataChart, code }) => {
       <Bar data={data} options={options} plugins={plugins} />
     </Container>
   );
-};
+});

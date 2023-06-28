@@ -8,14 +8,17 @@ import {
   ToggleSlider,
 } from '@/components/ThemeToggle/styled';
 import { useAppDispatch } from '@/hooks/useStoreControl';
-import { setDayTimeLine, setPeriodTimeLine } from '@/store/actions/currencyActions';
+import {
+  setDataForChart,
+  setDayTimeLine,
+  setPeriodTimeLine,
+} from '@/store/actions/currencyActions';
 import { PeriodEnum } from '@/types/period';
 
 import { IPeriodToggle } from './interface';
 
 export const PeriodToggle: FC<IPeriodToggle> = memo(({ open, period }) => {
   const dispatch = useAppDispatch();
-  const state = useSelector(state => state);
 
   const handleToggleChange = useCallback(() => {
     const currentPeriod = period === PeriodEnum.Day ? PeriodEnum.Month : PeriodEnum.Day;
@@ -23,6 +26,7 @@ export const PeriodToggle: FC<IPeriodToggle> = memo(({ open, period }) => {
     if (period === PeriodEnum.Day) {
       dispatch(setDayTimeLine(null));
     }
+    dispatch(setDataForChart(null));
     dispatch(setPeriodTimeLine(currentPeriod));
   }, [period]);
 

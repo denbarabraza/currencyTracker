@@ -8,6 +8,8 @@ export const Container = styled.div`
 `;
 
 export const CurrencyIMG = styled.img`
+  width: 70px;
+  height: 70px;
   margin-bottom: 20px;
 `;
 

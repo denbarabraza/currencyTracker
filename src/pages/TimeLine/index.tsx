@@ -7,7 +7,11 @@ import { DaySelect } from '@/components/DaySelect';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
-import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/currencyActions';
+import {
+  setCurrencyForTimeLine,
+  setDataForChart,
+  setDayTimeLine,
+} from '@/store/actions/currencyActions';
 import {
   getCurrencyForTimeLineSelector,
   getDataChartSelector,
@@ -39,14 +43,17 @@ export const TimeLine = () => {
   const currencies = currencyQuotes.filter(
     currency => currency.name === currencyTimeLineName,
   );
+  const currenciesOptions = currencyQuotes.filter(
+    currency => currency.name === 'Bitcoin' || currency.name === 'Ethereum',
+  );
   const code = getCodeCurrency(currencyTimeLineName);
   const handleSelectChange = (currency: string) => {
     dispatch(setCurrencyForTimeLine(currency));
-    dispatch(setDataForChart(null));
   };
 
   useEffect(() => {
     if (code && selectedDay) {
+      dispatch(setDataForChart(null));
       dispatch(fetchCurrencyDayOhlcvThunk(code, selectedDay));
     }
     if (code && period === PeriodEnum.Month) {
@@ -62,26 +69,22 @@ export const TimeLine = () => {
       <CurrencySelectBlock>
         <HintsTimeLine>Select the currency that interests you</HintsTimeLine>
         <CurrencySelect
-          options={currencyQuotes}
+          options={currenciesOptions}
           value={currencyTimeLineName}
           onChange={handleSelectChange}
         />
       </CurrencySelectBlock>
-      {currencyTimeLineName && (
-        <>
-          <CurrencyFilterBlock>
-            <PeriodToggle period={period} />
-            {period === PeriodEnum.Day && (
-              <>
-                <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
-                <DaySelect />
-              </>
-            )}
-            <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
-          </CurrencyFilterBlock>
-          {dataChart && code && <BarChart dataChart={dataChart} code={code} />}
-        </>
-      )}
+      <CurrencyFilterBlock>
+        <PeriodToggle period={period} />
+        {period === PeriodEnum.Day && (
+          <>
+            <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
+            <DaySelect />
+          </>
+        )}
+        <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
+      </CurrencyFilterBlock>
+      {dataChart && code && <BarChart dataChart={dataChart} code={code} />}
     </Container>
   );
 };

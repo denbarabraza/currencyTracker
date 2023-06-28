@@ -41,8 +41,6 @@ export const Currency: FC<ICurrency> = ({ currentCurrency }) => {
     }
   }, [currencyTo, convertValue]);
 
-  console.log(convertValue);
-
   return (
     <Container>
       <CurrencyIMG src={currentCurrency.img} alt={currentCurrency.name} />

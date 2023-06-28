@@ -7,7 +7,7 @@ const initialState: ICurrencyState = {
   convertFrom: null,
   convertTo: null,
   convertValue: null,
-  currencyTimeLine: null,
+  currencyTimeLine: 'Bitcoin',
   period: PeriodEnum.Day,
   selectedDay: null,
   dataForChart: null,

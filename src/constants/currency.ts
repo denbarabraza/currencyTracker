@@ -3,6 +3,7 @@ import bitcoinIcon from '@/assets/image/bitcoinIcon.svg';
 import bovespaIcon from '@/assets/image/bovespaIcon.svg';
 import canadianDollarIcon from '@/assets/image/canadianDollarIcon.svg';
 import dollarIcon from '@/assets/image/dollarIcon.svg';
+import ethereum from '@/assets/image/ethereum.svg';
 import euroIcon from '@/assets/image/euroIcon.svg';
 import ifixIcon from '@/assets/image/IFIX.svg';
 import libraIcon from '@/assets/image/libraIcon.svg';
@@ -101,6 +102,16 @@ export const currencyQuotes: ICurrencyQuotes[] = [
     code: 'BTC',
     name_plural: 'Bitcoins',
     img: bitcoinIcon,
+  },
+  {
+    symbol: 'Ξ',
+    name: 'Ethereum',
+    symbol_native: 'Ξ',
+    decimal_digits: 18,
+    rounding: 0,
+    code: 'ETH',
+    name_plural: 'Ethereum',
+    img: ethereum,
   },
 ];
 
