@@ -13,7 +13,7 @@ interface IBanksData {
   };
 }
 
-interface IBank {
+export interface IBank {
   fsq_id: string;
   categories: IBankCategories[];
   chains: [];

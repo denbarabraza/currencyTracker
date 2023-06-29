@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
-import Map, { FullscreenControl, Marker } from 'react-map-gl';
+import Map, { Marker, Popup } from 'react-map-gl';
 
 import location from '@/assets/image/location.svg';
-import { banks } from '@/constants/banks';
+import { banks, IBank } from '@/constants/banks';
+import { useAppSelector } from '@/hooks/useStoreControl';
+import { getThemeSelector } from '@/store/selectors/appSelectors';
+import { ThemeEnum } from '@/types/themes';
 
-import { Container, LocationImg } from './styled';
+import { BankDescription, BankName, Container, LocationImg, PopupBlock } from './styled';
 
 export const BankCard = () => {
-  const [selectedBank, setSelectedBank] = useState(null);
+  const theme = useAppSelector(getThemeSelector);
+  const [selectedBank, setSelectedBank] = useState<IBank | null>(null);
+
+  const mapStyle =
+    theme === ThemeEnum.Dark
+      ? 'mapbox://styles/mapbox/navigation-night-v1'
+      : 'mapbox://styles/mapbox/navigation-day-v1';
 
   return (
     <Container>
@@ -15,13 +24,13 @@ export const BankCard = () => {
         initialViewState={{
           longitude: 27.56152,
           latitude: 53.90454,
-          zoom: 10,
-          pitch: 55,
+          zoom: 12,
+          pitch: 25,
         }}
-        mapStyle='mapbox://styles/mapbox/navigation-day-v1'
+        mapStyle={mapStyle}
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         attributionControl={false}
-        style={{ height: '35vh', width: '100%' }}
+        style={{ height: '100vh', width: '100vw' }}
       >
         {banks.results.map(bank => (
           <Marker
@@ -31,7 +40,36 @@ export const BankCard = () => {
             anchor='center'
             pitchAlignment='viewport'
           >
-            <LocationImg src={location} alt='location' />
+            <LocationImg
+              src={location}
+              alt='location'
+              onClick={e => {
+                e.preventDefault();
+                setSelectedBank(bank);
+              }}
+            />
+
+            {selectedBank && (
+              <Popup
+                longitude={selectedBank.geocodes.main.longitude}
+                latitude={selectedBank.geocodes.main.latitude}
+                onClose={() => setSelectedBank(null)}
+                closeButton
+                closeOnClick={false}
+              >
+                <PopupBlock>
+                  <BankName>{selectedBank.name}</BankName>
+                  <BankDescription>
+                    {selectedBank.location.formatted_address ||
+                      selectedBank.location.address}
+                  </BankDescription>
+                  <BankDescription>
+                    {selectedBank.location && selectedBank.location.postcode}{' '}
+                    {selectedBank.timezone}
+                  </BankDescription>
+                </PopupBlock>
+              </Popup>
+            )}
           </Marker>
         ))}
       </Map>
