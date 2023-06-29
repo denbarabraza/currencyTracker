@@ -1,8 +1,17 @@
-import { fetchBanksOfCities } from '@/store/actions/mapActions';
+import {
+  fetchBanksOfCities,
+  setErrorMap,
+  setSearchCurrency,
+} from '@/store/actions/mapActions';
 import { IBanksData } from '@/types/IBank';
 
 export interface IMapState {
   banksOfCities: IBanksData | null;
+  error: string | null;
+  searchCurrency: string;
 }
 
-export type ActionsMapType = ReturnType<typeof fetchBanksOfCities>;
+export type ActionsMapType =
+  | ReturnType<typeof fetchBanksOfCities>
+  | ReturnType<typeof setErrorMap>
+  | ReturnType<typeof setSearchCurrency>;

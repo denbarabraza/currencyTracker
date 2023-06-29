@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ICurrencies } from '@/store/reducers/currency/types';
 import { ICurrencyChartResponse } from '@/types/api';
 import { IBanksData } from '@/types/IBank';
+import { ICity } from '@/types/ICity';
 
 const CURRENCY_KEY = process.env.CURRENCY_API_KEY;
 const COINAPI_KEY = process.env.COIN_API_KEY;
@@ -47,10 +48,12 @@ export const currencyAPI = {
 };
 
 export const mapAPI = {
-  getBanks(city: string) {
+  getBanks(city: ICity) {
+    const { longitude, latitude, ...rest } = city;
+
     return axios
       .get<IBanksData>(
-        `https://api.foursquare.com/v3/places/search?categories=11045&near=${city}%2CBelarus&limit=50`,
+        `https://api.foursquare.com/v3/places/search?ll=${latitude}%2C${longitude}&radius=100000&categories=11045&limit=50`,
         {
           headers: {
             Authorization: FOURSQUAREAPI_KEY,

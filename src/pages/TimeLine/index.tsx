@@ -4,18 +4,16 @@ import { CurrencySelect } from 'src/components/CurrencySelect';
 import { BarChart } from '@/components/ChartComponent';
 import { CurrencyCard } from '@/components/CurrencyCard';
 import { DaySelect } from '@/components/DaySelect';
+import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
-import {
-  setCurrencyForTimeLine,
-  setDataForChart,
-  setDayTimeLine,
-} from '@/store/actions/currencyActions';
+import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/currencyActions';
 import {
   getCurrencyForTimeLineSelector,
   getDataChartSelector,
   getDayTimeLineSelector,
+  getErrorCurrencySelector,
   getPeriodTimeLineSelector,
 } from '@/store/selectors/currencySelectors';
 import {
@@ -39,6 +37,7 @@ export const TimeLine = () => {
   const period = useAppSelector(getPeriodTimeLineSelector);
   const selectedDay = useAppSelector(getDayTimeLineSelector);
   const dataChart = useAppSelector(getDataChartSelector);
+  const errorCurrency = useAppSelector(getErrorCurrencySelector);
 
   const currencies = currencyQuotes.filter(
     currency => currency.name === currencyTimeLineName,
@@ -63,6 +62,10 @@ export const TimeLine = () => {
       dispatch(fetchCurrencyMonthOhlcvThunk(code, yearMonth));
     }
   }, [selectedDay, code, period]);
+
+  if (errorCurrency) {
+    return <ErrorInfo />;
+  }
 
   return (
     <Container>
