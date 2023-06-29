@@ -5,10 +5,12 @@ import { appReducer } from '@/store/reducers/app/appReducer';
 import { ActionsAppType } from '@/store/reducers/app/types';
 import { currencyReducer } from '@/store/reducers/currency/currencyReducer';
 import { ActionsCurrencyType } from '@/store/reducers/currency/types';
+import { mapReducer } from '@/store/reducers/map/mapReducer';
 
 const rootReducer = combineReducers({
   app: appReducer,
   currency: currencyReducer,
+  map: mapReducer,
 });
 
 export type RootActionsType = ActionsAppType | ActionsCurrencyType;

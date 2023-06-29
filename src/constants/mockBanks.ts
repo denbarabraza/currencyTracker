@@ -1,54 +1,6 @@
-interface IBanksData {
-  results: IBank[];
-  context: {
-    geo_bounds: {
-      circle: {
-        center: {
-          latitude: number;
-          longitude: number;
-        };
-        radius: number;
-      };
-    };
-  };
-}
+import { IBanksData } from '@/types/IBank';
 
-export interface IBank {
-  fsq_id: string;
-  categories: IBankCategories[];
-  chains: [];
-  distance: number;
-  geocodes: {
-    main: {
-      latitude: number;
-      longitude: number;
-    };
-  };
-  link: string;
-  location: {
-    address?: string;
-    country?: string;
-    cross_street?: string;
-    formatted_address?: string;
-    postcode?: string;
-    locality?: string;
-    region?: string;
-  };
-  name: string;
-  related_places: {};
-  timezone: string;
-}
-
-interface IBankCategories {
-  id: number;
-  name: string;
-  icon: {
-    prefix: string;
-    suffix: string;
-  };
-}
-
-export const banks: IBanksData = {
+export const mockBanks: IBanksData = {
   results: [
     {
       fsq_id: '4f5de548e4b008b15884e83b',

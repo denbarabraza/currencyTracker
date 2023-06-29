@@ -2,9 +2,11 @@ import axios from 'axios';
 
 import { ICurrencies } from '@/store/reducers/currency/types';
 import { ICurrencyChartResponse } from '@/types/api';
+import { IBanksData } from '@/types/IBank';
 
 const CURRENCY_KEY = process.env.CURRENCY_API_KEY;
 const COINAPI_KEY = process.env.COIN_API_KEY;
+const FOURSQUAREAPI_KEY = process.env.FOURSQUARE_API_KEY;
 
 const instance = axios.create({
   headers: {
@@ -39,6 +41,21 @@ export const currencyAPI = {
     return instance
       .get<ICurrencyChartResponse[]>(
         `BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${yearMonth}-01T00:00:00`,
+      )
+      .then(res => res.data);
+  },
+};
+
+export const mapAPI = {
+  getBanks(city: string) {
+    return axios
+      .get<IBanksData>(
+        `https://api.foursquare.com/v3/places/search?categories=11045&near=${city}%2CBelarus&limit=50`,
+        {
+          headers: {
+            Authorization: FOURSQUAREAPI_KEY,
+          },
+        },
       )
       .then(res => res.data);
   },
