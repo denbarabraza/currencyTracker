@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import Map, { Marker, Popup, ViewStateChangeEvent } from 'react-map-gl';
-import { useSelector } from 'react-redux';
+import Map, { ViewStateChangeEvent } from 'react-map-gl';
 
-import location from '@/assets/image/location.svg';
 import { Button } from '@/components/Button/Button';
 import { ButtonBlock } from '@/components/Button/styled';
 import { ErrorInfo } from '@/components/ErrorInfo';
+import { MarkerControl } from '@/components/MarkerControl';
 import { Search } from '@/components/Search';
 import { cities } from '@/constants/cities';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import { setSearchCurrency } from '@/store/actions/mapActions';
 import { getThemeSelector } from '@/store/selectors/appSelectors';
-import { getBanksSelector, getErrorFromMap } from '@/store/selectors/mapSelectors';
+import {
+  getBanksSelector,
+  getErrorFromMap,
+  getSearchCurrencySelector,
+} from '@/store/selectors/mapSelectors';
 import { fetchBanksOfCitiesThunk } from '@/store/thunks/mapThunks';
 import { IBank } from '@/types/IBank';
 import { ICity } from '@/types/ICity';
 import { ThemeEnum } from '@/types/themes';
+import { getCurrentBanks } from '@/utils/getCurrentBanks';
 
-import { BankDescription, BankName, Container, LocationImg, PopupBlock } from './styled';
+import { Container } from './styled';
 
 export const BankCard = () => {
   const dispatch = useAppDispatch();
   const theme = useAppSelector(getThemeSelector);
   const banks = useAppSelector(getBanksSelector);
   const errorMap = useAppSelector(getErrorFromMap);
-  const state = useSelector(state => state);
+  const searchCurrency = useAppSelector(getSearchCurrencySelector);
   const [selectedBank, setSelectedBank] = useState<IBank | null>(null);
   const [selectedCity, setSelectedCity] = useState<ICity>({
     id: 5,
@@ -51,6 +55,8 @@ export const BankCard = () => {
   const onSearch = (searchValue: string) => {
     dispatch(setSearchCurrency(searchValue));
   };
+
+  const currentBanks = getCurrentBanks(banks, searchCurrency);
 
   useEffect(() => {
     if (selectedCity) {
@@ -86,46 +92,11 @@ export const BankCard = () => {
         onMove={(evt: ViewStateChangeEvent) => setViewState(evt.viewState)}
         style={{ height: '60vh', width: '100vw' }}
       >
-        {banks?.results.map(bank => (
-          <Marker
-            key={bank.fsq_id}
-            longitude={bank.geocodes.main.longitude}
-            latitude={bank.geocodes.main.latitude}
-            anchor='center'
-            pitchAlignment='viewport'
-          >
-            <LocationImg
-              src={location}
-              alt='location'
-              onClick={e => {
-                e.preventDefault();
-                setSelectedBank(bank);
-              }}
-            />
-
-            {selectedBank && (
-              <Popup
-                longitude={selectedBank.geocodes.main.longitude}
-                latitude={selectedBank.geocodes.main.latitude}
-                onClose={() => setSelectedBank(null)}
-                closeButton
-                closeOnClick={false}
-              >
-                <PopupBlock>
-                  <BankName>{selectedBank.name}</BankName>
-                  <BankDescription>
-                    {selectedBank.location.formatted_address ||
-                      selectedBank.location.address}
-                  </BankDescription>
-                  <BankDescription>
-                    {selectedBank.location && selectedBank.location.postcode}{' '}
-                    {selectedBank.timezone}
-                  </BankDescription>
-                </PopupBlock>
-              </Popup>
-            )}
-          </Marker>
-        ))}
+        <MarkerControl
+          currentBanks={currentBanks}
+          selectedBank={selectedBank}
+          setSelectedBank={bank => setSelectedBank(bank)}
+        />
       </Map>
     </Container>
   );
