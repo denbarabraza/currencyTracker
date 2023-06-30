@@ -8,7 +8,11 @@ import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
-import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/currencyActions';
+import {
+  setCurrencyForTimeLine,
+  setDataForChart,
+  setDayTimeLine,
+} from '@/store/actions/currencyActions';
 import {
   getCurrencyForTimeLineSelector,
   getDataChartSelector,
@@ -48,6 +52,7 @@ export const TimeLine = () => {
   const code = getCodeCurrency(currencyTimeLineName);
   const handleSelectChange = (currency: string) => {
     dispatch(setCurrencyForTimeLine(currency));
+    dispatch(setDataForChart(null));
   };
 
   useEffect(() => {
