@@ -10,7 +10,7 @@ import libraIcon from '@/assets/image/libraIcon.svg';
 import pesoArgentinoIcon from '@/assets/image/pesoArgentinoIcon.svg';
 import yuanIcon from '@/assets/image/wonIcon.svg';
 import yenIcon from '@/assets/image/yenIcon.svg';
-import { ICurrencyQuotes, ICurrencyStocks } from '@/types/ICurrency';
+import { ICurrencyQuotes, ICurrencyStocks } from '@/types/currency';
 
 export const currencyQuotes: ICurrencyQuotes[] = [
   {

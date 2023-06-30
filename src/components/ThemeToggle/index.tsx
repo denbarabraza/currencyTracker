@@ -3,7 +3,7 @@ import React, { FC, memo, useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import { setThemeApp } from '@/store/actions/appActions';
 import { getThemeSelector } from '@/store/selectors/appSelectors';
-import { ThemeEnum } from '@/types/themes';
+import { themeEnum } from '@/theme/types';
 import { setThemeToLocalStorage } from '@/utils/localStorage';
 
 import { IThemeToggle } from './interface';
@@ -13,7 +13,7 @@ export const ThemeToggle: FC<IThemeToggle> = memo(({ open }) => {
   const theme = useAppSelector(getThemeSelector);
   const dispatch = useAppDispatch();
   const handleToggleChange = useCallback(() => {
-    const rulesTheme = theme === ThemeEnum.Light ? ThemeEnum.Dark : ThemeEnum.Light;
+    const rulesTheme = theme === themeEnum.Light ? themeEnum.Dark : themeEnum.Light;
 
     setThemeToLocalStorage('storedTheme', rulesTheme);
     dispatch(setThemeApp(rulesTheme));
@@ -24,7 +24,7 @@ export const ThemeToggle: FC<IThemeToggle> = memo(({ open }) => {
       <ToggleLabel>
         <ToggleInput
           type='checkbox'
-          checked={theme !== ThemeEnum.Light}
+          checked={theme !== themeEnum.Light}
           onChange={handleToggleChange}
         />
         <ToggleSlider data-cy='themeToggleSlider' />

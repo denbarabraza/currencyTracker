@@ -8,11 +8,7 @@ import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
-import {
-  setCurrencyForTimeLine,
-  setDataForChart,
-  setDayTimeLine,
-} from '@/store/actions/currencyActions';
+import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/currencyActions';
 import {
   getCurrencyForTimeLineSelector,
   getDataChartSelector,
@@ -24,7 +20,7 @@ import {
   fetchCurrencyDayOhlcvThunk,
   fetchCurrencyMonthOhlcvThunk,
 } from '@/store/thunks/currencyThunks';
-import { PeriodEnum } from '@/types/period';
+import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';
 import { getCodeCurrency } from '@/utils/getCodeCurrency';
 
@@ -60,7 +56,7 @@ export const TimeLine = () => {
       dispatch(setDataForChart(null));
       dispatch(fetchCurrencyDayOhlcvThunk(code, selectedDay));
     }
-    if (code && period === PeriodEnum.Month) {
+    if (code && period === periodEnum.Month) {
       const date = dateControl();
       const yearMonth = `${date.year}-${date.month}`;
 
@@ -84,7 +80,7 @@ export const TimeLine = () => {
       </CurrencySelectBlock>
       <CurrencyFilterBlock>
         <PeriodToggle period={period} />
-        {period === PeriodEnum.Day && (
+        {period === periodEnum.Day && (
           <>
             <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
             <DaySelect />

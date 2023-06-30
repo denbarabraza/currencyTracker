@@ -1,4 +1,3 @@
-/*
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -10,7 +9,7 @@ import {
   fetchCurrencyMonthOhlcvThunk,
 } from '@/store/thunks/currencyThunks';
 import { ICurrencyChartResponse } from '@/types/api';
-import { PeriodEnum } from '@/types/period';
+import { periodEnum } from '@/types/period';
 
 class TimeLineContainer extends React.Component<CommonTimeLineCCType> {
   render() {
@@ -22,7 +21,7 @@ export type CommonTimeLineCCType = IMapStateToProps & IMapDispatchToProps;
 
 interface IMapStateToProps {
   currencyTimeLineName: string | null;
-  period: PeriodEnum;
+  period: periodEnum;
   selectedDay: string | null;
   dataChar: ICurrencyChartResponse[] | null;
 }
@@ -51,4 +50,3 @@ const mapDispatchToProps: IMapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeLineContainer);
-*/

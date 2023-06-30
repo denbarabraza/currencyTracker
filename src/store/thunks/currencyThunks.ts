@@ -11,7 +11,7 @@ import {
 } from '@/store/actions/currencyActions';
 import { RequestStatusType } from '@/store/reducers/app/types';
 import { AppThunk } from '@/store/store';
-import { ICity } from '@/types/ICity';
+import { ICity } from '@/types/city';
 
 export const fetchCurrencyThunk = () => async (dispatch: Dispatch) => {
   try {

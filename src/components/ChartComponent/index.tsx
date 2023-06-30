@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   BarElement,
@@ -67,7 +67,7 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
       x: {},
       y: {
         beginAtZero: false,
-        grace: '20%',
+        grace: '30%',
       },
     },
   };

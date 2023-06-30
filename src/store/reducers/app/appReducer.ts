@@ -1,10 +1,10 @@
 import { ActionsAppType, IAppState, RequestStatusType } from '@/store/reducers/app/types';
-import { ThemeEnum } from '@/types/themes';
+import { themeEnum } from '@/theme/types';
 
 const initialState: IAppState = {
   statusApp: RequestStatusType.Idle,
   errorApp: null,
-  currentTheme: ThemeEnum.Light,
+  currentTheme: themeEnum.Light,
 };
 
 export const appReducer = (state = initialState, action: ActionsAppType): IAppState => {

@@ -1,7 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-import { ITheme } from '@/types/ITheme';
-import { ThemeEnum } from '@/types/themes';
+import { ITheme, themeEnum } from '@/theme/types';
 
 const baseTheme: ITheme = {
   colors: {
@@ -22,12 +21,12 @@ const baseTheme: ITheme = {
 
 export const lightTheme: DefaultTheme = {
   ...baseTheme,
-  type: ThemeEnum.Light,
+  type: themeEnum.Light,
 };
 
 export const darkTheme: DefaultTheme = {
   ...baseTheme,
-  type: ThemeEnum.Dark,
+  type: themeEnum.Dark,
 
   colors: {
     ...baseTheme.colors,

@@ -1,5 +1,5 @@
 import { setErrorApp, setStatusApp, setThemeApp } from '@/store/actions/appActions';
-import { ThemeEnum } from '@/types/themes';
+import { themeEnum } from '@/theme/types';
 
 export enum RequestStatusType {
   Idle = 'idle',
@@ -11,7 +11,7 @@ export enum RequestStatusType {
 export interface IAppState {
   statusApp: RequestStatusType;
   errorApp: string | null;
-  currentTheme: ThemeEnum;
+  currentTheme: themeEnum;
 }
 
 export type ActionsAppType =

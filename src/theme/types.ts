@@ -14,3 +14,10 @@ export interface ITheme {
     toggleBorder: string;
   };
 }
+
+export enum themeEnum {
+  Light = 'light',
+  Dark = 'dark',
+}
+
+export type LocalStorageKey = 'storedTheme';

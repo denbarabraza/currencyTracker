@@ -1,4 +1,4 @@
-import { ICurrencyQuotes } from '@/types/ICurrency';
+import { ICurrencyQuotes } from '@/types/currency';
 
 export interface ICustomSelect {
   options: ICurrencyQuotes[];

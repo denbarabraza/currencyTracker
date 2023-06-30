@@ -6,7 +6,7 @@ import { setStatusApp } from '@/store/actions/appActions';
 import { fetchBanksOfCities, setErrorMap } from '@/store/actions/mapActions';
 import { RequestStatusType } from '@/store/reducers/app/types';
 import { AppThunk } from '@/store/store';
-import { ICity } from '@/types/ICity';
+import { ICity } from '@/types/city';
 
 export const fetchBanksOfCitiesThunk =
   (city: ICity): AppThunk =>

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 
 import { ICustomSelect } from '@/components/CurrencySelect/interface';
-import { ICurrencyQuotes } from '@/types/ICurrency';
+import { ICurrencyQuotes } from '@/types/currency';
 
 import { ArrowIcon, Container, Option, OptionsContainer, SelectedOption } from './styled';
 

@@ -1,5 +1,3 @@
-import bovespaIcon from '@/assets/image/bovespaIcon.svg';
-
 export interface ICurrencyQuotes {
   symbol: string;
   name: string;

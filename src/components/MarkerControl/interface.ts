@@ -1,4 +1,4 @@
-import { IBank } from '@/types/IBank';
+import { IBank } from '@/types/bank';
 
 export interface IMarkerControl {
   currentBanks: IBank[] | undefined;

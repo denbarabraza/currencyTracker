@@ -1,16 +1,14 @@
-import { ICurrencyQuotes } from '@/types/ICurrency';
+import { ICurrencyQuotes } from '@/types/currency';
 
 export const getCurrencBySearch = (searchValue: string, currency: ICurrencyQuotes[]) => {
-  const hintsData = [];
+  return currency.filter(currencyItem => {
+    const lowerCaseSearchValue = searchValue.toLowerCase();
+    const lowerCaseName = currencyItem.name.toLowerCase();
+    const lowerCaseCode = currencyItem.code.toLowerCase();
 
-  for (let i = 0; i < currency.length; i++) {
-    if (
-      currency[i].name.toLowerCase().includes(searchValue.toLowerCase()) ||
-      currency[i].code.toLowerCase().includes(searchValue.toLowerCase())
-    ) {
-      hintsData.push(currency[i]);
-    }
-  }
-
-  return hintsData;
+    return (
+      lowerCaseName.includes(lowerCaseSearchValue) ||
+      lowerCaseCode.includes(lowerCaseSearchValue)
+    );
+  });
 };

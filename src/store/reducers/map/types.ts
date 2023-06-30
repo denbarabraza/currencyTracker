@@ -3,7 +3,7 @@ import {
   setErrorMap,
   setSearchCurrency,
 } from '@/store/actions/mapActions';
-import { IBanksData } from '@/types/IBank';
+import { IBanksData } from '@/types/bank';
 
 export interface IMapState {
   banksOfCities: IBanksData | null;

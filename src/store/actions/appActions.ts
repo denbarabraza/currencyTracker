@@ -1,5 +1,5 @@
 import { RequestStatusType } from '@/store/reducers/app/types';
-import { ThemeEnum } from '@/types/themes';
+import { themeEnum } from '@/theme/types';
 
 export const setStatusApp = (statusApp: RequestStatusType) => {
   return {
@@ -19,7 +19,7 @@ export const setErrorApp = (errorApp: string | null) => {
   } as const;
 };
 
-export const setThemeApp = (theme: ThemeEnum) => {
+export const setThemeApp = (theme: themeEnum) => {
   return {
     type: 'APP/SET_THEME',
     payload: {

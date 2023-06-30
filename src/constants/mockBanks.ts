@@ -1,4 +1,4 @@
-import { IBanksData } from '@/types/IBank';
+import { IBanksData } from '@/types/bank';
 
 export const mockBanks: IBanksData = {
   results: [

@@ -1,6 +1,6 @@
 import { ICurrencies } from '@/store/reducers/currency/types';
 import { ICurrencyChartResponse } from '@/types/api';
-import { PeriodEnum } from '@/types/period';
+import { periodEnum } from '@/types/period';
 
 export const fetchCurrencies = (currencies: ICurrencies) => {
   return {
@@ -44,7 +44,7 @@ export const setCurrencyForTimeLine = (currency: string) => {
   } as const;
 };
 
-export const setPeriodTimeLine = (period: PeriodEnum) => {
+export const setPeriodTimeLine = (period: periodEnum) => {
   return {
     type: 'CURRENCY/SET_PERIOD_TIMELINE',
     payload: { period },

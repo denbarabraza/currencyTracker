@@ -1,5 +1,5 @@
 import { ActionsCurrencyType, ICurrencyState } from '@/store/reducers/currency/types';
-import { PeriodEnum } from '@/types/period';
+import { periodEnum } from '@/types/period';
 
 const initialState: ICurrencyState = {
   currencies: null,
@@ -8,7 +8,7 @@ const initialState: ICurrencyState = {
   convertTo: null,
   convertValue: null,
   currencyTimeLine: 'Bitcoin',
-  period: PeriodEnum.Day,
+  period: periodEnum.Day,
   selectedDay: null,
   dataForChart: null,
 };

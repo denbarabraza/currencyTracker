@@ -1,6 +1,6 @@
-import { PeriodEnum } from '@/types/period';
+import { periodEnum } from '@/types/period';
 
 export interface IPeriodToggle {
   open?: boolean;
-  period: PeriodEnum;
+  period: periodEnum;
 }

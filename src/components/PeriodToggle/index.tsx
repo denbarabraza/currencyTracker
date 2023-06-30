@@ -13,7 +13,7 @@ import {
   setDayTimeLine,
   setPeriodTimeLine,
 } from '@/store/actions/currencyActions';
-import { PeriodEnum } from '@/types/period';
+import { periodEnum } from '@/types/period';
 
 import { IPeriodToggle } from './interface';
 
@@ -21,9 +21,9 @@ export const PeriodToggle: FC<IPeriodToggle> = memo(({ open, period }) => {
   const dispatch = useAppDispatch();
 
   const handleToggleChange = useCallback(() => {
-    const currentPeriod = period === PeriodEnum.Day ? PeriodEnum.Month : PeriodEnum.Day;
+    const currentPeriod = period === periodEnum.Day ? periodEnum.Month : periodEnum.Day;
 
-    if (period === PeriodEnum.Day) {
+    if (period === periodEnum.Day) {
       dispatch(setDayTimeLine(null));
     }
     dispatch(setDataForChart(null));
@@ -32,11 +32,11 @@ export const PeriodToggle: FC<IPeriodToggle> = memo(({ open, period }) => {
 
   return (
     <ToggleContainer open={open || false}>
-      {period === PeriodEnum.Month ? 'Month' : 'Day'}
+      {period === periodEnum.Month ? 'Month' : 'Day'}
       <ToggleLabel>
         <ToggleInput
           type='checkbox'
-          checked={period !== PeriodEnum.Day}
+          checked={period !== periodEnum.Day}
           onChange={handleToggleChange}
         />
         <ToggleSlider data-cy='periodToggleSlider' />

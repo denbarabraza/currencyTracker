@@ -1,4 +1,4 @@
-export enum PeriodEnum {
+export enum periodEnum {
   Day = 'Day',
   Month = 'Month',
 }

@@ -16,9 +16,9 @@ import {
   getSearchCurrencySelector,
 } from '@/store/selectors/mapSelectors';
 import { fetchBanksOfCitiesThunk } from '@/store/thunks/mapThunks';
-import { IBank } from '@/types/IBank';
-import { ICity } from '@/types/ICity';
-import { ThemeEnum } from '@/types/themes';
+import { themeEnum } from '@/theme/types';
+import { IBank } from '@/types/bank';
+import { ICity } from '@/types/city';
 import { getCurrentBanks } from '@/utils/getCurrentBanks';
 
 import { Container } from './styled';
@@ -43,7 +43,7 @@ export const BankCard = () => {
   });
 
   const mapStyle =
-    theme === ThemeEnum.Dark
+    theme === themeEnum.Dark
       ? 'mapbox://styles/mapbox/navigation-night-v1'
       : 'mapbox://styles/mapbox/navigation-day-v1';
 

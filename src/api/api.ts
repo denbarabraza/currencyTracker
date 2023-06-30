@@ -2,8 +2,8 @@ import axios from 'axios';
 
 import { ICurrencies } from '@/store/reducers/currency/types';
 import { ICurrencyChartResponse } from '@/types/api';
-import { IBanksData } from '@/types/IBank';
-import { ICity } from '@/types/ICity';
+import { IBanksData } from '@/types/bank';
+import { ICity } from '@/types/city';
 
 const CURRENCY_KEY = process.env.CURRENCY_API_KEY;
 const COINAPI_KEY = process.env.COIN_API_KEY;

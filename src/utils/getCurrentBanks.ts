@@ -1,4 +1,4 @@
-import { IBank, IBanksData } from '@/types/IBank';
+import { IBank, IBanksData } from '@/types/bank';
 
 export const getCurrentBanks = (
   banks: IBanksData | null,
