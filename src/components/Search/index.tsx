@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, KeyboardEvent, memo, useState } from 'react';
+import React, { ChangeEvent, FC, memo, useState } from 'react';
 
 import search from '@/assets/image/search.svg';
 import { HintsBlock } from '@/components/HintsBlock';
@@ -25,10 +25,6 @@ export const Search: FC<ISearch> = memo(({ onSearch }) => {
     else setIsHintsOpen(false);
   };
 
-  const onKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') handleSearchClick();
-  };
-
   const handleResultClick = (title: string) => {
     onSearch(title);
     setIsHintsOpen(false);
@@ -44,7 +40,6 @@ export const Search: FC<ISearch> = memo(({ onSearch }) => {
           placeholder='Search by cyrrency'
           value={searchCurrency}
           onChange={onChange}
-          onKeyUp={onKeyUp}
         />
         <SearchIcon
           data-cy='searchIcn'

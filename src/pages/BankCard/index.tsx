@@ -50,6 +50,7 @@ export const BankCard = () => {
   const onClickButton = (city: ICity) => {
     setViewState({ ...viewState, latitude: city.latitude, longitude: city.longitude });
     setSelectedCity(city);
+    dispatch(setSearchCurrency(''));
   };
 
   const onSearch = (searchValue: string) => {
