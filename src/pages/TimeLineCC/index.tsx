@@ -4,9 +4,10 @@ import { CurrencySelect } from 'src/components/CurrencySelect';
 import { BarChart } from '@/components/ChartComponent';
 import { CurrencyCard } from '@/components/CurrencyCard';
 import { DaySelect } from '@/components/DaySelect';
+import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
-import { CommonTimeLineCCType } from '@/pages/TimeLineContainer';
+import { CommonTimeLineCCType } from '@/pages/TimeLineContainer/types';
 import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';
 import { getCodeCurrency } from '@/utils/getCodeCurrency';
@@ -69,7 +70,11 @@ export class TimeLineCC extends React.Component<CommonTimeLineCCType> {
 
   render() {
     const { code, currencies } = this;
-    const { currencyTimeLineName, dataChar, period, ...rest } = this.props;
+    const { currencyTimeLineName, dataChar, period, errorCurrency } = this.props;
+
+    if (errorCurrency) {
+      return <ErrorInfo />;
+    }
 
     return (
       <Container>
