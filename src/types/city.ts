@@ -4,3 +4,10 @@ export interface ICity {
   latitude: number;
   longitude: number;
 }
+
+export type ISelectedCity = Omit<ICity, 'id' | 'city'>;
+
+export interface IMapGeo {
+  longitude: number;
+  latitude: number;
+}

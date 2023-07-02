@@ -1,4 +1,5 @@
 import { IBanksData } from '@/types/bank';
+import { IMapGeo } from '@/types/city';
 
 export const fetchBanksOfCities = (banks: IBanksData) => {
   return {
@@ -18,5 +19,12 @@ export const setSearchCurrency = (currency: string) => {
   return {
     type: 'MAP/SET_SEARCH_CURRENCY',
     payload: { currency },
+  } as const;
+};
+
+export const setGeoPosition = (geo: IMapGeo) => {
+  return {
+    type: 'MAP/SET_GEO',
+    payload: { geo },
   } as const;
 };

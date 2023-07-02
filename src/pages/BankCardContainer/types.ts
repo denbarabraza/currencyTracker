@@ -1,6 +1,6 @@
 import { themeEnum } from '@/theme/types';
 import { IBank, IBanksData } from '@/types/bank';
-import { ICity } from '@/types/city';
+import { ICity, IMapGeo, ISelectedCity } from '@/types/city';
 
 export type CommonBankCardCCType = IMapStateToProps & IMapDispatchToProps;
 
@@ -9,16 +9,18 @@ export interface IMapStateToProps {
   banks: IBanksData | null;
   errorMap: string | null;
   searchCurrency: string;
+  geo: IMapGeo | null;
 }
 
 export interface IMapDispatchToProps {
   setSearchCurrency: (currency: string) => void;
-  fetchBanksOfCitiesThunk: (city: ICity) => void;
+  fetchBanksOfCitiesThunk: (city: ISelectedCity) => void;
+  fetchGeoThunk: () => void;
 }
 
 export interface IBankCardState {
   selectedBank: IBank | null;
-  selectedCity: ICity;
+  selectedCity: ISelectedCity;
   viewState: {
     longitude: number;
     latitude: number;

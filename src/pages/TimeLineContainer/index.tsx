@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { TimeLine } from 'src/pages/TimeLine';
 
-import { TimeLineCC } from '@/pages/TimeLineCC';
 import {
   CommonTimeLineCCType,
   IMapDispatchToProps,
@@ -16,7 +16,7 @@ import {
 
 class TimeLineContainer extends React.Component<CommonTimeLineCCType> {
   render() {
-    return <TimeLineCC {...this.props} />;
+    return <TimeLine {...this.props} />;
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CurrencySelect } from 'src/components/CurrencySelect';
 
 import { BarChart } from '@/components/ChartComponent';
@@ -7,19 +7,7 @@ import { DaySelect } from '@/components/DaySelect';
 import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
-import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
-import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/currencyActions';
-import {
-  getCurrencyForTimeLineSelector,
-  getDataChartSelector,
-  getDayTimeLineSelector,
-  getErrorCurrencySelector,
-  getPeriodTimeLineSelector,
-} from '@/store/selectors/currencySelectors';
-import {
-  fetchCurrencyDayOhlcvThunk,
-  fetchCurrencyMonthOhlcvThunk,
-} from '@/store/thunks/currencyThunks';
+import { CommonTimeLineCCType } from '@/pages/TimeLineContainer/types';
 import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';
 import { getCodeCurrency } from '@/utils/getCodeCurrency';
@@ -31,64 +19,85 @@ import {
   HintsTimeLine,
 } from './styled';
 
-export const TimeLine = () => {
-  const dispatch = useAppDispatch();
-  const currencyTimeLineName = useAppSelector(getCurrencyForTimeLineSelector);
-  const period = useAppSelector(getPeriodTimeLineSelector);
-  const selectedDay = useAppSelector(getDayTimeLineSelector);
-  const dataChart = useAppSelector(getDataChartSelector);
-  const errorCurrency = useAppSelector(getErrorCurrencySelector);
-
-  const currencies = currencyQuotes.filter(
-    currency => currency.name === currencyTimeLineName,
+export class TimeLine extends React.Component<CommonTimeLineCCType> {
+  currencies = currencyQuotes.filter(
+    currency => currency.name === this.props.currencyTimeLineName,
   );
-  const currenciesOptions = currencyQuotes.filter(
+
+  currenciesOptions = currencyQuotes.filter(
     currency => currency.name === 'Bitcoin' || currency.name === 'Ethereum',
   );
-  const code = getCodeCurrency(currencyTimeLineName);
-  const handleSelectChange = (currency: string) => {
-    dispatch(setCurrencyForTimeLine(currency));
-    dispatch(setDataForChart(null));
-  };
 
-  useEffect(() => {
-    if (code && selectedDay) {
-      dispatch(setDataForChart(null));
-      dispatch(fetchCurrencyDayOhlcvThunk(code, selectedDay));
+  code = getCodeCurrency(this.props.currencyTimeLineName);
+
+  componentDidMount() {
+    this.fetchCurrency();
+  }
+
+  componentDidUpdate(prevProps: CommonTimeLineCCType) {
+    if (
+      prevProps.selectedDay !== this.props.selectedDay ||
+      prevProps.period !== this.props.period
+    ) {
+      this.fetchCurrency();
     }
-    if (code && period === periodEnum.Month) {
+  }
+
+  fetchCurrency = () => {
+    const {
+      selectedDay,
+      period,
+      fetchCurrencyDayOhlcvThunk,
+      fetchCurrencyMonthOhlcvThunk,
+    } = this.props;
+
+    if (this.code && selectedDay) {
+      fetchCurrencyDayOhlcvThunk(this.code, selectedDay);
+    }
+
+    if (this.code && period === periodEnum.Month) {
       const date = dateControl();
       const yearMonth = `${date.year}-${date.month}`;
 
-      dispatch(fetchCurrencyMonthOhlcvThunk(code, yearMonth));
+      fetchCurrencyMonthOhlcvThunk(this.code, yearMonth);
     }
-  }, [selectedDay, code, period]);
+  };
 
-  if (errorCurrency) {
-    return <ErrorInfo />;
+  handleSelectChange = (currency: string) => {
+    this.props.setCurrencyForTimeLine(currency);
+    this.props.setDataForChart(null);
+  };
+
+  render() {
+    const { code, currencies } = this;
+    const { currencyTimeLineName, dataChar, period, errorCurrency } = this.props;
+
+    if (errorCurrency) {
+      return <ErrorInfo error={errorCurrency} />;
+    }
+
+    return (
+      <Container>
+        <CurrencySelectBlock>
+          <HintsTimeLine>Select the currency that interests you</HintsTimeLine>
+          <CurrencySelect
+            options={this.currenciesOptions}
+            value={currencyTimeLineName}
+            onChange={this.handleSelectChange}
+          />
+        </CurrencySelectBlock>
+        <CurrencyFilterBlock>
+          <PeriodToggle period={period} />
+          {period === periodEnum.Day && (
+            <>
+              <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
+              <DaySelect />
+            </>
+          )}
+          <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
+        </CurrencyFilterBlock>
+        {dataChar && code && <BarChart dataChart={dataChar} code={code} />}
+      </Container>
+    );
   }
-
-  return (
-    <Container>
-      <CurrencySelectBlock>
-        <HintsTimeLine>Select the currency that interests you</HintsTimeLine>
-        <CurrencySelect
-          options={currenciesOptions}
-          value={currencyTimeLineName}
-          onChange={handleSelectChange}
-        />
-      </CurrencySelectBlock>
-      <CurrencyFilterBlock>
-        <PeriodToggle period={period} />
-        {period === periodEnum.Day && (
-          <>
-            <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
-            <DaySelect />
-          </>
-        )}
-        <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
-      </CurrencyFilterBlock>
-      {dataChart && code && <BarChart dataChart={dataChart} code={code} />}
-    </Container>
-  );
-};
+}

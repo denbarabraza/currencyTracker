@@ -5,3 +5,5 @@ export const getBanksSelector = (state: RootStoreType) => state.map.banksOfCitie
 export const getErrorFromMap = (state: RootStoreType) => state.map.error;
 export const getSearchCurrencySelector = (state: RootStoreType) =>
   state.map.searchCurrency;
+
+export const getGeo = (state: RootStoreType) => state.map.geo;

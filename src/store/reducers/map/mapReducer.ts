@@ -4,6 +4,7 @@ const initialState: IMapState = {
   banksOfCities: null,
   error: null,
   searchCurrency: '',
+  geo: null,
 };
 
 export const mapReducer = (state = initialState, action: ActionsMapType): IMapState => {
@@ -22,6 +23,11 @@ export const mapReducer = (state = initialState, action: ActionsMapType): IMapSt
       return {
         ...state,
         searchCurrency: action.payload.currency,
+      };
+    case 'MAP/SET_GEO':
+      return {
+        ...state,
+        geo: action.payload.geo,
       };
     default:
       return state;

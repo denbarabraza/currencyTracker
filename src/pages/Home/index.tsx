@@ -45,7 +45,7 @@ export const Home = () => {
   }, []);
 
   if (errorCurrency) {
-    return <ErrorInfo />;
+    return <ErrorInfo error={errorCurrency} />;
   }
 
   return (
