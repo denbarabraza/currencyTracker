@@ -17,7 +17,6 @@ import { getCurrentBanks } from '@/utils/getCurrentBanks';
 export class BankCard extends Component<CommonBankCardCCType, IBankCardState> {
   constructor(props: CommonBankCardCCType) {
     super(props);
-
     this.state = {
       selectedBank: null,
       selectedCity: {
@@ -83,7 +82,9 @@ export class BankCard extends Component<CommonBankCardCCType, IBankCardState> {
     this.setState(prevState => ({
       viewState: {
         ...prevState.viewState,
-        viewState,
+        longitude: viewState.longitude,
+        latitude: viewState.latitude,
+        zoom: viewState.zoom,
       },
     }));
     setSearchCurrency('');
