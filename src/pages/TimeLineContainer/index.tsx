@@ -8,11 +8,11 @@ import {
   IMapStateToProps,
 } from '@/pages/TimeLineContainer/types';
 import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/currencyActions';
-import { RootStoreType } from '@/store/store';
 import {
   fetchCurrencyDayOhlcvThunk,
   fetchCurrencyMonthOhlcvThunk,
 } from '@/store/thunks/currencyThunks';
+import { RootStoreType } from '@/store/types';
 
 class TimeLineContainer extends React.Component<CommonTimeLineCCType> {
   render() {

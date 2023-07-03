@@ -9,7 +9,7 @@ import {
   setGeoPosition,
 } from '@/store/actions/mapActions';
 import { RequestStatusType } from '@/store/reducers/app/types';
-import { AppThunk } from '@/store/store';
+import { AppThunk } from '@/store/types';
 import { ISelectedCity } from '@/types/city';
 
 export const fetchBanksOfCitiesThunk =

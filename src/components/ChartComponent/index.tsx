@@ -26,7 +26,7 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
   const period = useAppSelector(getPeriodTimeLineSelector);
   const chartSubject: ChartSubject = useMemo(() => new ChartSubject(), []);
 
-  const chartObserver: ChartObserver = useMemo(() => new ChartObserver(), []);
+  const chartObserver: ChartObserver = useMemo(() => new ChartObserver({}), []);
 
   useEffect(() => {
     chartSubject.attach(chartObserver);
@@ -141,6 +141,7 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
   return (
     <Container id='myChart'>
       <Bar data={data} options={options} plugins={plugins} />
+      <ChartObserver />
     </Container>
   );
 });

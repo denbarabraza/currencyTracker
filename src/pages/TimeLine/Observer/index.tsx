@@ -1,3 +1,6 @@
+import React, { Component, PureComponent } from 'react';
+
+import { Container, PopUpItem } from '@/pages/TimeLine/Observer/style';
 import { ICurrencyChartResponse } from '@/types/api';
 
 export class ChartSubject {
@@ -20,8 +23,41 @@ export class ChartSubject {
   }
 }
 
-export class ChartObserver {
+interface IChartObserver {
+  chartBuilt: boolean;
+}
+
+export class ChartObserver extends PureComponent<{}, IChartObserver> {
+  private timerId: any = null;
+
+  constructor(props: {}) {
+    super(props);
+    this.state = { chartBuilt: false };
+    this.timerId = null;
+  }
+
+  componentDidMount() {}
+
+  componentWillUnmount() {
+    if (this.timerId) {
+      clearTimeout(this.timerId);
+    }
+  }
+
   public update(): void {
-    alert('The graph has been successfully built');
+    this.setState({ chartBuilt: true });
+    this.timerId = setTimeout(() => {
+      this.setState({ chartBuilt: false });
+    }, 3000);
+  }
+
+  render(): React.ReactElement {
+    return (
+      <Container>
+        {this.state.chartBuilt ? (
+          <PopUpItem>The graph has been successfully built</PopUpItem>
+        ) : null}
+      </Container>
+    );
   }
 }

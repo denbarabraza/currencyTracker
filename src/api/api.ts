@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ICurrencies } from '@/store/reducers/currency/types';
 import { ICurrencyChartResponse } from '@/types/api';
 import { IBanksData } from '@/types/bank';
-import { ICity, ISelectedCity } from '@/types/city';
+import { ISelectedCity } from '@/types/city';
 
 const CURRENCY_KEY = process.env.CURRENCY_API_KEY;
 const COINAPI_KEY = process.env.COIN_API_KEY;
@@ -53,7 +53,7 @@ export const mapAPI = {
 
     return axios
       .get<IBanksData>(
-        `https://api.foursquare.com/v3/places/search?ll=${latitude}%2C${longitude}&radius=100000&categories=11045&limit=50`,
+        `https://api.foursquare.com/v3/places/search?ll=${latitude}%2C${longitude}&radius=10000&categories=11045&limit=50`,
         {
           headers: {
             Authorization: FOURSQUAREAPI_KEY,

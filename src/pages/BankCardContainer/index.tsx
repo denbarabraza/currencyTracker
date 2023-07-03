@@ -8,8 +8,8 @@ import {
   IMapStateToProps,
 } from '@/pages/BankCardContainer/types';
 import { setSearchCurrency } from '@/store/actions/mapActions';
-import { RootStoreType } from '@/store/store';
 import { fetchBanksOfCitiesThunk, fetchGeoThunk } from '@/store/thunks/mapThunks';
+import { RootStoreType } from '@/store/types';
 
 class BankCardContainer extends React.Component<CommonBankCardCCType> {
   render() {

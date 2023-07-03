@@ -2,11 +2,12 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { App } from '@/components/App';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ErrorFallback } from '@/components/ErrorBoundary/ErrorFallback';
-import { store } from '@/store/store';
+import { persistor, store } from '@/store/store';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 
@@ -14,7 +15,9 @@ root.render(
   <BrowserRouter>
     <ErrorBoundary fallback={<ErrorFallback />}>
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </ErrorBoundary>
   </BrowserRouter>,

@@ -97,9 +97,7 @@ export class BankCard extends Component<CommonBankCardCCType, IBankCardState> {
   };
 
   render() {
-    const { theme, banks, errorMap, searchCurrency, geo } = this.props;
-
-    console.log(geo);
+    const { theme, banks, errorMap, searchCurrency } = this.props;
 
     const mapStyle =
       theme === themeEnum.Dark

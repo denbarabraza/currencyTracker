@@ -7,6 +7,7 @@ import { DaySelect } from '@/components/DaySelect';
 import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
+import { ChartObserver } from '@/pages/TimeLine/Observer';
 import { CommonTimeLineCCType } from '@/pages/TimeLineContainer/types';
 import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';
@@ -40,6 +41,9 @@ export class TimeLine extends React.Component<CommonTimeLineCCType> {
       prevProps.period !== this.props.period
     ) {
       this.fetchCurrency();
+    }
+    if (prevProps.currencyTimeLineName !== this.props.currencyTimeLineName) {
+      this.code = getCodeCurrency(this.props.currencyTimeLineName);
     }
   }
 

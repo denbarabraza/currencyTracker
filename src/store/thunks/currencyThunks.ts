@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import { Dispatch } from 'redux';
 
-import { currencyAPI, mapAPI } from '@/api/api';
+import { currencyAPI } from '@/api/api';
 import { setStatusApp } from '@/store/actions/appActions';
 import {
   fetchCurrencies,
@@ -10,8 +10,7 @@ import {
   setErrorCurrency,
 } from '@/store/actions/currencyActions';
 import { RequestStatusType } from '@/store/reducers/app/types';
-import { AppThunk } from '@/store/store';
-import { ICity } from '@/types/city';
+import { AppThunk } from '@/store/types';
 
 export const fetchCurrencyThunk = () => async (dispatch: Dispatch) => {
   try {

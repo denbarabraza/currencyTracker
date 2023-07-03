@@ -1,4 +1,4 @@
-import { RootStoreType } from '@/store/store';
+import { RootStoreType } from '@/store/types';
 
 export const getCurrencySelector = (state: RootStoreType) => state.currency.currencies;
 export const getDateSelector = (state: RootStoreType) => state.currency.currencies;

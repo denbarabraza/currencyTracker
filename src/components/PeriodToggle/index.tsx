@@ -1,5 +1,4 @@
 import React, { FC, memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 
 import {
   ToggleContainer,
