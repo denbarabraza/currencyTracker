@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useEffect, useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   BarElement,
@@ -13,12 +13,33 @@ import {
 } from 'chart.js';
 
 import { IData, ILineTest } from '@/components/ChartComponent/interface';
+import { useAppSelector } from '@/hooks/useStoreControl';
+import { ChartObserver, ChartSubject } from '@/pages/TimeLine/Observer';
+import { getPeriodTimeLineSelector } from '@/store/selectors/currencySelectors';
+import { periodEnum } from '@/types/period';
 
 import { Container } from './styled';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
+  const period = useAppSelector(getPeriodTimeLineSelector);
+  const chartSubject: ChartSubject = useMemo(() => new ChartSubject(), []);
+
+  const chartObserver: ChartObserver = useMemo(() => new ChartObserver(), []);
+
+  useEffect(() => {
+    chartSubject.attach(chartObserver);
+
+    if (period === periodEnum.Month) {
+      chartSubject.buildChart(dataChart);
+    }
+
+    return () => {
+      chartSubject.detach(chartObserver);
+    };
+  }, [chartSubject, chartObserver, period]);
+
   const data: IData = {
     datasets: [
       {
