@@ -3,7 +3,7 @@ import React from 'react';
 import mainImage from '@/assets/image/mainImage.svg';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { Pages } from '@/pages/Pages';
-import { getDateSelector } from '@/store/selectors/currencySelectors';
+import { getDateSelector } from '@/store/selectors/homeSelectors';
 import { formatDate } from '@/utils/formatDate';
 
 import {

@@ -3,13 +3,13 @@ import { CurrencySelect } from 'src/components/CurrencySelect';
 
 import { ICurrency } from '@/components/Currency/interface';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
-import { setCurrencyTo } from '@/store/actions/currencyActions';
+import { setCurrencyTo } from '@/store/actions/homeActions';
 import {
   getConverterValueSelector,
   getCurrencyFromSelector,
   getCurrencyToSelector,
-} from '@/store/selectors/currencySelectors';
-import { fetchConversionThunk } from '@/store/thunks/currencyThunks';
+} from '@/store/selectors/homeSelectors';
+import { fetchConversionThunk } from '@/store/thunks/homeThunks';
 import { filteredCurrency } from '@/utils/filteredCurrency';
 import { getCodeCurrency } from '@/utils/getCodeCurrency';
 

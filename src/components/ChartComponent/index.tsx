@@ -15,7 +15,7 @@ import {
 import { IData, ILineTest } from '@/components/ChartComponent/interface';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { ChartObserver, ChartSubject } from '@/pages/TimeLine/Observer';
-import { getPeriodTimeLineSelector } from '@/store/selectors/currencySelectors';
+import { getPeriodTimeLineSelector } from '@/store/selectors/homeSelectors';
 import { periodEnum } from '@/types/period';
 
 import { Container } from './styled';

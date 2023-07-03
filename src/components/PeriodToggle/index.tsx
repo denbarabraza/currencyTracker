@@ -11,7 +11,7 @@ import {
   setDataForChart,
   setDayTimeLine,
   setPeriodTimeLine,
-} from '@/store/actions/currencyActions';
+} from '@/store/actions/timeLineActions';
 import { periodEnum } from '@/types/period';
 
 import { IPeriodToggle } from './interface';

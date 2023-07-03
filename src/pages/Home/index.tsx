@@ -17,13 +17,13 @@ import {
   StocksBlock,
   TitleBlock,
 } from '@/pages/Home/styled';
-import { setCurrencyFrom, setCurrencyTo } from '@/store/actions/currencyActions';
+import { setCurrencyFrom, setCurrencyTo } from '@/store/actions/homeActions';
 import {
   getCurrencyFromSelector,
   getCurrencySelector,
   getErrorCurrencySelector,
-} from '@/store/selectors/currencySelectors';
-import { fetchCurrencyThunk } from '@/store/thunks/currencyThunks';
+} from '@/store/selectors/homeSelectors';
+import { fetchCurrencyThunk } from '@/store/thunks/homeThunks';
 
 export const Home = () => {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ICurrencies } from '@/store/reducers/currency/types';
+import { ICurrencies } from '@/store/reducers/home/types';
 import { ICurrencyChartResponse } from '@/types/api';
 import { IBanksData } from '@/types/bank';
 import { ISelectedCity } from '@/types/city';

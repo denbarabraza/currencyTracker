@@ -1,7 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
 
 import { ActionsAppType } from '@/store/reducers/app/types';
-import { ActionsCurrencyType } from '@/store/reducers/currency/types';
+import { ActionsCurrencyType } from '@/store/reducers/timeLine/types';
 import { rootReducer } from '@/store/store';
 
 export type RootActionsType = ActionsAppType | ActionsCurrencyType;

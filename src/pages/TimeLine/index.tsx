@@ -7,7 +7,6 @@ import { DaySelect } from '@/components/DaySelect';
 import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import { currencyQuotes } from '@/constants/currency';
-import { ChartObserver } from '@/pages/TimeLine/Observer';
 import { CommonTimeLineCCType } from '@/pages/TimeLineContainer/types';
 import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';

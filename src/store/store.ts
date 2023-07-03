@@ -4,19 +4,21 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import { appReducer } from '@/store/reducers/app/appReducer';
-import { currencyReducer } from '@/store/reducers/currency/currencyReducer';
+import { homeReducer } from '@/store/reducers/home/homeReducer';
 import { mapReducer } from '@/store/reducers/map/mapReducer';
+import { timeLineReducer } from '@/store/reducers/timeLine/timeLineReducer';
 
 export const rootReducer = combineReducers({
   app: appReducer,
-  currency: currencyReducer,
+  home: homeReducer,
+  timeLine: timeLineReducer,
   map: mapReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['currency'],
+  whitelist: ['home'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

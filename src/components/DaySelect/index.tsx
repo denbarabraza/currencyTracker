@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ArrowIcon, SelectedOption } from '@/components/CurrencySelect/styled';
 import { useAppDispatch } from '@/hooks/useStoreControl';
-import { setDayTimeLine } from '@/store/actions/currencyActions';
+import { setDayTimeLine } from '@/store/actions/timeLineActions';
 import { dateControl } from '@/utils/dateControl';
 import { getMonthName } from '@/utils/getMonthName';
 

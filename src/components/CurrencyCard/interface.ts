@@ -1,4 +1,4 @@
-import { ICurrencies } from '@/store/reducers/currency/types';
+import { ICurrencies } from '@/store/reducers/home/types';
 import { ICurrencyQuotes } from '@/types/currency';
 
 export interface ICurrencyCard {
