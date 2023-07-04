@@ -4,11 +4,6 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.tsx',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'build'),
-  },
   module: {
     rules: [
       {
@@ -49,12 +44,4 @@ module.exports = {
     }),
     new dotenv(),
   ],
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'build'),
-    },
-    port: 3000,
-    historyApiFallback: true,
-    open: true,
-  },
 };
