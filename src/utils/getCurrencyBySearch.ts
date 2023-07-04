@@ -1,6 +1,6 @@
 import { ICurrencyQuotes } from '@/types/currency';
 
-export const getCurrencBySearch = (searchValue: string, currency: ICurrencyQuotes[]) => {
+export const getCurrencyBySearch = (searchValue: string, currency: ICurrencyQuotes[]) => {
   return currency.filter(currencyItem => {
     const lowerCaseSearchValue = searchValue.toLowerCase();
     const lowerCaseName = currencyItem.name.toLowerCase();

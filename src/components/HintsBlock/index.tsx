@@ -7,10 +7,10 @@ import {
 } from 'src/components/HintsBlock/styled';
 
 import { currencyQuotes } from '@/constants/currency';
-import { getCurrencBySearch } from '@/utils/getCurrencBySearch';
+import { getCurrencyBySearch } from '@/utils/getCurrencyBySearch';
 
 export const HintsBlock: FC<IHintsBlock> = memo(({ searchValue, onClickSelectHint }) => {
-  const hintsData = getCurrencBySearch(searchValue, currencyQuotes);
+  const hintsData = getCurrencyBySearch(searchValue, currencyQuotes);
 
   return (
     <HintsBlockContainer data-cy='hintsBlock'>

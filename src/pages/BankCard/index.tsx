@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Map, { ViewState, ViewStateChangeEvent } from 'react-map-gl';
 
 import { Button } from '@/components/Button/Button';
@@ -14,7 +14,7 @@ import { IBank } from '@/types/bank';
 import { ISelectedCity } from '@/types/city';
 import { getCurrentBanks } from '@/utils/getCurrentBanks';
 
-export class BankCard extends Component<CommonBankCardCCType, IBankCardState> {
+export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState> {
   constructor(props: CommonBankCardCCType) {
     super(props);
     this.state = {

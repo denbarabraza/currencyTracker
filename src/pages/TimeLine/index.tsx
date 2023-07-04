@@ -19,7 +19,7 @@ import {
   HintsTimeLine,
 } from './styled';
 
-export class TimeLine extends React.Component<CommonTimeLineCCType> {
+export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
   currencies = currencyQuotes.filter(
     currency => currency.name === this.props.currencyTimeLineName,
   );

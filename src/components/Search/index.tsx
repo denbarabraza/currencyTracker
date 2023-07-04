@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, memo, useState } from 'react';
+import React, { ChangeEvent, FC, memo, useCallback, useState } from 'react';
 
 import search from '@/assets/image/search.svg';
 import { HintsBlock } from '@/components/HintsBlock';
@@ -14,22 +14,28 @@ export const Search: FC<ISearch> = memo(({ onSearch }) => {
   const [searchCurrency, setSearchCurrency] = useState<string>(searchValue);
   const [isHintsOpen, setIsHintsOpen] = useState<boolean>(false);
 
-  const handleSearchClick = () => {
+  const handleSearchClick = useCallback(() => {
     onSearch(searchCurrency.trim());
     setIsHintsOpen(false);
-  };
+  }, [onSearch, searchCurrency]);
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchCurrency(event.target.value);
-    if (event.target.value.length > 0) setIsHintsOpen(true);
-    else setIsHintsOpen(false);
-  };
+  const onChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setSearchCurrency(event.target.value);
+      if (event.target.value.length > 0) setIsHintsOpen(true);
+      else setIsHintsOpen(false);
+    },
+    [setSearchCurrency, setIsHintsOpen],
+  );
 
-  const handleResultClick = (title: string) => {
-    onSearch(title);
-    setIsHintsOpen(false);
-    setSearchCurrency('');
-  };
+  const handleResultClick = useCallback(
+    (title: string) => {
+      onSearch(title);
+      setIsHintsOpen(false);
+      setSearchCurrency('');
+    },
+    [onSearch, setIsHintsOpen, setSearchCurrency],
+  );
 
   return (
     <Container>

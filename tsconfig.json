@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "outDir": "./dist/",
+    "outDir": "./build",
     "noImplicitAny": true,
     "module": "es2022",
     "target": "es5",
