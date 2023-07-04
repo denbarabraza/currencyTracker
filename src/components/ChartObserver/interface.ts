@@ -1,4 +1,3 @@
-export interface IChartObserver {
-  showPopUp: boolean;
-  onChangeShowPopUp: (isShow: boolean) => void;
+export interface IObserver {
+  update(): void;
 }

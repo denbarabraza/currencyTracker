@@ -82,6 +82,7 @@
       3
     ],
     "class-methods-use-this": "off",
+    "react/no-unused-class-component-methods": "off",
     "default-param-last": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",

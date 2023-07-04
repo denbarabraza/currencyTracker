@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useState } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   BarElement,
@@ -11,16 +11,19 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import { ChartObserver } from 'src/components/ChartObserver';
 
 import { IData, ILineTest } from '@/components/ChartComponent/interface';
+import { ChartObserver, Subject } from '@/components/ChartObserver/index';
+import { useAppSelector } from '@/hooks/useStoreControl';
+import { getPeriodTimeLineSelector } from '@/store/selectors/homeSelectors';
+import { periodEnum } from '@/types/period';
 
 import { Container } from './styled';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
-  const [showPopUp, setShowPopUp] = useState(false);
+  const period = useAppSelector(getPeriodTimeLineSelector);
   const data: IData = {
     datasets: [
       {
@@ -114,20 +117,22 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
   };
   const plugins = [candlestick];
 
-  const onChangeShowPopUp = useCallback(
-    (isShow: boolean) => {
-      setShowPopUp(isShow);
-    },
-    [setShowPopUp],
-  );
+  useEffect(() => {
+    const subject = new Subject(dataChart);
+    const observer = new ChartObserver(subject);
+
+    if (period === periodEnum.Month && dataChart) {
+      subject.processData();
+    }
+
+    return () => {
+      observer.unsubscribe();
+    };
+  }, [period]);
 
   return (
     <Container id='myChart'>
       <Bar data={data} options={options} plugins={plugins} />
-      <ChartObserver
-        showPopUp={showPopUp}
-        onChangeShowPopUp={isShow => onChangeShowPopUp(isShow)}
-      />
     </Container>
   );
 });

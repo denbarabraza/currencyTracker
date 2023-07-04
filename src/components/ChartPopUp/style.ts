@@ -22,6 +22,6 @@ export const PopUpItem = styled.div`
   justify-content: center;
   border-radius: 20px;
   pointer-events: all;
-  background-color: ${props => props.theme.colors.headFootBackground};
+  background-color: rgb(53, 185, 26);
   transition: 0.4s;
 `;
