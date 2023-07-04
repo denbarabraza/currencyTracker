@@ -1,5 +1,6 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 
+import { IChartObserver } from '@/pages/TimeLine/Observer/interface';
 import { Container, PopUpItem } from '@/pages/TimeLine/Observer/style';
 import { ICurrencyChartResponse } from '@/types/api';
 
@@ -23,10 +24,6 @@ export class ChartSubject {
   }
 }
 
-interface IChartObserver {
-  chartBuilt: boolean;
-}
-
 export class ChartObserver extends PureComponent<{}, IChartObserver> {
   private timerId: any = null;
 
@@ -36,7 +33,12 @@ export class ChartObserver extends PureComponent<{}, IChartObserver> {
     this.timerId = null;
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState({ chartBuilt: true });
+    this.timerId = setTimeout(() => {
+      this.setState({ chartBuilt: false });
+    }, 3000);
+  }
 
   componentWillUnmount() {
     if (this.timerId) {
@@ -44,11 +46,9 @@ export class ChartObserver extends PureComponent<{}, IChartObserver> {
     }
   }
 
+  // eslint-disable-next-line react/no-unused-class-component-methods
   public update(): void {
-    this.setState({ chartBuilt: true });
-    this.timerId = setTimeout(() => {
-      this.setState({ chartBuilt: false });
-    }, 3000);
+    console.log('update отработал');
   }
 
   render(): React.ReactElement {

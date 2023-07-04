@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ArrowIcon, SelectedOption } from '@/components/CurrencySelect/styled';
 import { useAppDispatch } from '@/hooks/useStoreControl';
-import { setDayTimeLine } from '@/store/actions/timeLineActions';
+import { setDataForChart, setDayTimeLine } from '@/store/actions/timeLineActions';
 import { dateControl } from '@/utils/dateControl';
 import { getMonthName } from '@/utils/getMonthName';
 
@@ -28,6 +28,7 @@ export const DaySelect = () => {
   const monthName = getMonthName(+month);
 
   const handleChange = (dayValue: string) => {
+    dispatch(setDataForChart(null));
     setSelectedDay(dayValue);
     const day = `0${dayValue}`.slice(-2);
 

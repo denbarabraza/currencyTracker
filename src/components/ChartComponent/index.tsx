@@ -88,7 +88,7 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
       x: {},
       y: {
         beginAtZero: false,
-        grace: '30%',
+        grace: '80%',
       },
     },
   };
@@ -101,8 +101,6 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
     ): boolean | void {
       const {
         ctx,
-        data: IDataElem,
-        chartArea: { top, bottom, left, right, width },
         scales: { x, y },
       } = chart;
 
