@@ -13,7 +13,7 @@ import {
 } from 'chart.js';
 
 import { IData, ILineTest } from '@/components/ChartComponent/interface';
-import { ChartObserver, Subject } from '@/components/ChartObserver/index';
+import { ChartObserver, Subject } from '@/components/ChartObserver';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { getPeriodTimeLineSelector } from '@/store/selectors/homeSelectors';
 import { periodEnum } from '@/types/period';

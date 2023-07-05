@@ -1,8 +1,8 @@
 import React from 'react';
-import { CurrencySelect } from 'src/components/CurrencySelect';
 
 import { BarChart } from '@/components/ChartComponent';
 import { CurrencyCard } from '@/components/CurrencyCard';
+import { CurrencySelect } from '@/components/CurrencySelect';
 import { DaySelect } from '@/components/DaySelect';
 import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
@@ -79,27 +79,32 @@ export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
       return <ErrorInfo error={errorCurrency} />;
     }
 
+    console.log(currencyTimeLineName, this.props.selectedDay);
+
     return (
       <Container>
         <CurrencySelectBlock>
           <HintsTimeLine>Select the currency that interests you</HintsTimeLine>
           <CurrencySelect
+            data-testid='currencySelect'
             options={this.currenciesOptions}
             value={currencyTimeLineName}
             onChange={this.handleSelectChange}
           />
         </CurrencySelectBlock>
         <CurrencyFilterBlock>
-          <PeriodToggle period={period} />
+          <PeriodToggle period={period} data-testid='periodToggle' />
           {period === periodEnum.Day && (
             <>
               <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
-              <DaySelect />
+              <DaySelect data-testid='daySelect' />
             </>
           )}
           <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
         </CurrencyFilterBlock>
-        {dataChar && code && <BarChart dataChart={dataChar} code={code} />}
+        {dataChar && code && (
+          <BarChart data-testid='barChat' dataChart={dataChar} code={code} />
+        )}
       </Container>
     );
   }

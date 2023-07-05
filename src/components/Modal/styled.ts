@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModalItem = styled.div<{ isOpen: boolean }>`
+export const ModalItem = styled.div<{ open: boolean }>`
   pointer-events: all;
   position: fixed;
   top: 0;
@@ -10,15 +10,15 @@ export const ModalItem = styled.div<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+  opacity: ${({ open }) => (open ? 1 : 0)};
   background-color: ${props => props.theme.colors.modalItemBackground};
   transition: 0.4s;
   z-index: 3;
 
-  transform: ${({ isOpen }) => (isOpen ? '' : 'scale(0.5)')};
+  transform: ${({ open }) => (open ? '' : 'scale(0.5)')};
 `;
 
-export const ModalContent = styled.div<{ isOpen: boolean }>`
+export const ModalContent = styled.div<{ open: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +32,7 @@ export const ModalContent = styled.div<{ isOpen: boolean }>`
 
   transition: 0.4s all;
 
-  transform: ${({ isOpen }) => (isOpen ? '' : 'scale(1)')};
+  transform: ${({ open }) => (open ? '' : 'scale(1)')};
   @media (max-width: 574px) {
     width: 80vw;
     max-height: 92vh;

@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
-import { CurrencySelect } from 'src/components/CurrencySelect';
 
 import { ICurrency } from '@/components/Currency/interface';
+import { CurrencySelect } from '@/components/CurrencySelect';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import { setCurrencyTo } from '@/store/actions/homeActions';
 import {

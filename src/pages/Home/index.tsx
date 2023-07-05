@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { CurrencyModal } from 'src/components/Modal';
 
 import { CurrencyCard } from '@/components/CurrencyCard';
 import { ErrorInfo } from '@/components/ErrorInfo';
+import { CurrencyModal } from '@/components/Modal';
 import { currencyQuotes, currencyStock } from '@/constants/currency';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import {
