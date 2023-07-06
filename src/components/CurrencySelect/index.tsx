@@ -15,7 +15,7 @@ export const CurrencySelect: FC<ICustomSelect> = ({ options, value, onChange }) 
   };
 
   return (
-    <Container data-cy='currencySelect'>
+    <Container data-testid='currencySelect' data-cy='currencySelect'>
       <SelectedOption onClick={() => setIsOpen(!isOpen)} data-cy='selectOptions'>
         {selectedOption?.name}
         <ArrowIcon className={isOpen ? 'open' : ''} />

@@ -37,7 +37,7 @@ export const DaySelect = () => {
   };
 
   return (
-    <Container data-cy='daySelect'>
+    <Container data-cy='daySelect' data-testid='daySelect'>
       <SelectedOption onClick={() => setIsOpen(!isOpen)} data-cy='daySelectOption'>
         {selectedDay} {monthName}
         <ArrowIcon className={isOpen ? 'open' : ''} />

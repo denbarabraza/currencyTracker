@@ -111,7 +111,7 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
     }
 
     return (
-      <Container data-cy='mapContainer'>
+      <Container data-cy='mapContainer' data-testid='map'>
         <ButtonBlock data-cy='mapButtonBLock'>
           {cities.map(city => {
             return (
