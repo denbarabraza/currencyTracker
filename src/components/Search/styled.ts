@@ -40,13 +40,3 @@ export const InputItem = styled.input`
     width: 250px;
   }
 `;
-
-export const SearchIcon = styled.img`
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 50%;
-  right: 5px;
-  transform: translateY(-50%);
-  cursor: pointer;
-`;
