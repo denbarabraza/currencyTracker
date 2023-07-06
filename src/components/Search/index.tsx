@@ -50,7 +50,7 @@ export const Search: FC<ISearch> = memo(({ onSearch }) => {
         <SearchIcon
           data-cy='searchIcn'
           src={search}
-          alt='del icon'
+          alt='search icon'
           onClick={handleSearchClick}
         />
       </InputContainer>

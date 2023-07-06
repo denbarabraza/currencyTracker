@@ -30,7 +30,7 @@ export const PeriodToggle: FC<IPeriodToggle> = memo(({ open, period }) => {
   }, [period]);
 
   return (
-    <ToggleContainer open={open || false}>
+    <ToggleContainer open={open || false} data-testid='toggle'>
       {period === periodEnum.Month ? 'Month' : 'Day'}
       <ToggleLabel>
         <ToggleInput

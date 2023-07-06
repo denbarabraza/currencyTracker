@@ -79,32 +79,27 @@ export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
       return <ErrorInfo error={errorCurrency} />;
     }
 
-    console.log(currencyTimeLineName, this.props.selectedDay);
-
     return (
       <Container>
         <CurrencySelectBlock>
           <HintsTimeLine>Select the currency that interests you</HintsTimeLine>
           <CurrencySelect
-            data-testid='currencySelect'
             options={this.currenciesOptions}
             value={currencyTimeLineName}
             onChange={this.handleSelectChange}
           />
         </CurrencySelectBlock>
         <CurrencyFilterBlock>
-          <PeriodToggle period={period} data-testid='periodToggle' />
+          <PeriodToggle period={period} />
           {period === periodEnum.Day && (
             <>
               <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
-              <DaySelect data-testid='daySelect' />
+              <DaySelect />
             </>
           )}
           <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
         </CurrencyFilterBlock>
-        {dataChar && code && (
-          <BarChart data-testid='barChat' dataChart={dataChar} code={code} />
-        )}
+        {dataChar && code && <BarChart dataChart={dataChar} code={code} />}
       </Container>
     );
   }

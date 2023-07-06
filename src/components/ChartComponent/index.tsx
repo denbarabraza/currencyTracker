@@ -131,7 +131,7 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
   }, [period]);
 
   return (
-    <Container id='myChart'>
+    <Container data-testid='barChat'>
       <Bar data={data} options={options} plugins={plugins} />
     </Container>
   );

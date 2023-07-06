@@ -16,7 +16,7 @@ export const CurrencyCard: FC<ICurrencyCard> = ({
   handleCurrencyClick,
 }) => {
   return (
-    <ItemBlock>
+    <ItemBlock data-testid='currencyCard'>
       {currencies.map((currency, index) => {
         return (
           <CurrencyItem key={index} onClick={() => handleCurrencyClick(currency.name)}>

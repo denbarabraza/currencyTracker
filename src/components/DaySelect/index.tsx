@@ -37,14 +37,14 @@ export const DaySelect = () => {
   };
 
   return (
-    <Container>
+    <Container data-testid='daySelect'>
       <SelectedOption onClick={() => setIsOpen(!isOpen)}>
         {selectedDay} {monthName}
         <ArrowIcon className={isOpen ? 'open' : ''} />
       </SelectedOption>
       <OptionsContainer className={isOpen ? 'open' : ''}>
         {pastDays?.map(day => (
-          <Option key={day} onClick={() => handleChange(day)}>
+          <Option key={day} onClick={() => handleChange(day)} data-testid='day'>
             {day} {monthName}
           </Option>
         ))}

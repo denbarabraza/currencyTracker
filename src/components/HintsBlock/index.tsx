@@ -1,11 +1,7 @@
 import React, { FC, memo } from 'react';
-import { IHintsBlock } from 'src/components/HintsBlock/interface';
-import {
-  HintItem,
-  HintsBlockContainer,
-  InfoItem,
-} from 'src/components/HintsBlock/styled';
 
+import { IHintsBlock } from '@/components/HintsBlock/interface';
+import { HintItem, HintsBlockContainer, InfoItem } from '@/components/HintsBlock/styled';
 import { currencyQuotes } from '@/constants/currency';
 import { getCurrencyBySearch } from '@/utils/getCurrencyBySearch';
 
