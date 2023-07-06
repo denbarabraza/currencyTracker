@@ -15,12 +15,12 @@ export const CurrencySelect: FC<ICustomSelect> = ({ options, value, onChange }) 
   };
 
   return (
-    <Container data-testid='currencySelect'>
-      <SelectedOption onClick={() => setIsOpen(!isOpen)}>
+    <Container data-cy='currencySelect'>
+      <SelectedOption onClick={() => setIsOpen(!isOpen)} data-cy='selectOptions'>
         {selectedOption?.name}
         <ArrowIcon className={isOpen ? 'open' : ''} />
       </SelectedOption>
-      <OptionsContainer className={isOpen ? 'open' : ''}>
+      <OptionsContainer className={isOpen ? 'open' : ''} data-cy='selectOption'>
         {options.map(option => (
           <Option key={option.name} onClick={() => handleSelectOption(option)}>
             {option.name}

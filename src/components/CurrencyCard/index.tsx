@@ -26,7 +26,7 @@ export const CurrencyCard: FC<ICurrencyCard> = ({
           >
             <CurrencyImage src={currency.img} alt={currency.name} />
             <CurrencyInfo>
-              <CardTitle>{currency.name}</CardTitle>
+              <CardTitle data-cy='currencyTitle'>{currency.name}</CardTitle>
               {currencyForValue && (
                 <CardInfo>{currencyForValue?.data[currency.code].value}</CardInfo>
               )}

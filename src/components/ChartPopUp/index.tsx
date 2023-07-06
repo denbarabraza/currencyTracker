@@ -23,7 +23,7 @@ export class PopUp extends React.Component {
   render() {
     return (
       <Container>
-        <PopUpItem>
+        <PopUpItem data-cy='chartPopUp'>
           The chart with the data for the past month was successfully built
         </PopUpItem>
       </Container>

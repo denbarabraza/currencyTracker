@@ -63,7 +63,7 @@ export const Currency: FC<ICurrency> = ({ currentCurrency }) => {
         onChange={handleSelectChange}
       />
       {currencyTo && (
-        <ConverterValueItem>
+        <ConverterValueItem data-cy='modalConvertValue'>
           1 {currentCurrency.code} = {convertValue} {codeCurrencyTo}
         </ConverterValueItem>
       )}

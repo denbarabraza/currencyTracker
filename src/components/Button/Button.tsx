@@ -5,7 +5,7 @@ import { ButtonItem } from './styled';
 
 export const Button: FC<IButton> = memo(({ title, callBack }) => {
   return (
-    <ButtonItem onClick={callBack} type='button'>
+    <ButtonItem onClick={callBack} type='button' data-cy='mapButton'>
       {title}
     </ButtonItem>
   );
