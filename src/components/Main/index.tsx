@@ -21,7 +21,7 @@ export const Main = () => {
   const updateDate = formatDate(date?.meta.last_updated_at);
 
   return (
-    <Container>
+    <Container data-cy='main'>
       <Wrapper>
         <MainIMG alt='mainImage' src={mainImage} />
         {date && (

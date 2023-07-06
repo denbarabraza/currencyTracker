@@ -13,7 +13,7 @@ import { PATH } from '@/constants/path';
 
 export const Header = () => {
   return (
-    <Container>
+    <Container data-cy='header'>
       <Wrapper>
         <HeaderNav>
           <LogoHeader alt='logoHeader' src={logoHeader} />

@@ -16,10 +16,14 @@ export const CurrencyCard: FC<ICurrencyCard> = ({
   handleCurrencyClick,
 }) => {
   return (
-    <ItemBlock data-testid='currencyCard'>
+    <ItemBlock data-cy='currencyCard'>
       {currencies.map((currency, index) => {
         return (
-          <CurrencyItem key={index} onClick={() => handleCurrencyClick(currency.name)}>
+          <CurrencyItem
+            key={index}
+            onClick={() => handleCurrencyClick(currency.name)}
+            data-cy='currencyItem'
+          >
             <CurrencyImage src={currency.img} alt={currency.name} />
             <CurrencyInfo>
               <CardTitle>{currency.name}</CardTitle>

@@ -20,7 +20,7 @@ import {
 
 export const Footer = () => {
   return (
-    <Container>
+    <Container data-cy='footer'>
       <Wrapper>
         <InfoFooterBlock>
           <DescriptionBlock>

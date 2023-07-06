@@ -12,7 +12,11 @@ export const CurrencyModal: React.FC<IModalProps> = ({ currency, isOpen, onClose
 
   return createPortal(
     <ModalItem open={isOpen} onClick={onClose}>
-      <ModalContent open={isOpen} onClick={e => e.stopPropagation()}>
+      <ModalContent
+        open={isOpen}
+        onClick={e => e.stopPropagation()}
+        data-cy='modalCurrency'
+      >
         {currentCurrency ? <Currency currentCurrency={currentCurrency} /> : null}
       </ModalContent>
     </ModalItem>,
