@@ -77,8 +77,6 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
   };
 
   onChangeViewState = (viewState: ViewState) => {
-    const { setSearchCurrency } = this.props;
-
     this.setState(prevState => ({
       viewState: {
         ...prevState.viewState,
@@ -87,7 +85,6 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
         zoom: viewState.zoom,
       },
     }));
-    setSearchCurrency('');
   };
 
   onChangeSelectedBank = (bank: IBank | null) => {
@@ -99,12 +96,11 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
   render() {
     const { theme, banks, errorMap, searchCurrency } = this.props;
 
+    const currentBanks = getCurrentBanks(banks, searchCurrency);
     const mapStyle =
       theme === themeEnum.Dark
         ? 'mapbox://styles/mapbox/navigation-night-v1'
         : 'mapbox://styles/mapbox/navigation-day-v1';
-
-    const currentBanks = getCurrentBanks(banks, searchCurrency);
 
     if (errorMap) {
       return <ErrorInfo error={errorMap} />;
