@@ -30,12 +30,12 @@ export const fetchCurrencyDayOhlcvThunk =
   };
 
 export const fetchCurrencyMonthOhlcvThunk =
-  (currencyCode: string, yearMonth: string): AppThunk =>
+  (currencyCode: string, timeStartMonth: string): AppThunk =>
   async (dispatch: Dispatch) => {
     try {
       dispatch(setStatusApp(RequestStatusType.Loading));
 
-      const res = await currencyAPI.getCurrencyMonthData(currencyCode, yearMonth);
+      const res = await currencyAPI.getCurrencyMonthData(currencyCode, timeStartMonth);
 
       dispatch(setDataForChart(res));
       dispatch(setErrorCurrency(null));

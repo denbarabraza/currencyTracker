@@ -1,6 +1,11 @@
-export const dateControl = () => {
+import { periodEnum } from '@/types/period';
+
+export const dateControl = (period: periodEnum = periodEnum.Day) => {
   const currentDate = new Date();
-  const month = `0${currentDate.getMonth() + 1}`.slice(-2);
+  const month =
+    period === periodEnum.Month
+      ? `0${currentDate.getMonth()}`.slice(-2)
+      : `0${currentDate.getMonth() + 1}`.slice(-2);
   const day = `0${currentDate.getDate()}`.slice(-2);
   const year = currentDate.getFullYear();
   const daysInMonth = new Date(

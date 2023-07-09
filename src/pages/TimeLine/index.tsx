@@ -59,10 +59,10 @@ export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
     }
 
     if (this.code && period === periodEnum.Month) {
-      const date = dateControl();
-      const yearMonth = `${date.year}-${date.month}`;
+      const date = dateControl(period);
+      const timeStartMonth = `${date.year}-${date.month}-${date.day}`;
 
-      fetchCurrencyMonthOhlcvThunk(this.code, yearMonth);
+      fetchCurrencyMonthOhlcvThunk(this.code, timeStartMonth);
     }
   };
 

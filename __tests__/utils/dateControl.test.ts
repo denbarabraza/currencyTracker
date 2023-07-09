@@ -1,3 +1,4 @@
+import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';
 
 describe('dateControl', () => {

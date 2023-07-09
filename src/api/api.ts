@@ -38,10 +38,10 @@ export const currencyAPI = {
       )
       .then(res => res.data);
   },
-  getCurrencyMonthData(currencyCode: string, yearMonth: string) {
+  getCurrencyMonthData(currencyCode: string, timeStartMonth: string) {
     return instance
       .get<ICurrencyChartResponse[]>(
-        `BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${yearMonth}-01T00:00:00`,
+        `BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${timeStartMonth}T00:00:00`,
       )
       .then(res => res.data);
   },

@@ -15,5 +15,5 @@ export interface IMapDispatchToProps {
   setCurrencyForTimeLine: (currency: string) => void;
   setDataForChart: (data: ICurrencyChartResponse[] | null) => void;
   fetchCurrencyDayOhlcvThunk: (currencyCode: string, day: string) => void;
-  fetchCurrencyMonthOhlcvThunk: (currencyCode: string, yearMonth: string) => void;
+  fetchCurrencyMonthOhlcvThunk: (currencyCode: string, timeStartMonth: string) => void;
 }
