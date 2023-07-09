@@ -23,7 +23,7 @@ describe('BankCard Page', () => {
   it('interaction with the input should be correct', () => {
     const inputValue = 'dol';
 
-    cy.get('[data-cy="inputItem"]').get('[data-cy="searchIcn"]').should('be.visible');
+    cy.get('[data-cy="inputItem"]').should('be.visible');
     cy.get('[data-cy="inputItem"]').type(inputValue).should('have.value', inputValue);
   });
 

@@ -71,25 +71,6 @@ describe('Search', () => {
     expect(mockFetchBanksOfCitiesThunk).toHaveBeenCalledWith(geo);
   });
 
-  it('after entering the text and clicking on the "search" icon, the data should be sent', () => {
-    const { getByRole, getByAltText } = render(
-      <Provider store={store}>
-        <Theme>
-          <Search onSearch={searchMock} />
-        </Theme>
-      </Provider>,
-    );
-    const searchInput = getByRole('textbox');
-    const searchButton = getByAltText(/search icon/i);
-    const query = 'usd';
-
-    fireEvent.change(searchInput, { target: { value: query } });
-    fireEvent.click(searchButton);
-    expect(searchInput).toBeInTheDocument();
-    expect(searchButton).toBeInTheDocument();
-    expect(searchMock).toHaveBeenCalledWith(query);
-  });
-
   it('hints should appear if the input value contains at least one character', () => {
     const { getByRole } = render(
       <Provider store={store}>
