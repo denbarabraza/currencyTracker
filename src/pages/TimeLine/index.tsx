@@ -4,13 +4,17 @@ import { BarChart } from '@/components/ChartComponent';
 import { CurrencyCard } from '@/components/CurrencyCard';
 import { CurrencySelect } from '@/components/CurrencySelect';
 import { DaySelect } from '@/components/DaySelect';
-import { ErrorInfo } from '@/components/ErrorInfo';
 import { PeriodToggle } from '@/components/PeriodToggle';
+import {
+  ICommonTimeLine,
+  ICommonTimeLineContainer,
+  ITimeLineState,
+} from '@/components/TimeLineContainer/interface';
 import { currencyQuotes } from '@/constants/currency';
-import { CommonTimeLineCCType } from '@/pages/TimeLineContainer/types';
 import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';
 import { getCodeCurrency } from '@/utils/getCodeCurrency';
+import { getSelectedCurrency } from '@/utils/getSelectedCurrency';
 
 import {
   Container,
@@ -19,22 +23,24 @@ import {
   HintsTimeLine,
 } from './styled';
 
-export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
-  currencies = currencyQuotes.filter(
-    currency => currency.name === this.props.currencyTimeLineName,
-  );
-
+export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineState> {
   currenciesOptions = currencyQuotes.filter(
     currency => currency.name === 'Bitcoin' || currency.name === 'Ethereum',
   );
 
-  code = getCodeCurrency(this.props.currencyTimeLineName);
+  constructor(props: ICommonTimeLine) {
+    super(props);
+    this.state = {
+      code: getCodeCurrency(this.props.currencyTimeLineName),
+      selectCurrency: getSelectedCurrency(this.props.currencyTimeLineName),
+    };
+  }
 
   componentDidMount() {
     this.fetchCurrency();
   }
 
-  componentDidUpdate(prevProps: CommonTimeLineCCType) {
+  componentDidUpdate(prevProps: ICommonTimeLineContainer) {
     if (
       prevProps.selectedDay !== this.props.selectedDay ||
       prevProps.period !== this.props.period
@@ -42,7 +48,10 @@ export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
       this.fetchCurrency();
     }
     if (prevProps.currencyTimeLineName !== this.props.currencyTimeLineName) {
-      this.code = getCodeCurrency(this.props.currencyTimeLineName);
+      this.setState({
+        code: getCodeCurrency(this.props.currencyTimeLineName),
+        selectCurrency: getSelectedCurrency(this.props.currencyTimeLineName),
+      });
     }
   }
 
@@ -54,15 +63,15 @@ export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
       fetchCurrencyMonthOhlcvThunk,
     } = this.props;
 
-    if (this.code && selectedDay) {
-      fetchCurrencyDayOhlcvThunk(this.code, selectedDay);
+    if (this.state.code && selectedDay) {
+      fetchCurrencyDayOhlcvThunk(this.state.code, selectedDay);
     }
 
-    if (this.code && period === periodEnum.Month) {
+    if (this.state.code && period === periodEnum.Month) {
       const date = dateControl(period);
       const timeStartMonth = `${date.year}-${date.month}-${date.day}`;
 
-      fetchCurrencyMonthOhlcvThunk(this.code, timeStartMonth);
+      fetchCurrencyMonthOhlcvThunk(this.state.code, timeStartMonth);
     }
   };
 
@@ -72,12 +81,8 @@ export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
   };
 
   render() {
-    const { code, currencies } = this;
-    const { currencyTimeLineName, dataChar, period, errorCurrency } = this.props;
-
-    if (errorCurrency) {
-      return <ErrorInfo error={errorCurrency} />;
-    }
+    const { code } = this.state;
+    const { currencyTimeLineName, dataChar, period } = this.props;
 
     return (
       <Container>
@@ -97,7 +102,7 @@ export class TimeLine extends React.PureComponent<CommonTimeLineCCType> {
               <DaySelect />
             </>
           )}
-          <CurrencyCard handleCurrencyClick={() => {}} currencies={currencies} />
+          <CurrencyCard currencies={this.state.selectCurrency} />
         </CurrencyFilterBlock>
         {dataChar && code && <BarChart dataChart={dataChar} code={code} />}
       </Container>

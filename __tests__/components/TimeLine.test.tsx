@@ -11,7 +11,6 @@ describe('TimeLine', () => {
   const selectedDay = '2023-07-02';
   const period = periodEnum.Month;
   const dataChar = null;
-  const errorCurrency = null;
   const mockFetchCurrencyDayOhlcvThunk = jest.fn();
   const mockFetchCurrencyMonthOhlcvThunk = jest.fn();
   const mockSetCurrencyForTimeLine = jest.fn();
@@ -28,7 +27,6 @@ describe('TimeLine', () => {
             period={period}
             selectedDay={selectedDay}
             dataChar={dataChar}
-            errorCurrency={errorCurrency}
             setCurrencyForTimeLine={mockSetCurrencyForTimeLine}
             setDataForChart={mockSetDataForChart}
             fetchCurrencyDayOhlcvThunk={mockFetchCurrencyDayOhlcvThunk}
@@ -58,7 +56,6 @@ describe('TimeLine', () => {
             period={period}
             selectedDay={selectedDay}
             dataChar={dataChar}
-            errorCurrency={errorCurrency}
             setCurrencyForTimeLine={mockSetCurrencyForTimeLine}
             setDataForChart={mockSetDataForChart}
             fetchCurrencyDayOhlcvThunk={mockFetchCurrencyDayOhlcvThunk}
@@ -102,7 +99,6 @@ describe('TimeLine', () => {
             period={period}
             selectedDay={selectedDay}
             dataChar={dataChar}
-            errorCurrency={errorCurrency}
             setCurrencyForTimeLine={mockSetCurrencyForTimeLine}
             setDataForChart={mockSetDataForChart}
             fetchCurrencyDayOhlcvThunk={mockFetchCurrencyDayOhlcvThunk}
@@ -117,30 +113,29 @@ describe('TimeLine', () => {
     expect(barChat).toBeInTheDocument();
   });
 
-  it('if there is an error, the text should appear on the page', () => {
-    const errorCurrency = 'Some error';
+  /* it('if there is an error, the text should appear on the page', () => {
+     const errorCurrency = 'Some error';
 
-    const { getByText } = render(
-      <Provider store={store}>
-        <Theme>
-          <TimeLine
-            currencyTimeLineName={currencyTimeLineName}
-            period={period}
-            selectedDay={selectedDay}
-            dataChar={dataChar}
-            errorCurrency={errorCurrency}
-            setCurrencyForTimeLine={mockSetCurrencyForTimeLine}
-            setDataForChart={mockSetDataForChart}
-            fetchCurrencyDayOhlcvThunk={mockFetchCurrencyDayOhlcvThunk}
-            fetchCurrencyMonthOhlcvThunk={mockFetchCurrencyMonthOhlcvThunk}
-          />
-        </Theme>
-      </Provider>,
-    );
+     const { getByText } = render(
+       <Provider store={store}>
+         <Theme>
+           <TimeLine
+             currencyTimeLineName={currencyTimeLineName}
+             period={period}
+             selectedDay={selectedDay}
+             dataChar={dataChar}
+             setCurrencyForTimeLine={mockSetCurrencyForTimeLine}
+             setDataForChart={mockSetDataForChart}
+             fetchCurrencyDayOhlcvThunk={mockFetchCurrencyDayOhlcvThunk}
+             fetchCurrencyMonthOhlcvThunk={mockFetchCurrencyMonthOhlcvThunk}
+           />
+         </Theme>
+       </Provider>,
+     );
 
-    const error = 'Ops, something went wrong...Some error';
-    const errorComponent = getByText(error);
+     const error = 'Ops, something went wrong...Some error';
+     const errorComponent = getByText(error);
 
-    expect(errorComponent).toBeInTheDocument();
-  });
+     expect(errorComponent).toBeInTheDocument();
+   }); */
 });

@@ -12,6 +12,7 @@ import {
   CurrencyImage,
   CurrencyInfo,
   CurrencyItem,
+  HrItem,
   ItemBlock,
   QuotesBlock,
   StocksBlock,
@@ -31,10 +32,6 @@ export const Home = () => {
   const selectedCurrency = useAppSelector(getCurrencyFromSelector);
   const errorCurrency = useAppSelector(getErrorCurrencySelector);
 
-  const handleCurrencyClick = (currencyName: string) => {
-    dispatch(setCurrencyFrom(currencyName));
-  };
-
   const handleCloseModal = () => {
     dispatch(setCurrencyFrom(null));
     dispatch(setCurrencyTo(null));
@@ -52,14 +49,17 @@ export const Home = () => {
     <CurrencyBlock>
       <StocksBlock>
         <TitleBlock>Stocks</TitleBlock>
+        <HrItem />
         <ItemBlock>
           {currencyStock.map((curStock, index) => {
+            const { value, img, name } = curStock;
+
             return (
               <CurrencyItem key={index}>
-                <CurrencyImage src={curStock.img} alt={curStock.name} />
+                <CurrencyImage src={img} alt={name} title={name} />
                 <CurrencyInfo>
-                  <CardTitle>{curStock.name}</CardTitle>
-                  <CardInfo>{curStock.value}</CardInfo>
+                  <CardTitle>{name}</CardTitle>
+                  <CardInfo>{value}</CardInfo>
                 </CurrencyInfo>
               </CurrencyItem>
             );
@@ -68,11 +68,8 @@ export const Home = () => {
       </StocksBlock>
       <QuotesBlock>
         <TitleBlock>Quotes</TitleBlock>
-        <CurrencyCard
-          currencies={currencyQuotes}
-          currencyForValue={currency}
-          handleCurrencyClick={currencyName => handleCurrencyClick(currencyName)}
-        />
+        <HrItem />
+        <CurrencyCard currencies={currencyQuotes} currencyForValue={currency} />
       </QuotesBlock>
       {selectedCurrency && (
         <CurrencyModal currency={selectedCurrency} isOpen onClose={handleCloseModal} />

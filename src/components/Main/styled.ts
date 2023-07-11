@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
   width: 90vw;
   min-height: 75vh;
   padding: 10px 0;
-  /*border: 2px solid #28f104;*/
 `;
 
 export const MainIMG = styled.img`

@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TimeLine } from 'src/pages/TimeLine';
 
+import { ErrorInfo } from '@/components/ErrorInfo';
 import {
-  CommonTimeLineCCType,
+  ICommonTimeLineContainer,
   IMapDispatchToProps,
   IMapStateToProps,
-} from '@/pages/TimeLineContainer/types';
+} from '@/components/TimeLineContainer/interface';
+import { TimeLine } from '@/pages/TimeLine';
 import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/timeLineActions';
 import {
   fetchCurrencyDayOhlcvThunk,
@@ -14,9 +15,11 @@ import {
 } from '@/store/thunks/timeLineThunks';
 import { RootStoreType } from '@/store/types';
 
-class TimeLineContainer extends React.Component<CommonTimeLineCCType> {
+class TimeLineContainer extends React.Component<ICommonTimeLineContainer> {
   render() {
-    return <TimeLine {...this.props} />;
+    const { errorCurrency, ...rest } = this.props;
+
+    return errorCurrency ? <ErrorInfo error={errorCurrency} /> : <TimeLine {...rest} />;
   }
 }
 

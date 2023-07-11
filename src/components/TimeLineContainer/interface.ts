@@ -1,7 +1,16 @@
 import { ICurrencyChartResponse } from '@/types/api';
+import { ICurrencyQuotes } from '@/types/currency';
 import { periodEnum } from '@/types/period';
 
-export type CommonTimeLineCCType = IMapStateToProps & IMapDispatchToProps;
+export interface ICommonTimeLineContainer extends IMapStateToProps, IMapDispatchToProps {}
+
+export interface ICommonTimeLine
+  extends Omit<ICommonTimeLineContainer, 'errorCurrency'> {}
+
+export interface ITimeLineState {
+  selectCurrency: ICurrencyQuotes[];
+  code: string | null | undefined;
+}
 
 export interface IMapStateToProps {
   currencyTimeLineName: string | null;

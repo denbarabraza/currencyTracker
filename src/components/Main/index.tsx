@@ -23,7 +23,7 @@ export const Main = () => {
   return (
     <Container data-cy='main'>
       <Wrapper>
-        <MainIMG alt='mainImage' src={mainImage} />
+        <MainIMG alt='mainImage' src={mainImage} title='mainImage' />
         {date && (
           <DateBlock>
             <Circle />

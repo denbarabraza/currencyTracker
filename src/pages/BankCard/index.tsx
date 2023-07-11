@@ -1,31 +1,28 @@
 import React, { PureComponent } from 'react';
 import Map, { ViewState, ViewStateChangeEvent } from 'react-map-gl';
 
-import { Button } from '@/components/Button/Button';
-import { ButtonBlock } from '@/components/Button/styled';
-import { ErrorInfo } from '@/components/ErrorInfo';
+import {
+  IBankCardState,
+  ICommonBankCard,
+} from '@/components/BankCardContainer/interface';
 import { MarkerControl } from '@/components/MarkerControl';
 import { Search } from '@/components/Search';
-import { cities } from '@/constants/cities';
 import { Container } from '@/pages/BankCard/styled';
-import { CommonBankCardCCType, IBankCardState } from '@/pages/BankCardContainer/types';
 import { themeEnum } from '@/theme/types';
 import { IBank } from '@/types/bank';
-import { ISelectedCity } from '@/types/city';
 import { getCurrentBanks } from '@/utils/getCurrentBanks';
 
-export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState> {
-  constructor(props: CommonBankCardCCType) {
+export class BankCard extends PureComponent<ICommonBankCard, IBankCardState> {
+  constructor(props: ICommonBankCard) {
     super(props);
+    const defaultLongitude = 27.56152;
+    const defaultLatitude = 53.90454;
+
     this.state = {
       selectedBank: null,
-      selectedCity: {
-        longitude: this.props.geo ? this.props.geo.longitude : 27.56152,
-        latitude: this.props.geo ? this.props.geo.latitude : 53.90454,
-      },
       viewState: {
-        longitude: this.props.geo ? this.props.geo.longitude : 27.56152,
-        latitude: this.props.geo ? this.props.geo.latitude : 53.90454,
+        longitude: this.props.geo ? this.props.geo.longitude : defaultLongitude,
+        latitude: this.props.geo ? this.props.geo.latitude : defaultLatitude,
         zoom: 10,
       },
     };
@@ -35,11 +32,8 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
     this.fetchBanks();
   }
 
-  componentDidUpdate(prevProps: CommonBankCardCCType, prevState: IBankCardState) {
-    if (
-      prevState.selectedCity !== this.state.selectedCity ||
-      prevProps.geo !== this.props.geo
-    ) {
+  componentDidUpdate(prevProps: ICommonBankCard) {
+    if (prevProps.geo !== this.props.geo) {
       this.fetchBanks();
     }
   }
@@ -51,25 +45,17 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
       fetchGeoThunk();
     }
 
-    if (geo && this.state.selectedCity) {
-      fetchBanksOfCitiesThunk(this.state.selectedCity);
-    }
-  };
+    if (geo) {
+      this.setState(prevState => ({
+        viewState: {
+          ...prevState.viewState,
+          latitude: geo.latitude,
+          longitude: geo.longitude,
+        },
+      }));
 
-  onClickButton = (city: ISelectedCity) => {
-    this.setState(prevState => ({
-      viewState: {
-        ...prevState.viewState,
-        latitude: city.latitude,
-        longitude: city.longitude,
-      },
-      selectedCity: {
-        ...city,
-        latitude: city.latitude,
-        longitude: city.longitude,
-      },
-    }));
-    this.props.setSearchCurrency('');
+      fetchBanksOfCitiesThunk(geo);
+    }
   };
 
   onSearch = (searchValue: string) => {
@@ -94,7 +80,7 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
   };
 
   render() {
-    const { theme, banks, errorMap, searchCurrency } = this.props;
+    const { theme, banks, searchCurrency } = this.props;
 
     const currentBanks = getCurrentBanks(banks, searchCurrency);
     const mapStyle =
@@ -102,23 +88,8 @@ export class BankCard extends PureComponent<CommonBankCardCCType, IBankCardState
         ? 'mapbox://styles/mapbox/navigation-night-v1'
         : 'mapbox://styles/mapbox/navigation-day-v1';
 
-    if (errorMap) {
-      return <ErrorInfo error={errorMap} />;
-    }
-
     return (
       <Container data-cy='mapContainer' data-testid='map'>
-        <ButtonBlock data-cy='mapButtonBLock'>
-          {cities.map(city => {
-            return (
-              <Button
-                key={city.id}
-                title={city.city}
-                callBack={() => this.onClickButton(city)}
-              />
-            );
-          })}
-        </ButtonBlock>
         <Search onSearch={this.onSearch} />
         <Map
           {...this.state.viewState}

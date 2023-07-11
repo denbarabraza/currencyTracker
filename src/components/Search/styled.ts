@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: row;
   position: relative;
+  margin: 10px 0;
   @media (max-width: 690px) {
     width: 100%;
     grid-area: 2 / 1 / 3 / 3;

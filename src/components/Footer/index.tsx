@@ -19,14 +19,33 @@ import {
 } from './styled';
 
 export const Footer = () => {
+  const descriptionFooterData = [
+    {
+      title: 'General',
+      items: ['Market', 'Service'],
+    },
+    {
+      title: 'Product',
+      items: ['Sparks', 'Snaps'],
+    },
+    {
+      title: 'Community',
+      items: ['Ideas', 'Streams'],
+    },
+  ];
+
   return (
     <Container data-cy='footer'>
       <Wrapper>
         <InfoFooterBlock>
           <DescriptionBlock>
             <LogoBlockFooter>
-              <LogoIconFooter alt='logoFooter' src={logoHeader} />
-              <LogoTitleFooter alt='currencyTracker' src={currencyTracker} />
+              <LogoIconFooter alt='logoFooter' src={logoHeader} title='logoFooter' />
+              <LogoTitleFooter
+                alt='currencyTracker'
+                src={currencyTracker}
+                title='currencyTracker'
+              />
             </LogoBlockFooter>
             <DescriptionText>
               Since then, the company has grown organically to. Startup is the worlds
@@ -35,24 +54,21 @@ export const Footer = () => {
             </DescriptionText>
           </DescriptionBlock>
           <AboutBlock>
-            <DescriptionBlock>
-              <DescriptionTitle>General</DescriptionTitle>
-              <DescriptionItem>Market</DescriptionItem>
-              <DescriptionItem>Service</DescriptionItem>
-            </DescriptionBlock>
-            <DescriptionBlock>
-              <DescriptionTitle>Product</DescriptionTitle>
-              <DescriptionItem>Sparks</DescriptionItem>
-              <DescriptionItem>Snaps</DescriptionItem>
-            </DescriptionBlock>
-            <DescriptionBlock>
-              <DescriptionTitle>Community</DescriptionTitle>
-              <DescriptionItem>Ideas</DescriptionItem>
-              <DescriptionItem>Streams</DescriptionItem>
-            </DescriptionBlock>
+            {descriptionFooterData.map(data => {
+              const { items, title } = data;
+
+              return (
+                <DescriptionBlock key={title}>
+                  <DescriptionTitle>{title}</DescriptionTitle>
+                  {items.map(item => (
+                    <DescriptionItem key={item}>{item}</DescriptionItem>
+                  ))}
+                </DescriptionBlock>
+              );
+            })}
           </AboutBlock>
         </InfoFooterBlock>
-        <RightsInfoBlock>Startup © 2023-2024, All Rights Reserved</RightsInfoBlock>
+        <RightsInfoBlock>Startup © 2023-2024, All Rights Reserved</RightsInfoBlock>;
       </Wrapper>
     </Container>
   );

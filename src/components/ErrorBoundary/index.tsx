@@ -13,7 +13,6 @@ export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundary
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    // eslint-disable-next-line no-console
     console.error('Uncaught error:', error, errorInfo);
   }
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ModalItem = styled.div<{ open: boolean }>`
-  pointer-events: all;
   position: fixed;
   top: 0;
   left: 0;

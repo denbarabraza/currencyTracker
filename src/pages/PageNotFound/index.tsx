@@ -6,7 +6,11 @@ import { Container, PageNotFoundImg } from '@/pages/PageNotFound/style';
 export const PageNotFound = () => {
   return (
     <Container>
-      <PageNotFoundImg src={pageNotFoundImg} alt='PageNotFoundImg' />
+      <PageNotFoundImg
+        src={pageNotFoundImg}
+        alt='PageNotFoundImg'
+        title='PageNotFoundImg'
+      />
     </Container>
   );
 };

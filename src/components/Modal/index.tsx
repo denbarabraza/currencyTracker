@@ -14,7 +14,7 @@ export const CurrencyModal: React.FC<IModalProps> = ({ currency, isOpen, onClose
     <ModalItem open={isOpen} onClick={onClose}>
       <ModalContent
         open={isOpen}
-        onClick={e => e.stopPropagation()}
+        onClick={event => event.stopPropagation()}
         data-cy='modalCurrency'
       >
         {currentCurrency ? <Currency currentCurrency={currentCurrency} /> : null}

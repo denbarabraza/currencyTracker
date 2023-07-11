@@ -12,6 +12,10 @@ import {
 
 export const MarkerControl: FC<IMarkerControl> = memo(
   ({ currentBanks, selectedBank, setSelectedBank }) => {
+    const onClosePopupHandler = () => {
+      setSelectedBank(null);
+    };
+
     return currentBanks?.map(bank => (
       <Marker
         key={bank.fsq_id}
@@ -23,6 +27,7 @@ export const MarkerControl: FC<IMarkerControl> = memo(
         <LocationImg
           src={location}
           alt='location'
+          title='location'
           onClick={e => {
             e.preventDefault();
             setSelectedBank(bank);
@@ -33,7 +38,7 @@ export const MarkerControl: FC<IMarkerControl> = memo(
           <Popup
             longitude={selectedBank.geocodes.main.longitude}
             latitude={selectedBank.geocodes.main.latitude}
-            onClose={() => setSelectedBank(null)}
+            onClose={onClosePopupHandler}
             closeButton
             closeOnClick={false}
           >

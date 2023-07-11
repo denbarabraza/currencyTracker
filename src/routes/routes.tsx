@@ -6,8 +6,8 @@ import { PATH } from '@/constants/path';
 const Home = React.lazy(() =>
   import('@/pages/Home').then(({ Home }) => ({ default: Home })),
 );
-const TimeLine = React.lazy(() => import('@/pages/TimeLineContainer'));
-const BankCard = React.lazy(() => import('@/pages/BankCardContainer'));
+const TimeLine = React.lazy(() => import('@/components/TimeLineContainer'));
+const BankCard = React.lazy(() => import('@/components/BankCardContainer'));
 const Contacts = React.lazy(() =>
   import('@/pages/Contacts').then(({ Contacts }) => ({ default: Contacts })),
 );

@@ -5,7 +5,7 @@ export interface ICity {
   longitude: number;
 }
 
-export type ISelectedCity = Omit<ICity, 'id' | 'city'>;
+export interface IGeoCity extends Omit<ICity, 'id' | 'city'> {}
 
 export interface IMapGeo {
   longitude: number;

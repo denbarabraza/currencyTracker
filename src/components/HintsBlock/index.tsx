@@ -8,14 +8,22 @@ import { getCurrencyBySearch } from '@/utils/getCurrencyBySearch';
 export const HintsBlock: FC<IHintsBlock> = memo(({ searchValue, onClickSelectHint }) => {
   const hintsData = getCurrencyBySearch(searchValue, currencyQuotes);
 
+  const onClickHintItemHandler = (code: string) => {
+    onClickSelectHint(code);
+  };
+
   return (
     <HintsBlockContainer data-cy='hintsBlock'>
       {hintsData.length > 0 ? (
-        hintsData?.map(hint => (
-          <HintItem key={hint.symbol} onClick={() => onClickSelectHint(hint.code)}>
-            {hint.name} ({hint.code})
-          </HintItem>
-        ))
+        hintsData?.map(hint => {
+          const { symbol, code, name } = hint;
+
+          return (
+            <HintItem key={symbol} onClick={() => onClickHintItemHandler(code)}>
+              {name} ({code})
+            </HintItem>
+          );
+        })
       ) : (
         <InfoItem>No result, change the entered value</InfoItem>
       )}

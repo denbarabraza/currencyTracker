@@ -35,10 +35,13 @@ export const DaySelect = () => {
     dispatch(setDayTimeLine(`${year}-${month}-${day}`));
     setIsOpen(false);
   };
+  const onClickSelectedOption = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <Container data-cy='daySelect' data-testid='daySelect'>
-      <SelectedOption onClick={() => setIsOpen(!isOpen)} data-cy='daySelectOption'>
+      <SelectedOption onClick={onClickSelectedOption} data-cy='daySelectOption'>
         {selectedDay} {monthName}
         <ArrowIcon className={isOpen ? 'open' : ''} />
       </SelectedOption>

@@ -16,19 +16,11 @@ export const TitleBlock = styled.div`
   font-weight: 300;
   line-height: 30px;
   color: ${props => props.theme.colors.fontColor};
-
-  &:after {
-    transform: scaleX(1);
-    content: '';
-    display: block;
-    max-width: 300px;
-    height: 2px;
-    background-color: ${props => props.theme.colors.currencyCard};
-    bottom: 0;
-    left: 0;
-    transform-origin: left center;
-    transition: transform 0.5s ease-in-out;
-  }
+`;
+export const HrItem = styled.hr`
+  border: none;
+  border-top: 2px solid ${props => props.theme.colors.currencyCard};
+  margin: 20px 0;
 `;
 
 export const ItemBlock = styled.div`

@@ -4,5 +4,4 @@ import { ICurrencyQuotes } from '@/types/currency';
 export interface ICurrencyCard {
   currencies: ICurrencyQuotes[];
   currencyForValue?: ICurrencies | null;
-  handleCurrencyClick: (currencyName: string) => void;
 }

@@ -10,15 +10,15 @@ import {
 } from '@/store/actions/mapActions';
 import { RequestStatusType } from '@/store/reducers/app/types';
 import { AppThunk } from '@/store/types';
-import { ISelectedCity } from '@/types/city';
+import { IGeoCity } from '@/types/city';
 
 export const fetchBanksOfCitiesThunk =
-  (city: ISelectedCity): AppThunk =>
+  (geo: IGeoCity): AppThunk =>
   async (dispatch: Dispatch) => {
     try {
       dispatch(setStatusApp(RequestStatusType.Loading));
 
-      const res = await mapAPI.getBanks(city);
+      const res = await mapAPI.getBanks(geo);
 
       dispatch(fetchBanksOfCities(res));
       dispatch(setErrorMap(null));

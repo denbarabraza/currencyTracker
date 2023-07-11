@@ -43,7 +43,11 @@ export const Currency: FC<ICurrency> = ({ currentCurrency }) => {
 
   return (
     <Container>
-      <CurrencyIMG src={currentCurrency.img} alt={currentCurrency.name} />
+      <CurrencyIMG
+        src={currentCurrency.img}
+        alt={currentCurrency.name}
+        title={currentCurrency.name}
+      />
       <DescriptionItem>
         <b>Name:</b> {currentCurrency.name}
       </DescriptionItem>

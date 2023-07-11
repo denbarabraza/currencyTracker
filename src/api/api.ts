@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ICurrencies } from '@/store/reducers/home/types';
 import { ICurrencyChartResponse } from '@/types/api';
 import { IBanksData } from '@/types/bank';
-import { ISelectedCity } from '@/types/city';
+import { IGeoCity } from '@/types/city';
 
 const CURRENCY_KEY = process.env.CURRENCY_API_KEY;
 const COINAPI_KEY = process.env.COIN_API_KEY;
@@ -34,7 +34,7 @@ export const currencyAPI = {
   getCurrencyDayData(currencyCode: string, day: string) {
     return instance
       .get<ICurrencyChartResponse[]>(
-        `BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${day}T00:00:00`,
+        `BITSTAMP_SPOT_${currencyCode}_USD/history?period_id=1DAY&time_start=${day}T00:00:00&time_end=${day}T23:59:59`,
       )
       .then(res => res.data);
   },
@@ -48,8 +48,8 @@ export const currencyAPI = {
 };
 
 export const mapAPI = {
-  getBanks(city: ISelectedCity) {
-    const { longitude, latitude } = city;
+  getBanks(geo: IGeoCity) {
+    const { longitude, latitude } = geo;
 
     return axios
       .get<IBanksData>(
