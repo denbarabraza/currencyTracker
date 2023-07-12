@@ -53,7 +53,7 @@ export const mapAPI = {
 
     return axios
       .get<IBanksData>(
-        `https://api.foursquare.com/v3/places/search?ll=${latitude}%2C${longitude}&radius=10000&categories=11045&limit=50`,
+        `https://api.foursquare.com/v3/places/search?ll=${latitude}%2C${longitude}&radius=60000&categories=11045&limit=50`,
         {
           headers: {
             Authorization: FOURSQUAREAPI_KEY,
