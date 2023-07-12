@@ -112,30 +112,4 @@ describe('TimeLine', () => {
 
     expect(barChat).toBeInTheDocument();
   });
-
-  /* it('if there is an error, the text should appear on the page', () => {
-     const errorCurrency = 'Some error';
-
-     const { getByText } = render(
-       <Provider store={store}>
-         <Theme>
-           <TimeLine
-             currencyTimeLineName={currencyTimeLineName}
-             period={period}
-             selectedDay={selectedDay}
-             dataChar={dataChar}
-             setCurrencyForTimeLine={mockSetCurrencyForTimeLine}
-             setDataForChart={mockSetDataForChart}
-             fetchCurrencyDayOhlcvThunk={mockFetchCurrencyDayOhlcvThunk}
-             fetchCurrencyMonthOhlcvThunk={mockFetchCurrencyMonthOhlcvThunk}
-           />
-         </Theme>
-       </Provider>,
-     );
-
-     const error = 'Ops, something went wrong...Some error';
-     const errorComponent = getByText(error);
-
-     expect(errorComponent).toBeInTheDocument();
-   }); */
 });

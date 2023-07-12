@@ -92,6 +92,7 @@ export class BankCard extends PureComponent<ICommonBankCard, IBankCardState> {
       <Container data-cy='mapContainer' data-testid='map'>
         <Search onSearch={this.onSearch} />
         <Map
+          data-testid='map'
           {...this.state.viewState}
           mapStyle={mapStyle}
           mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}

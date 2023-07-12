@@ -60,7 +60,7 @@ export const Home = () => {
           })}
         </ItemBlock>
       </StocksBlock>
-      <QuotesBlock>
+      <QuotesBlock data-testid='blockWithCurrency'>
         <TitleBlock>Quotes</TitleBlock>
         <HrItem />
         <CurrencyCard currencies={currencyQuotes} currencyForValue={currency} />
