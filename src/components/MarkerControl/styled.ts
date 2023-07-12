@@ -7,16 +7,18 @@ export const LocationImg = styled.img`
 
 export const PopupBlock = styled.div`
   min-width: 150px;
-  color: black;
+  color: ${props => props.theme.usedColors.black};
 `;
 
 export const BankName = styled.div`
-  font-family: Poppins, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-family: ${props => props.theme.fonts[0]};
+  font-size: ${props => props.theme.fontSizes.xl};
+  font-weight: ${props => props.theme.fontWeight.semibold};
+  margin-bottom: ${props => props.theme.indentation.i10};
 `;
 
 export const BankDescription = styled.div`
-  font-weight: 300;
+  font-weight: ${props => props.theme.fontWeight.light};
+  font-family: ${props => props.theme.fonts[0]};
+  font-size: ${props => props.theme.fontSizes.sm};
 `;

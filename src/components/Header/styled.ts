@@ -28,14 +28,14 @@ export const HeaderNav = styled.nav`
 
 export const NavLinkItem = styled(NavLink)`
   font-style: normal;
-  font-weight: 300;
-  font-size: 22px;
+  font-weight: ${props => props.theme.fontWeight.light};
+  font-size: ${props => props.theme.fontSizes.xxl};
   line-height: 30px;
   color: ${props => props.theme.colors.fontColor};
   text-decoration: none;
 
   &:hover {
-    color: rgb(53, 185, 26);
+    color: ${props => props.theme.usedColors.green};
   }
 
   &.active:after {
@@ -44,7 +44,7 @@ export const NavLinkItem = styled(NavLink)`
     display: block;
     width: 100%;
     height: 2px;
-    background-color: rgb(53, 185, 26);
+    background-color: ${props => props.theme.usedColors.green};
     bottom: 0;
     left: 0;
     transform-origin: left center;
@@ -52,13 +52,13 @@ export const NavLinkItem = styled(NavLink)`
   }
 
   @media (max-width: 600px) {
-    font-size: 18px;
+    font-size: ${props => props.theme.fontSizes.xl};
   }
   @media (max-width: 515px) {
-    font-size: 16px;
+    font-size: ${props => props.theme.fontSizes.l};
   }
   @media (max-width: 400px) {
-    font-size: 12px;
+    font-size: ${props => props.theme.fontSizes.sm};
   }
 `;
 

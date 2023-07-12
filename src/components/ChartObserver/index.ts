@@ -34,7 +34,7 @@ export class Subject {
   }
 }
 
-export class ChartObserver implements IObserver {
+export abstract class Observer {
   private subject: Subject;
 
   constructor(subject: Subject) {
@@ -42,13 +42,17 @@ export class ChartObserver implements IObserver {
     this.subject.registerObserver(this);
   }
 
-  public update(): void {
-    const activePopUp = new PopUp({});
-
-    activePopUp.renderComponent();
-  }
+  public abstract update(): void;
 
   public unsubscribe(): void {
     this.subject.removeObserver(this);
+  }
+}
+
+export class ChartObserver extends Observer {
+  public update() {
+    const activePopUp = new PopUp({});
+
+    activePopUp.renderComponent();
   }
 }

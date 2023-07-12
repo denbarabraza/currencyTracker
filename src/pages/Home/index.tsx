@@ -18,9 +18,8 @@ import {
   StocksBlock,
   TitleBlock,
 } from '@/pages/Home/styled';
-import { setCurrencyFrom, setCurrencyTo } from '@/store/actions/homeActions';
+import { getModalStatusSelector } from '@/store/selectors/appSelectors';
 import {
-  getCurrencyFromSelector,
   getCurrencySelector,
   getErrorCurrencySelector,
 } from '@/store/selectors/homeSelectors';
@@ -29,17 +28,12 @@ import { fetchCurrencyThunk } from '@/store/thunks/homeThunks';
 export const Home = () => {
   const dispatch = useAppDispatch();
   const currency = useAppSelector(getCurrencySelector);
-  const selectedCurrency = useAppSelector(getCurrencyFromSelector);
+  const isModalOpen = useAppSelector(getModalStatusSelector);
   const errorCurrency = useAppSelector(getErrorCurrencySelector);
-
-  const handleCloseModal = () => {
-    dispatch(setCurrencyFrom(null));
-    dispatch(setCurrencyTo(null));
-  };
 
   useEffect(() => {
     dispatch(fetchCurrencyThunk());
-  }, []);
+  }, [dispatch]);
 
   if (errorCurrency) {
     return <ErrorInfo error={errorCurrency} />;
@@ -71,9 +65,7 @@ export const Home = () => {
         <HrItem />
         <CurrencyCard currencies={currencyQuotes} currencyForValue={currency} />
       </QuotesBlock>
-      {selectedCurrency && (
-        <CurrencyModal currency={selectedCurrency} isOpen onClose={handleCloseModal} />
-      )}
+      {isModalOpen && <CurrencyModal />}
     </CurrencyBlock>
   );
 };

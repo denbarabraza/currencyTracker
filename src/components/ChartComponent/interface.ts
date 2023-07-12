@@ -13,7 +13,10 @@ export interface IData {
       backgroundColor: (ctx: any) => string;
       borderColor: string;
       borderWidth: number;
+      maxBarThickness: number;
       borderSkipped: boolean;
+      barPercentage: number;
+      minBarLength: number;
     },
   ];
 }

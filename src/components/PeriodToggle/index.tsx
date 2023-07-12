@@ -27,7 +27,7 @@ export const PeriodToggle: FC<IPeriodToggle> = memo(({ open, period }) => {
     }
     dispatch(setDataForChart(null));
     dispatch(setPeriodTimeLine(currentPeriod));
-  }, [period]);
+  }, [dispatch, period]);
 
   return (
     <ToggleContainer open={open || false} data-testid='toggle'>

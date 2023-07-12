@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const ContactsTitle = styled.div`
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-size: ${props => props.theme.fontSizes.xl};
+  font-weight: ${props => props.theme.fontWeight.bold};
+  margin-bottom: ${props => props.theme.indentation.i20};
 `;
 
 export const BlockSocialItem = styled.div`
   display: flex;
-  gap: 30px;
-  margin: 20px 0;
+  gap: ${props => props.theme.indentation.i30};
+  margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
 `;
 export const IconFooter = styled.img`
   width: 25px;
@@ -21,5 +21,5 @@ export const IconFooter = styled.img`
   }
 `;
 export const ContactsItem = styled.div`
-  font-size: 16px;
+  font-size: ${props => props.theme.fontSizes.l};
 `;

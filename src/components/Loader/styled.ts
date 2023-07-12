@@ -35,8 +35,8 @@ export const Spinner = styled.div`
   display: inline-block;
   width: 10%;
   height: 10%;
-  border: 2px solid rgb(53, 185, 26);
-  border-top-color: rgb(204, 204, 204);
+  border: 2px solid ${props => props.theme.usedColors.green};
+  border-top-color: ${props => props.theme.usedColors.grayMoreOpacity};
   border-radius: 50%;
   animation: ${spin} 1s ease-in-out infinite;
 `;

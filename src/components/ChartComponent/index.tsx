@@ -3,16 +3,14 @@ import { Bar } from 'react-chartjs-2';
 import {
   BarElement,
   CategoryScale,
-  Chart,
   Chart as ChartJS,
-  ChartMeta,
   Legend,
   LinearScale,
   Title,
   Tooltip,
 } from 'chart.js';
 
-import { IData, ILineTest } from '@/components/ChartComponent/interface';
+import { ILineTest } from '@/components/ChartComponent/interface';
 import { ChartObserver, Subject } from '@/components/ChartObserver';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { getPeriodTimeLineSelector } from '@/store/selectors/homeSelectors';
@@ -39,7 +37,7 @@ export const BarChart: FC<ILineTest> = memo(({ dataChart, code }) => {
     return () => {
       observer.unsubscribe();
     };
-  }, [period]);
+  }, [period, dataChart]);
 
   return (
     <Container data-cy='barChat' data-testid='barChat'>

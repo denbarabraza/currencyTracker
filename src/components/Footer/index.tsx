@@ -2,6 +2,7 @@ import React from 'react';
 
 import currencyTracker from '@/assets/image/currencyTracker.svg';
 import logoHeader from '@/assets/image/logoHeader.svg';
+import { descriptionFooterData } from '@/constants/descriptionFooterData';
 
 import {
   AboutBlock,
@@ -19,21 +20,6 @@ import {
 } from './styled';
 
 export const Footer = () => {
-  const descriptionFooterData = [
-    {
-      title: 'General',
-      items: ['Market', 'Service'],
-    },
-    {
-      title: 'Product',
-      items: ['Sparks', 'Snaps'],
-    },
-    {
-      title: 'Community',
-      items: ['Ideas', 'Streams'],
-    },
-  ];
-
   return (
     <Container data-cy='footer'>
       <Wrapper>
@@ -68,7 +54,7 @@ export const Footer = () => {
             })}
           </AboutBlock>
         </InfoFooterBlock>
-        <RightsInfoBlock>Startup © 2023-2024, All Rights Reserved</RightsInfoBlock>;
+        <RightsInfoBlock>Startup © 2023-2024, All Rights Reserved</RightsInfoBlock>
       </Wrapper>
     </Container>
   );

@@ -24,7 +24,7 @@ export const ModalContent = styled.div<{ open: boolean }>`
   justify-content: center;
   width: 50vw;
   height: auto;
-  padding: 20px;
+  padding: ${props => props.theme.indentation.i20};
   color: ${props => props.theme.colors.fontColor};
   background-color: ${props => props.theme.colors.modalContentBackground};
   border-radius: 12px;

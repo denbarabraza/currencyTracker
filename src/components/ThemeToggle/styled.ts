@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ToggleContainer = styled.div<{ open: boolean }>`
-  margin: 20px 0;
+  margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
 `;
 
 export const ToggleLabel = styled.label`

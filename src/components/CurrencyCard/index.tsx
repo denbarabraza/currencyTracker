@@ -10,6 +10,7 @@ import {
   CurrencyItem,
   ItemBlock,
 } from '@/pages/Home/styled';
+import { setModalStatus } from '@/store/actions/appActions';
 import { setCurrencyFrom } from '@/store/actions/homeActions';
 
 export const CurrencyCard: FC<ICurrencyCard> = memo(
@@ -17,6 +18,7 @@ export const CurrencyCard: FC<ICurrencyCard> = memo(
     const dispatch = useAppDispatch();
     const onClickCurrencyItemHandler = (currency: string) => {
       dispatch(setCurrencyFrom(currency));
+      dispatch(setModalStatus(true));
     };
 
     return (

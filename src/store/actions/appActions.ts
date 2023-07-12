@@ -27,3 +27,12 @@ export const setThemeApp = (theme: themeEnum) => {
     },
   } as const;
 };
+
+export const setModalStatus = (isOpen: boolean) => {
+  return {
+    type: 'APP/SET_MODAL_STATUS',
+    payload: {
+      isOpen,
+    },
+  } as const;
+};

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
-import { ArrowIcon, SelectedOption } from '@/components/CurrencySelect/styled';
 import { useAppDispatch } from '@/hooks/useStoreControl';
 import { setDataForChart, setDayTimeLine } from '@/store/actions/timeLineActions';
 import { dateControl } from '@/utils/dateControl';
 import { getMonthName } from '@/utils/getMonthName';
 
-import { Container, Option, OptionsContainer } from './styled';
+import {
+  DayArrowIcon,
+  DayOption,
+  DayOptionsContainer,
+  DaySelectContainer,
+  DaySelectedOption,
+} from './styled';
 
 export const DaySelect = () => {
   const dispatch = useAppDispatch();
@@ -40,18 +45,18 @@ export const DaySelect = () => {
   };
 
   return (
-    <Container data-cy='daySelect' data-testid='daySelect'>
-      <SelectedOption onClick={onClickSelectedOption} data-cy='daySelectOption'>
+    <DaySelectContainer data-cy='daySelect' data-testid='daySelect'>
+      <DaySelectedOption onClick={onClickSelectedOption} data-cy='daySelectOption'>
         {selectedDay} {monthName}
-        <ArrowIcon className={isOpen ? 'open' : ''} />
-      </SelectedOption>
-      <OptionsContainer className={isOpen ? 'open' : ''} data-cy='optionsContainer'>
+        <DayArrowIcon open={isOpen} />
+      </DaySelectedOption>
+      <DayOptionsContainer open={isOpen} data-cy='optionsContainer'>
         {pastDays?.map(day => (
-          <Option key={day} onClick={() => handleChange(day)} data-cy='day'>
+          <DayOption key={day} onClick={() => handleChange(day)} data-cy='day'>
             {day} {monthName}
-          </Option>
+          </DayOption>
         ))}
-      </OptionsContainer>
-    </Container>
+      </DayOptionsContainer>
+    </DaySelectContainer>
   );
 };

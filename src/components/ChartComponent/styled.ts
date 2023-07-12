@@ -6,5 +6,5 @@ export const Container = styled.div`
   justify-content: center;
   min-height: 50vh;
   width: 100%;
-  background-color: #ffffff;
+  background-color: ${props => props.theme.usedColors.lightGreen};
 `;

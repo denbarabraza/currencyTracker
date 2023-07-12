@@ -1,3 +1,18 @@
+export interface IUsedColors {
+  black: string;
+  blackOpacity: string;
+  white: string;
+  green: string;
+  greenOpacity: string;
+  lightGreen: string;
+  gray: string;
+  grayOpacity: string;
+  grayMoreOpacity: string;
+  lightGray: string;
+  red: string;
+  greenChart: string;
+}
+
 export interface ITheme {
   colors: {
     fontColor: string;
@@ -12,6 +27,31 @@ export interface ITheme {
     toggleBackgroundChecked: string;
     toggleCircle: string;
     toggleBorder: string;
+  };
+  usedColors: IUsedColors;
+  fonts: string[];
+  fontSizes: {
+    sm: string;
+    m: string;
+    l: string;
+    xl: string;
+    xxl: string;
+  };
+  fontWeight: {
+    light: number;
+    normal: number;
+    medium: number;
+    semibold: number;
+    bold: number;
+  };
+  indentation: {
+    i0: number;
+    i5: string;
+    i10: string;
+    i20: string;
+    i30: string;
+    i40: string;
+    i50: string;
   };
 }
 

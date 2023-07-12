@@ -7,11 +7,11 @@ export const HintsBlockContainer = styled.ul`
   max-height: 40vh;
   background-color: ${props => props.theme.colors.mainBackground};
   border-radius: 5px;
-  border: 1px solid rgb(204, 204, 204);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${props => props.theme.usedColors.grayMoreOpacity};
+  box-shadow: 0 2px 4px ${props => props.theme.usedColors.blackOpacity};
   list-style: none;
   padding: 10px;
-  margin: 0;
+  margin: ${props => props.theme.indentation.i0};
   overflow-y: auto;
   z-index: 5;
 
@@ -20,28 +20,28 @@ export const HintsBlockContainer = styled.ul`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(204, 204, 204);
+    background-color: ${props => props.theme.usedColors.grayMoreOpacity};
     border-radius: 5px;
   }
 
   @media (max-width: 602px) {
     width: 70%;
-    margin-top: 10px;
+    margin-top: ${props => props.theme.indentation.i10};
   }
 `;
 
 export const HintItem = styled.li`
-  padding: 5px;
+  padding: ${props => props.theme.indentation.i5};
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(53, 185, 26);
+    background-color: ${props => props.theme.usedColors.green};
   }
 `;
 
 export const InfoItem = styled.div`
   color: ${props => props.theme.colors.fontColor};
   text-align: center;
-  font-size: 16px;
+  font-size: ${props => props.theme.fontSizes.l};
   width: 100%;
 `;

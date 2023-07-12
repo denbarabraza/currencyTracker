@@ -7,7 +7,7 @@ export const Container = styled.div`
   min-height: 18vh;
   top: 0;
   background-color: ${props => props.theme.colors.headFootBackground};
-  padding-top: 15px;
+  padding-top: ${props => props.theme.indentation.i10};
   box-shadow: 0 -4px 6px ${props => props.theme.colors.boxShadow};
 `;
 export const Wrapper = styled.div`
@@ -25,16 +25,16 @@ export const InfoFooterBlock = styled.div`
   width: 90vw;
   height: 100%;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: ${props => props.theme.indentation.i10};
 
   @media (max-width: 700px) {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: ${props => props.theme.indentation.i20};
 
     @media (max-width: 505px) {
-      gap: 0;
+      gap: ${props => props.theme.indentation.i0};
     }
   }
 `;
@@ -45,8 +45,7 @@ export const DescriptionBlock = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   max-width: 480px;
-  font-style: normal;
-  font-weight: 300;
+  font-weight: ${props => props.theme.fontWeight.light};
   color: ${props => props.theme.colors.fontColor};
 
   @media (max-width: 915px) {
@@ -62,45 +61,45 @@ export const AboutBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 50px;
+  gap: ${props => props.theme.indentation.i50};
   font-style: normal;
-  font-weight: 300;
+  font-weight: ${props => props.theme.fontWeight.light};
   color: ${props => props.theme.colors.fontColor};
 `;
 
 export const DescriptionTitle = styled.div`
-  font-weight: 400;
-  margin-bottom: 20px;
-  font-size: 16px;
+  font-weight: ${props => props.theme.fontWeight.normal};
+  margin-bottom: ${props => props.theme.indentation.i20};
+  font-size: ${props => props.theme.fontSizes.l};
 
   @media (max-width: 590px) {
-    font-size: 14px;
+    font-size: ${props => props.theme.fontSizes.m};
   }
 `;
 
 export const DescriptionItem = styled.div`
   color: ${props => props.theme.colors.fontColorOpacity};
-  padding-bottom: 10px;
-  font-size: 16px;
+  padding-bottom: ${props => props.theme.indentation.i10};
+  font-size: ${props => props.theme.fontSizes.l};
 
   &:hover {
-    color: rgb(53, 185, 26);
-    font-weight: 400;
+    color: ${props => props.theme.usedColors.green};
+    font-weight: ${props => props.theme.fontWeight.normal};
   }
 
   @media (max-width: 590px) {
-    font-size: 14px;
+    font-size: ${props => props.theme.fontSizes.m};
   }
 `;
 
 export const DescriptionText = styled.div`
   font-style: normal;
-  font-weight: 300;
-  font-size: 16px;
+  font-weight: ${props => props.theme.fontWeight.light};
+  font-size: ${props => props.theme.fontSizes.l};
   line-height: 150%;
 
   @media (max-width: 590px) {
-    font-size: 14px;
+    font-size: ${props => props.theme.fontSizes.m};
   }
   @media (max-width: 505px) {
     display: none;
@@ -112,8 +111,8 @@ export const LogoBlockFooter = styled.div`
   width: 100%;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: ${props => props.theme.indentation.i10};
+  margin-bottom: ${props => props.theme.indentation.i20};
 `;
 
 export const LogoIconFooter = styled.img`
@@ -136,14 +135,14 @@ export const LogoTitleFooter = styled.img`
 `;
 
 export const RightsInfoBlock = styled.div`
-  font-family: Poppins, sans-serif;
-  font-size: 16px;
+  font-family: ${props => props.theme.fonts[0]};
+  font-size: ${props => props.theme.fontSizes.l};
   font-style: normal;
-  font-weight: 300;
-  padding: 10px;
+  font-weight: ${props => props.theme.fontWeight.light};
+  padding: ${props => props.theme.indentation.i10};
   color: ${props => props.theme.colors.fontColorOpacity};
 
   @media (max-width: 590px) {
-    font-size: 14px;
+    font-size: ${props => props.theme.fontSizes.m};
   }
 `;

@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: 20px 0;
+  margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
   min-height: 30vh;
 `;
 
@@ -25,7 +25,7 @@ export const CurrencyFilterBlock = styled.div`
 `;
 
 export const HintsTimeLine = styled.div`
-  font-size: 14px;
-  padding-bottom: 10px;
+  font-size: ${props => props.theme.fontSizes.m};
+  padding-bottom: ${props => props.theme.indentation.i10};
   color: ${props => props.theme.colors.toggleBorder};
 `;

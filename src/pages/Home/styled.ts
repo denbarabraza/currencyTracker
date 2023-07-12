@@ -3,8 +3,8 @@ import styled, { keyframes } from 'styled-components';
 export const CurrencyBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: ${props => props.theme.indentation.i20};
+  margin-bottom: ${props => props.theme.indentation.i20};
 `;
 export const StocksBlock = styled.div`
   display: flex;
@@ -12,22 +12,22 @@ export const StocksBlock = styled.div`
   width: 35vw;
 `;
 export const TitleBlock = styled.div`
-  font-size: 18px;
-  font-weight: 300;
+  font-size: ${props => props.theme.fontSizes.xl};
+  font-weight: ${props => props.theme.fontWeight.light};
   line-height: 30px;
   color: ${props => props.theme.colors.fontColor};
 `;
 export const HrItem = styled.hr`
   border: none;
   border-top: 2px solid ${props => props.theme.colors.currencyCard};
-  margin: 20px 0;
+  margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
 `;
 
 export const ItemBlock = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 20px 0;
+  gap: ${props => props.theme.indentation.i30};
+  padding: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
 `;
 
 const slideInFromBottom = keyframes`
@@ -48,7 +48,7 @@ export const CurrencyItem = styled.div`
   background-color: ${props => props.theme.colors.currencyCard};
   border-radius: 10px;
   animation: ${slideInFromBottom} 0.5s ease-out;
-  padding: 0 15px;
+  padding: ${props => props.theme.indentation.i0} ${props => props.theme.indentation.i10};
 
   &:hover {
     box-shadow: 0 2px 3px 2px ${props => props.theme.colors.boxShadow};
@@ -61,17 +61,17 @@ export const CurrencyImage = styled.img`
 `;
 
 export const CurrencyInfo = styled.div`
-  padding: 20px;
+  padding: ${props => props.theme.indentation.i20};
 `;
 
 export const CardTitle = styled.div`
-  font-size: 18px;
-  font-weight: 400;
+  font-size: ${props => props.theme.fontSizes.xl};
+  font-weight: ${props => props.theme.fontWeight.normal};
 `;
 
 export const CardInfo = styled.div`
-  font-size: 16px;
-  font-weight: 300;
+  font-size: ${props => props.theme.fontSizes.l};
+  font-weight: ${props => props.theme.fontWeight.light};
   color: ${props => props.theme.colors.fontColorOpacity};
 `;
 

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { usedColors } from '@/theme/theme';
+
 export const Container = styled.div`
   pointer-events: all;
   position: fixed;
@@ -15,13 +17,14 @@ export const Container = styled.div`
 `;
 
 export const PopUpItem = styled.div`
-  width: 40vw;
-  height: 10vh;
+  max-width: 70vw;
+  max-height: 20vh;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
   pointer-events: all;
-  background-color: rgb(53, 185, 26);
+  background-color: ${usedColors.green};
   transition: 0.4s;
 `;

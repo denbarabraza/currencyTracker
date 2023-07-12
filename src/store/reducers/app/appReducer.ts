@@ -5,6 +5,7 @@ const initialState: IAppState = {
   statusApp: RequestStatusType.Idle,
   errorApp: null,
   currentTheme: themeEnum.Light,
+  isModalOpen: false,
 };
 
 export const appReducer = (state = initialState, action: ActionsAppType): IAppState => {
@@ -20,6 +21,9 @@ export const appReducer = (state = initialState, action: ActionsAppType): IAppSt
         ...state,
         currentTheme: action.payload.theme,
       };
+    }
+    case 'APP/SET_MODAL_STATUS': {
+      return { ...state, isModalOpen: action.payload.isOpen };
     }
     default:
       return state;

@@ -6,13 +6,13 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: row;
   position: relative;
-  margin: 10px 0;
+  margin: ${props => props.theme.indentation.i10} ${props => props.theme.indentation.i0};
   @media (max-width: 690px) {
     width: 100%;
     grid-area: 2 / 1 / 3 / 3;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
+    padding-top: ${props => props.theme.indentation.i10};
   }
 `;
 export const InputContainer = styled.div`
@@ -25,16 +25,16 @@ export const InputContainer = styled.div`
 export const InputItem = styled.input`
   width: 400px;
   height: 100%;
-  padding-left: 10px;
+  padding-left: ${props => props.theme.indentation.i10};
   transition: all 0.2s ease 0s;
-  font-family: Poppins, sans-serif;
-  font-size: 14px;
+  font-family: ${props => props.theme.fonts[0]};
+  font-size: ${props => props.theme.fontSizes.m};
   line-height: 16px;
-  border: 1px solid rgb(147, 146, 146);
+  border: 1px solid ${props => props.theme.usedColors.blackOpacity};
   border-radius: 5px;
 
   &:focus {
-    border: 1px solid #212121;
+    border: 1px solid ${props => props.theme.usedColors.green};
   }
 
   @media (max-width: 850px) {

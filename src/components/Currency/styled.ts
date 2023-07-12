@@ -10,21 +10,21 @@ export const Container = styled.div`
 export const CurrencyIMG = styled.img`
   width: 70px;
   height: 70px;
-  margin-bottom: 20px;
+  margin-bottom: ${props => props.theme.indentation.i20};
 `;
 
 export const DescriptionItem = styled.div`
-  font-family: Poppins, sans-serif;
+  font-family: ${props => props.theme.fonts[0]};
 `;
 
 export const HintItem = styled.div`
   color: ${props => props.theme.colors.fontColorOpacity};
-  margin: 20px 0;
-  font-size: 16px;
+  margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
+  font-size: ${props => props.theme.fontSizes.l};
 `;
 
 export const ConverterValueItem = styled.div`
-  color: rgb(53, 185, 26);
-  margin: 20px 0;
-  font-size: 22px;
+  color: ${props => props.theme.usedColors.green};
+  margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
+  font-size: ${props => props.theme.fontSizes.xl};
 `;

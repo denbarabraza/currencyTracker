@@ -1,6 +1,7 @@
 import { Chart, ChartMeta } from 'chart.js';
 
 import { IData } from '@/components/ChartComponent/interface';
+import { usedColors } from '@/theme/theme';
 import { ICurrencyChartResponse } from '@/types/api';
 
 export const getConfigChart = (dataChart: ICurrencyChartResponse[], code: string) => {
@@ -28,17 +29,12 @@ export const getConfigChart = (dataChart: ICurrencyChartResponse[], code: string
             raw: { o, c },
           } = ctx;
 
-          let color;
-
-          if (c >= o) {
-            color = 'rgb(75, 192, 192)';
-          } else {
-            color = 'rgb(255, 26, 104)';
-          }
-
-          return color;
+          return c >= o ? `${usedColors.greenChart}` : `${usedColors.red}`;
         },
-        borderColor: 'rgba(0,0,0,1)',
+        barPercentage: 1,
+        maxBarThickness: 20,
+        minBarLength: 7,
+        borderColor: `${usedColors.black}`,
         borderWidth: 2,
         borderSkipped: false,
       },
@@ -46,15 +42,26 @@ export const getConfigChart = (dataChart: ICurrencyChartResponse[], code: string
   };
   const options = {
     responsive: true,
+    devicePixelRatio: 20,
+    maintainAspectRatio: false,
     parsing: {
       xAxisKey: 'x',
       yAxisKey: 's',
     },
     scales: {
-      x: {},
+      x: {
+        stacked: true,
+        grid: {
+          offset: true,
+        },
+      },
       y: {
+        stacked: true,
         beginAtZero: false,
         grace: '80%',
+        grid: {
+          offset: true,
+        },
       },
     },
   };
@@ -71,7 +78,7 @@ export const getConfigChart = (dataChart: ICurrencyChartResponse[], code: string
 
       ctx.save();
       ctx.lineWidth = 2;
-      ctx.strokeStyle = 'rgba(0,0,0,1)';
+      ctx.strokeStyle = `${usedColors.black}`;
 
       data.datasets[0].data.forEach((datapoint: any, index: number) => {
         ctx.beginPath();
