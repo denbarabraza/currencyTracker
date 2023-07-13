@@ -21,9 +21,7 @@ export const Contacts = () => {
       <ContactsItem>Stefana Okrzei 1a/10</ContactsItem>
       <ContactsItem>Warsaw, Poland</ContactsItem>
       <BlockSocialItem>
-        {socialData.map(social => {
-          const { id, href, img } = social;
-
+        {socialData.map(({ id, href, img }) => {
           return (
             <a key={id} href={href} target='_blank' rel='noreferrer'>
               <IconFooter src={img} alt={href} title={href} />

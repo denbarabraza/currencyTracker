@@ -6,7 +6,7 @@ import {
   ICommonTimeLineContainer,
   IMapDispatchToProps,
   IMapStateToProps,
-} from '@/components/TimeLineContainer/interface';
+} from '@/components/TimeLineContainer/interfaces';
 import { TimeLine } from '@/pages/TimeLine';
 import { setCurrencyForTimeLine, setDataForChart } from '@/store/actions/timeLineActions';
 import {

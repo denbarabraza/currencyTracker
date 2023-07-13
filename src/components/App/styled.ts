@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   body {
-    font-family: Poppins, sans-serif;
+    font-family: ${props => props.theme.fonts[0]};
     margin: ${props => props.theme.indentation.i0};
     padding: ${props => props.theme.indentation.i0};
     position: relative;
@@ -10,19 +10,19 @@ export const GlobalStyles = createGlobalStyle`
 
 
     &::-webkit-scrollbar {
-      width: 2px;
+      width: ${props => props.theme.valueInPx.px2};
     }
 
     &::-webkit-scrollbar-track {
-      background-color: rgb(242, 242, 242);
+      background-color: ${props => props.theme.usedColors.grayOpacity};
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: rgb(204, 204, 204);
+      background-color: ${props => props.theme.usedColors.grayMoreOpacity};
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background-color: rgb(153, 153, 153);
+      background-color: ${props => props.theme.usedColors.grayOpacity};
     }
   }
 `;

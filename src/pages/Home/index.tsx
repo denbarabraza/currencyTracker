@@ -45,9 +45,7 @@ export const Home = () => {
         <TitleBlock>Stocks</TitleBlock>
         <HrItem />
         <ItemBlock>
-          {currencyStock.map((curStock, index) => {
-            const { value, img, name } = curStock;
-
+          {currencyStock.map(({ value, img, name }, index) => {
             return (
               <CurrencyItem key={index}>
                 <CurrencyImage src={img} alt={name} title={name} />

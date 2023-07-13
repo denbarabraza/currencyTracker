@@ -4,7 +4,7 @@ import Map, { ViewState, ViewStateChangeEvent } from 'react-map-gl';
 import {
   IBankCardState,
   ICommonBankCard,
-} from '@/components/BankCardContainer/interface';
+} from '@/components/BankCardContainer/interfaces';
 import { MarkerControl } from '@/components/MarkerControl';
 import { Search } from '@/components/Search';
 import { Container } from '@/pages/BankCard/styled';

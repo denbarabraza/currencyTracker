@@ -5,7 +5,7 @@ import {
   ICommonBankCardContainer,
   IMapDispatchToProps,
   IMapStateToProps,
-} from '@/components/BankCardContainer/interface';
+} from '@/components/BankCardContainer/interfaces';
 import { ErrorInfo } from '@/components/ErrorInfo';
 import { BankCard } from '@/pages/BankCard';
 import { setSearchCurrency } from '@/store/actions/mapActions';

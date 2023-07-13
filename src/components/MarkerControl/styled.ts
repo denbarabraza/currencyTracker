@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const LocationImg = styled.img`
-  width: 30px;
-  height: 30px;
+  width: ${props => props.theme.valueInPx.px30};
+  height: ${props => props.theme.valueInPx.px30};
 `;
 
 export const PopupBlock = styled.div`
-  min-width: 150px;
+  min-width: ${props => props.theme.valueInPx.px150};
   color: ${props => props.theme.usedColors.black};
 `;
 

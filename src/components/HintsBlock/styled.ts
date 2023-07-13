@@ -2,30 +2,30 @@ import styled from 'styled-components';
 
 export const HintsBlockContainer = styled.ul`
   position: absolute;
-  top: 45px;
-  width: 100%;
-  max-height: 40vh;
+  top: ${props => props.theme.valueInPx.px45};
+  width: ${props => props.theme.valueInPercent.pr100};
+  max-height: ${props => props.theme.valueInVh.vh40};
   background-color: ${props => props.theme.colors.mainBackground};
-  border-radius: 5px;
+  border-radius: ${props => props.theme.valueInPx.px5};
   border: 1px solid ${props => props.theme.usedColors.grayMoreOpacity};
   box-shadow: 0 2px 4px ${props => props.theme.usedColors.blackOpacity};
   list-style: none;
-  padding: 10px;
+  padding: ${props => props.theme.valueInPx.px10};
   margin: ${props => props.theme.indentation.i0};
   overflow-y: auto;
   z-index: 5;
 
   ::-webkit-scrollbar {
-    width: 7px;
+    width: ${props => props.theme.valueInPx.px5};
   }
 
   ::-webkit-scrollbar-thumb {
     background-color: ${props => props.theme.usedColors.grayMoreOpacity};
-    border-radius: 5px;
+    border-radius: ${props => props.theme.valueInPx.px5};
   }
 
   @media (max-width: 602px) {
-    width: 70%;
+    width: ${props => props.theme.valueInPercent.pr70};
     margin-top: ${props => props.theme.indentation.i10};
   }
 `;
@@ -43,5 +43,5 @@ export const InfoItem = styled.div`
   color: ${props => props.theme.colors.fontColor};
   text-align: center;
   font-size: ${props => props.theme.fontSizes.l};
-  width: 100%;
+  width: ${props => props.theme.valueInPercent.pr100};
 `;

@@ -3,11 +3,11 @@ import styled, { keyframes } from 'styled-components';
 export const Container = styled.div`
   position: fixed;
   z-index: 10;
-  top: 0;
-  left: 0;
+  top: ${props => props.theme.valueInPx.px0};
+  left: ${props => props.theme.valueInPx.px0};
 
-  width: 100vw;
-  height: 100vh;
+  width: ${props => props.theme.valueInVw.vw100};
+  height: ${props => props.theme.valueInVh.vh100};
 
   opacity: 0.7;
   background-color: ${props => props.theme.colors.mainBackground};
@@ -21,8 +21,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  height: 100%;
+  width: ${props => props.theme.valueInPercent.pr100};
+  height: ${props => props.theme.valueInPercent.pr100};
 `;
 
 export const spin = keyframes`
@@ -33,10 +33,10 @@ export const spin = keyframes`
 
 export const Spinner = styled.div`
   display: inline-block;
-  width: 10%;
-  height: 10%;
+  width: ${props => props.theme.valueInPercent.pr10};
+  height: ${props => props.theme.valueInPercent.pr10};
   border: 2px solid ${props => props.theme.usedColors.green};
   border-top-color: ${props => props.theme.usedColors.grayMoreOpacity};
-  border-radius: 50%;
+  border-radius: ${props => props.theme.valueInPercent.pr50};
   animation: ${spin} 1s ease-in-out infinite;
 `;

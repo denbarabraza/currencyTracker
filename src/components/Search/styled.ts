@@ -8,7 +8,7 @@ export const Container = styled.div`
   position: relative;
   margin: ${props => props.theme.indentation.i10} ${props => props.theme.indentation.i0};
   @media (max-width: 690px) {
-    width: 100%;
+    width: ${props => props.theme.valueInPercent.pr100};
     grid-area: 2 / 1 / 3 / 3;
     justify-content: center;
     align-items: center;
@@ -16,28 +16,28 @@ export const Container = styled.div`
   }
 `;
 export const InputContainer = styled.div`
-  height: 33px;
+  height: ${props => props.theme.valueInPx.px30};
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 `;
 export const InputItem = styled.input`
-  width: 400px;
-  height: 100%;
+  width: ${props => props.theme.valueInPx.px400};
+  height: ${props => props.theme.valueInPercent.pr100};
   padding-left: ${props => props.theme.indentation.i10};
   transition: all 0.2s ease 0s;
   font-family: ${props => props.theme.fonts[0]};
   font-size: ${props => props.theme.fontSizes.m};
-  line-height: 16px;
+  line-height: ${props => props.theme.valueInPx.px20};
   border: 1px solid ${props => props.theme.usedColors.blackOpacity};
-  border-radius: 5px;
+  border-radius: ${props => props.theme.valueInPx.px5};
 
   &:focus {
     border: 1px solid ${props => props.theme.usedColors.green};
   }
 
   @media (max-width: 850px) {
-    width: 250px;
+    width: ${props => props.theme.valueInPx.px250};
   }
 `;

@@ -5,19 +5,19 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  top: 0;
+  top: ${props => props.theme.valueInPx.px0};
   background-color: ${props => props.theme.colors.mainBackground};
 `;
 export const Wrapper = styled.div`
-  width: 90vw;
-  min-height: 75vh;
+  width: ${props => props.theme.valueInVw.vw90};
+  min-height: ${props => props.theme.valueInVh.vh75};
   padding: ${props => props.theme.indentation.i10} ${props => props.theme.indentation.i0};
 `;
 
 export const MainIMG = styled.img`
-  width: 100%;
+  width: ${props => props.theme.valueInPercent.pr100};
   background-size: contain;
-  border-radius: 5px;
+  border-radius: ${props => props.theme.valueInPx.px5};
   margin-bottom: ${props => props.theme.indentation.i10};
 `;
 
@@ -26,9 +26,8 @@ export const UpdateInformation = styled.div`
   font-style: normal;
   font-weight: ${props => props.theme.fontWeight.light};
   font-size: ${props => props.theme.fontSizes.l};
-  line-height: 41px;
+  line-height: ${props => props.theme.valueInPx.px40};
   color: ${props => props.theme.colors.fontColor};
-  border: red;
 `;
 
 const pulse = keyframes`
@@ -44,9 +43,9 @@ const pulse = keyframes`
 `;
 
 export const Circle = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  width: ${props => props.theme.valueInPx.px20};
+  height: ${props => props.theme.valueInPx.px20};
+  border-radius: ${props => props.theme.valueInPercent.pr50};
   background-color: ${props => props.theme.usedColors.green};
   box-shadow: 0 0 0 0 ${props => props.theme.usedColors.blackOpacity};
   animation: ${pulse} 2s infinite;

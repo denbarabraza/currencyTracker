@@ -10,7 +10,7 @@ import {
   Tooltip,
 } from 'chart.js';
 
-import { ILineTest } from '@/components/ChartComponent/interface';
+import { ILineTest } from '@/components/ChartComponent/interfaces';
 import { ChartObserver, Subject } from '@/components/ChartObserver';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { getPeriodTimeLineSelector } from '@/store/selectors/homeSelectors';

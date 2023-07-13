@@ -12,8 +12,8 @@ export const BlockSocialItem = styled.div`
   margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
 `;
 export const IconFooter = styled.img`
-  width: 25px;
-  height: 25px;
+  width: ${props => props.theme.valueInPx.px25};
+  height: ${props => props.theme.valueInPx.px25};
   transition: transform 0.2s ease-in-out;
 
   &:hover {

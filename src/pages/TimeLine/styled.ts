@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   margin: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
-  min-height: 30vh;
+  min-height: ${props => props.theme.valueInVh.vh30};
 `;
 
 export const CurrencySelectBlock = styled.div`

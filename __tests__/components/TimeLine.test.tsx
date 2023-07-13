@@ -19,7 +19,7 @@ describe('TimeLine', () => {
   it('initially, the page should display a currency selector, a date selector (if period=day) and a currency card', () => {
     const period = periodEnum.Day;
 
-    const { queryByTestId } = render(
+    const { queryByTestId, queryAllByTestId } = render(
       <Provider store={store}>
         <Theme>
           <TimeLine
@@ -36,14 +36,12 @@ describe('TimeLine', () => {
       </Provider>,
     );
 
-    const currencySelect = queryByTestId('currencySelect');
+    const currencySelect = queryAllByTestId('selectCurrencyDay');
     const periodToggle = queryByTestId('toggle');
-    const daySelect = queryByTestId('daySelect');
     const currencyCard = queryByTestId('currencyCard');
 
-    expect(currencySelect).toBeInTheDocument();
+    expect(currencySelect.length).toBe(2);
     expect(periodToggle).toBeInTheDocument();
-    expect(daySelect).toBeInTheDocument();
     expect(currencyCard).toBeInTheDocument();
   });
 

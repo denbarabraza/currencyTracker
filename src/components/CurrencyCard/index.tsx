@@ -16,25 +16,25 @@ import { setCurrencyFrom } from '@/store/actions/homeActions';
 export const CurrencyCard: FC<ICurrencyCard> = memo(
   ({ currencies, currencyForValue }) => {
     const dispatch = useAppDispatch();
-    const onClickCurrencyItemHandler = (currency: string) => {
+    const onClickCurrencyItemHandler = (currency: string) => () => {
       dispatch(setCurrencyFrom(currency));
       dispatch(setModalStatus(true));
     };
 
     return (
       <ItemBlock data-cy='currencyCard' data-testid='currencyCard'>
-        {currencies.map((currency, index) => {
+        {currencies.map(({ name, code, img }) => {
           return (
             <CurrencyItem
-              key={index}
-              onClick={() => onClickCurrencyItemHandler(currency.name)}
+              key={code}
+              onClick={onClickCurrencyItemHandler(name)}
               data-cy='currencyItem'
             >
-              <CurrencyImage src={currency.img} alt={currency.name} />
+              <CurrencyImage src={img} alt={name} />
               <CurrencyInfo>
-                <CardTitle data-cy='currencyTitle'>{currency.name}</CardTitle>
+                <CardTitle data-cy='currencyTitle'>{name}</CardTitle>
                 {currencyForValue && (
-                  <CardInfo>{currencyForValue?.data[currency.code].value}</CardInfo>
+                  <CardInfo>{currencyForValue?.data[code].value}</CardInfo>
                 )}
               </CurrencyInfo>
             </CurrencyItem>

@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 18vh;
-  top: 0;
+  min-height: ${props => props.theme.valueInVh.vh18};
+  top: ${props => props.theme.valueInPx.px0};
   background-color: ${props => props.theme.colors.headFootBackground};
   padding-top: ${props => props.theme.indentation.i10};
   box-shadow: 0 -4px 6px ${props => props.theme.colors.boxShadow};
@@ -15,15 +15,15 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 90vw;
+  width: ${props => props.theme.valueInVw.vw90};
 `;
 
 export const InfoFooterBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 90vw;
-  height: 100%;
+  width: ${props => props.theme.valueInVw.vw90};
+  height: ${props => props.theme.valueInPercent.pr100};
   flex-wrap: wrap;
   gap: ${props => props.theme.indentation.i10};
 
@@ -44,16 +44,16 @@ export const DescriptionBlock = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  max-width: 480px;
+  max-width: ${props => props.theme.valueInPx.px480};
   font-weight: ${props => props.theme.fontWeight.light};
   color: ${props => props.theme.colors.fontColor};
 
   @media (max-width: 915px) {
-    max-width: 370px;
+    max-width: ${props => props.theme.valueInPx.px370};
   }
 
   @media (max-width: 790px) {
-    max-width: 300px;
+    max-width: ${props => props.theme.valueInPx.px300};
   }
 `;
 
@@ -96,7 +96,7 @@ export const DescriptionText = styled.div`
   font-style: normal;
   font-weight: ${props => props.theme.fontWeight.light};
   font-size: ${props => props.theme.fontSizes.l};
-  line-height: 150%;
+  line-height: ${props => props.theme.valueInPercent.pr150};
 
   @media (max-width: 590px) {
     font-size: ${props => props.theme.fontSizes.m};
@@ -108,7 +108,7 @@ export const DescriptionText = styled.div`
 
 export const LogoBlockFooter = styled.div`
   display: flex;
-  width: 100%;
+  width: ${props => props.theme.valueInPercent.pr100};
   justify-content: flex-start;
   align-items: flex-end;
   gap: ${props => props.theme.indentation.i10};
@@ -116,21 +116,21 @@ export const LogoBlockFooter = styled.div`
 `;
 
 export const LogoIconFooter = styled.img`
-  width: 25px;
-  height: 25px;
+  width: ${props => props.theme.valueInPx.px25};
+  height: ${props => props.theme.valueInPx.px25};
 `;
 
 export const LogoTitleFooter = styled.img`
-  height: 25px;
+  height: ${props => props.theme.valueInPx.px25};
 
   @media (max-width: 790px) {
-    width: 35vw;
+    width: ${props => props.theme.valueInVw.vw35};
   }
   @media (max-width: 700px) {
-    width: 50vw;
+    width: ${props => props.theme.valueInVw.vw50};
   }
   @media (max-width: 450px) {
-    width: 60vw;
+    width: ${props => props.theme.valueInVw.vw60};
   }
 `;
 

@@ -2,15 +2,13 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Loader } from '@/components/Loader';
-import { routes } from '@/routes/routes';
+import { routes } from '@/constants/routes';
 
 export const Pages = () => {
   return (
     <React.Suspense fallback={<Loader />}>
       <Routes>
-        {routes.map(route => {
-          const { path, element } = route;
-
+        {routes.map(({ path, element }) => {
           return <Route key={path} path={path} element={element} />;
         })}
       </Routes>

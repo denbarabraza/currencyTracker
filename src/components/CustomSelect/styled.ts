@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
-export const DaySelectContainer = styled.div`
+export const Container = styled.div`
   position: relative;
-  width: 200px;
+  width: ${props => props.theme.valueInPx.px200};
   font-family: ${props => props.theme.fonts[0]};
 `;
 
-export const DaySelectedOption = styled.div`
+export const SelectedOption = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: ${props => props.theme.indentation.i10};
   border: 1px solid ${props => props.theme.usedColors.grayMoreOpacity};
-  border-radius: 5px;
+  border-radius: ${props => props.theme.valueInPx.px5};
   cursor: pointer;
-  height: 25px;
+  height: ${props => props.theme.valueInPx.px25};
 `;
 
-export const DayArrowIcon = styled.div<{ open: boolean }>`
-  width: 0;
-  height: 0;
+export const ArrowIcon = styled.div<{ open: boolean }>`
+  width: ${props => props.theme.valueInPx.px0};
+  height: ${props => props.theme.valueInPx.px0};
   border-top: 5px solid ${props => props.theme.colors.fontColor};
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
@@ -28,13 +28,13 @@ export const DayArrowIcon = styled.div<{ open: boolean }>`
   transform: ${({ open }) => (open ? 'rotate(180deg)' : '')};
 `;
 
-export const DayOptionsContainer = styled.div<{ open: boolean }>`
+export const OptionsContainer = styled.div<{ open: boolean }>`
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
+  top: ${props => props.theme.valueInPx.px50};
+  left: ${props => props.theme.valueInPx.px0};
+  width: ${props => props.theme.valueInPercent.pr100};
   z-index: 5;
-  max-height: 100px;
+  max-height: ${props => props.theme.valueInPx.px100};
   overflow-y: auto;
   color: ${props => props.theme.usedColors.black};
   background-color: ${props => props.theme.usedColors.white};
@@ -47,7 +47,7 @@ export const DayOptionsContainer = styled.div<{ open: boolean }>`
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 
   &::-webkit-scrollbar {
-    width: 5px;
+    width: ${props => props.theme.valueInPx.px5};
   }
 
   &::-webkit-scrollbar-track {
@@ -63,7 +63,7 @@ export const DayOptionsContainer = styled.div<{ open: boolean }>`
   }
 `;
 
-export const DayOption = styled.div`
+export const Option = styled.div`
   padding: ${props => props.theme.indentation.i10};
   cursor: pointer;
 

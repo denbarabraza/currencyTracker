@@ -9,12 +9,12 @@ export const CurrencyBlock = styled.div`
 export const StocksBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 35vw;
+  width: ${props => props.theme.valueInVw.vw35};
 `;
 export const TitleBlock = styled.div`
   font-size: ${props => props.theme.fontSizes.xl};
   font-weight: ${props => props.theme.fontWeight.light};
-  line-height: 30px;
+  line-height: ${props => props.theme.valueInPx.px30};
   color: ${props => props.theme.colors.fontColor};
 `;
 export const HrItem = styled.hr`
@@ -25,6 +25,7 @@ export const HrItem = styled.hr`
 
 export const ItemBlock = styled.div`
   display: grid;
+  cursor: pointer;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: ${props => props.theme.indentation.i30};
   padding: ${props => props.theme.indentation.i20} ${props => props.theme.indentation.i0};
@@ -46,7 +47,7 @@ export const CurrencyItem = styled.div`
   justify-content: flex-start;
   align-items: center;
   background-color: ${props => props.theme.colors.currencyCard};
-  border-radius: 10px;
+  border-radius: ${props => props.theme.valueInPx.px10};
   animation: ${slideInFromBottom} 0.5s ease-out;
   padding: ${props => props.theme.indentation.i0} ${props => props.theme.indentation.i10};
 
@@ -56,8 +57,8 @@ export const CurrencyItem = styled.div`
 `;
 
 export const CurrencyImage = styled.img`
-  width: 50px;
-  height: 50px;
+  width: ${props => props.theme.valueInPx.px50};
+  height: ${props => props.theme.valueInPx.px50};
 `;
 
 export const CurrencyInfo = styled.div`

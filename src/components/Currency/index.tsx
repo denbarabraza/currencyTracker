@@ -1,7 +1,8 @@
 import React, { FC, useEffect } from 'react';
 
-import { ICurrency } from '@/components/Currency/interface';
-import { CurrencySelect } from '@/components/CurrencySelect';
+import { ICurrency } from '@/components/Currency/types';
+import { CustomSelect } from '@/components/CustomSelect';
+import { selectEnum } from '@/components/CustomSelect/interface';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStoreControl';
 import { setCurrencyTo } from '@/store/actions/homeActions';
 import {
@@ -35,6 +36,20 @@ export const Currency: FC<ICurrency> = ({ currentCurrency }) => {
     dispatch(setCurrencyTo(value));
   };
 
+  const descriptionItems = Object.entries(currentCurrency)
+    .filter(([key]) => key === 'name' || key === 'symbol_native' || key === 'code')
+    .map(([key, value]) => {
+      const keyTitle = key.charAt(0).toUpperCase() + key.slice(1);
+
+      return (
+        <DescriptionItem key={key}>
+          <b>{keyTitle}:</b> {value}
+        </DescriptionItem>
+      );
+    });
+
+  const { img, name, code } = currentCurrency;
+
   useEffect(() => {
     if (codeCurrencyFrom && codeCurrencyTo) {
       dispatch(fetchConversionThunk(codeCurrencyFrom, codeCurrencyTo));
@@ -43,32 +58,20 @@ export const Currency: FC<ICurrency> = ({ currentCurrency }) => {
 
   return (
     <Container>
-      <CurrencyIMG
-        src={currentCurrency.img}
-        alt={currentCurrency.name}
-        title={currentCurrency.name}
-      />
-      <DescriptionItem>
-        <b>Name:</b> {currentCurrency.name}
-      </DescriptionItem>
-      <DescriptionItem>
-        <b>Code:</b> {currentCurrency.code}
-      </DescriptionItem>
-      <DescriptionItem>
-        <b>Symbol:</b> {currentCurrency.symbol_native}
-      </DescriptionItem>
+      <CurrencyIMG src={img} alt={name} title={name} />
+      {descriptionItems}
       <HintItem>
-        You can find out the selected currency exchange rate relative to the{' '}
-        {currentCurrency.name}
+        You can find out the selected currency exchange rate relative to the {name}
       </HintItem>
-      <CurrencySelect
+      <CustomSelect
+        type={selectEnum.Currency}
         options={currencyForOption}
         value={currencyTo}
         onChange={handleSelectChange}
       />
       {currencyTo && (
         <ConverterValueItem data-cy='modalConvertValue'>
-          1 {currentCurrency.code} = {convertValue} {codeCurrencyTo}
+          1 {code} = {convertValue} {codeCurrencyTo}
         </ConverterValueItem>
       )}
     </Container>

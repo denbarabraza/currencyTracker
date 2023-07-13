@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FC, memo, useCallback, useState } from 'react';
+import { ISearch } from 'src/components/Search/interfaces';
 
 import { HintsBlock } from '@/components/HintsBlock';
 import { useAppSelector } from '@/hooks/useStoreControl';
 import { getSearchCurrencySelector } from '@/store/selectors/mapSelectors';
 
-import { ISearch } from './interface';
 import { Container, InputContainer, InputItem } from './styled';
 
 export const Search: FC<ISearch> = memo(({ onSearch }) => {

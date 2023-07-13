@@ -8,16 +8,16 @@ describe('TimeLine Page', () => {
   });
 
   it('the elements of the TimeLine page should be visible', () => {
-    cy.get('[data-cy="selectOptions"]').should('be.visible');
+    cy.get('[data-cy="currencySelect"]').should('be.visible');
     cy.get('[data-cy="periodToggleSlider"]').should('be.visible');
-    cy.get('[data-cy="daySelectOption"]').should('be.visible');
+    cy.get('[data-cy="daySelect"]').should('be.visible');
     cy.get('[data-cy="currencyItem"]').should('be.visible');
     cy.get('[data-cy="barChat"]').should('not.exist');
   });
 
   it('when select a day, a chart should be displayed', () => {
     cy.get('[data-cy="daySelect"]').should('be.visible').click();
-    cy.get('[data-cy="optionsContainer"] > :nth-child(1)').click();
+    cy.get('[data-cy="selectDayOption"] > :nth-child(1)').click();
 
     cy.wait(waitSecValue);
     cy.get('[data-cy="barChat"]').should('be.visible');
@@ -32,7 +32,10 @@ describe('TimeLine Page', () => {
   });
 
   it('the value in select and in the card must be the same', () => {
-    cy.get('[data-cy="selectOption"] > :nth-child(1)').should('contains.text', 'Bitcoin');
+    cy.get('[data-cy="selectCurrencyOption"] > :nth-child(1)').should(
+      'contains.text',
+      'Bitcoin',
+    );
     cy.get('[data-cy="currencyTitle').should('contains.text', 'Bitcoin');
   });
 

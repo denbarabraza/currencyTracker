@@ -5,12 +5,12 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 60vh;
+  width: ${props => props.theme.valueInPercent.pr100};
+  height: ${props => props.theme.valueInVh.vh60};
 `;
 
 export const PageNotFoundImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: ${props => props.theme.valueInPercent.pr100};
+  height: ${props => props.theme.valueInPercent.pr100};
   background-size: contain;
 `;

@@ -40,9 +40,7 @@ export const Footer = () => {
             </DescriptionText>
           </DescriptionBlock>
           <AboutBlock>
-            {descriptionFooterData.map(data => {
-              const { items, title } = data;
-
+            {descriptionFooterData.map(({ items, title }) => {
               return (
                 <DescriptionBlock key={title}>
                   <DescriptionTitle>{title}</DescriptionTitle>

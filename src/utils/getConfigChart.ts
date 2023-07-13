@@ -1,6 +1,6 @@
 import { Chart, ChartMeta } from 'chart.js';
 
-import { IData } from '@/components/ChartComponent/interface';
+import { IData } from '@/components/ChartComponent/interfaces';
 import { usedColors } from '@/theme/theme';
 import { ICurrencyChartResponse } from '@/types/api';
 
@@ -43,7 +43,6 @@ export const getConfigChart = (dataChart: ICurrencyChartResponse[], code: string
   const options = {
     responsive: true,
     devicePixelRatio: 20,
-    maintainAspectRatio: false,
     parsing: {
       xAxisKey: 'x',
       yAxisKey: 's',

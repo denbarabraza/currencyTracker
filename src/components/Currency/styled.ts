@@ -8,8 +8,8 @@ export const Container = styled.div`
 `;
 
 export const CurrencyIMG = styled.img`
-  width: 70px;
-  height: 70px;
+  width: ${props => props.theme.valueInPx.px70};
+  height: ${props => props.theme.valueInPx.px70};
   margin-bottom: ${props => props.theme.indentation.i20};
 `;
 

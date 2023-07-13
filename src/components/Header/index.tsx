@@ -9,20 +9,19 @@ import {
   Wrapper,
 } from '@/components/Header/styled';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { PATH } from '@/constants/path';
+import { navLinks } from '@/constants/navLinks';
 
 export const Header = () => {
-  const { HOME, TIME_LINE, BANK_CARD, CONTACTS } = PATH;
-
   return (
     <Container data-cy='header'>
       <Wrapper>
         <HeaderNav>
           <LogoHeader alt='logoHeader' src={logoHeader} title='logoHeader' />
-          <NavLinkItem to={HOME}>Home</NavLinkItem>
-          <NavLinkItem to={TIME_LINE}>Timeline</NavLinkItem>
-          <NavLinkItem to={BANK_CARD}>Bank card</NavLinkItem>
-          <NavLinkItem to={CONTACTS}>Contacts</NavLinkItem>
+          {navLinks.map(link => (
+            <NavLinkItem key={link.to} to={link.to}>
+              {link.label}
+            </NavLinkItem>
+          ))}
           <ThemeToggle />
         </HeaderNav>
       </Wrapper>

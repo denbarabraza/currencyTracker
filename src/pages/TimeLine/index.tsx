@@ -2,14 +2,14 @@ import React from 'react';
 
 import { BarChart } from '@/components/ChartComponent';
 import { CurrencyCard } from '@/components/CurrencyCard';
-import { CurrencySelect } from '@/components/CurrencySelect';
-import { DaySelect } from '@/components/DaySelect';
+import { CustomSelect } from '@/components/CustomSelect';
+import { selectEnum } from '@/components/CustomSelect/interface';
 import { PeriodToggle } from '@/components/PeriodToggle';
 import {
   ICommonTimeLine,
   ICommonTimeLineContainer,
   ITimeLineState,
-} from '@/components/TimeLineContainer/interface';
+} from '@/components/TimeLineContainer/interfaces';
 import { currencyQuotes } from '@/constants/currency';
 import { periodEnum } from '@/types/period';
 import { dateControl } from '@/utils/dateControl';
@@ -88,7 +88,8 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
       <Container>
         <CurrencySelectBlock>
           <HintsTimeLine>Select the currency that interests you</HintsTimeLine>
-          <CurrencySelect
+          <CustomSelect
+            type={selectEnum.Currency}
             options={this.currenciesOptions}
             value={currencyTimeLineName}
             onChange={this.handleSelectChange}
@@ -99,7 +100,7 @@ export class TimeLine extends React.PureComponent<ICommonTimeLine, ITimeLineStat
           {period === periodEnum.Day && (
             <>
               <HintsTimeLine>Select from which date to bring statistics</HintsTimeLine>
-              <DaySelect />
+              <CustomSelect type={selectEnum.Day} />
             </>
           )}
           <CurrencyCard currencies={this.state.selectCurrency} />
