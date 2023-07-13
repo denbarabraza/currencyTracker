@@ -25,7 +25,7 @@ describe('Home Page', () => {
   it('the operation when clicking on select must be correct (selecting the currency and getting the conversion value)', () => {
     cy.get('[data-cy="currencyCard"] > :nth-child(1)').click();
     cy.get('[data-cy="currencySelect"]').should('be.visible').click();
-    cy.get('[data-cy="currencySelect"] > :nth-child(1)').click();
+    cy.get('[data-cy="selectCurrencyOption"] > :nth-child(1)').click();
 
     cy.wait(waitSecValue);
     cy.get('[data-cy="modalConvertValue"]').should('be.visible');
