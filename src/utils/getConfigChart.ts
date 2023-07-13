@@ -42,7 +42,6 @@ export const getConfigChart = (dataChart: ICurrencyChartResponse[], code: string
   };
   const options = {
     responsive: true,
-    devicePixelRatio: 20,
     parsing: {
       xAxisKey: 'x',
       yAxisKey: 's',
